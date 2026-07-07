@@ -1,0 +1,13 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "gradient-text"
+    ],
+    "ignoreFiles": [
+      "src/app/globals.css",
+      "take-your-gloves/src/app/globals.css",
+      "app/globals.css"
+    ],
+    "ignoreValues": []
+  }
+}

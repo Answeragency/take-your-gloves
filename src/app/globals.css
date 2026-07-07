@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b;
+  --surface: #0f0e0c;
+  --surface-2: #181614;
+  --foreground: #ede8e0;
+  --muted: #857d74;
+  --accent: #b85228;
+  --accent-dim: #943f1e;
+  --gold: #c8982a;
+  --line: rgba(237, 232, 224, 0.10);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-gold: var(--gold);
+  --color-line: var(--line);
+  --font-display: var(--font-geist);
+  --font-sans: var(--font-geist);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist), Arial, Helvetica, sans-serif;
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(184,82,40,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 20% at 88% 10%, rgba(200,152,42,0.05) 0%, transparent 55%);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.gold-text {
+  background: linear-gradient(110deg, #f0c860 0%, #c8982a 45%, #9a6e18 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-border-top {
+  border-top: 1px solid;
+  border-image: linear-gradient(90deg, #c8982a, transparent) 1;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(200,152,42,0.15) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.font-display {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-display.font-medium-display {
+  font-weight: 600;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

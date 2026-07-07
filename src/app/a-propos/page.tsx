@@ -1,0 +1,146 @@
+import { Metadata } from "next";
+import Photo from "@/components/photo";
+import SectionHeading from "@/components/section-heading";
+import Reveal from "@/components/reveal";
+import CtaBanner from "@/components/cta-banner";
+import StatsStrip from "@/components/stats-strip";
+
+export const metadata: Metadata = {
+  title: "À propos | Take Your Gloves",
+  description:
+    "L'histoire et les valeurs de Take Your Gloves, organisateur d'événements automobiles à Strasbourg.",
+};
+
+const values = [
+  {
+    title: "Sécurité avant tout",
+    text: "Chaque événement est encadré par des pilotes expérimentés, avec des briefings sécurité systématiques et des groupes adaptés au niveau de chacun.",
+  },
+  {
+    title: "Exigence dans l'organisation",
+    text: "Roadbooks soignés, itinéraires repérés en amont, partenariats circuits sélectionnés : rien n'est laissé au hasard pour que vous profitiez pleinement.",
+  },
+  {
+    title: "Convivialité avant la performance",
+    text: "Take Your Gloves n'est pas une compétition. C'est une communauté de passionnés qui se retrouvent pour partager une passion commune.",
+  },
+];
+
+export default function AProposPage() {
+  return (
+    <>
+      <section className="relative overflow-hidden pt-40 pb-24">
+        <div className="absolute inset-0">
+          <Photo
+            src="/images/ardennes-groupe.jpg"
+            alt="Groupe de passionnés Take Your Gloves devant un château"
+            label="Take Your Gloves — Notre histoire"
+            variant="gold"
+            className="h-full w-full"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/30" />
+        </div>
+        <div className="relative mx-auto max-w-3xl px-6 lg:px-10">
+          <SectionHeading
+            eyebrow="Notre histoire"
+            title="Né d'une passion partagée à Strasbourg"
+            description="Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel — ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient."
+          />
+        </div>
+      </section>
+
+      <StatsStrip />
+
+      <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+        <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
+              Notre mission
+            </p>
+            <h2 className="text-balance mt-5 font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-5xl">
+              Faire (re)découvrir le plaisir de conduire
+            </h2>
+            <div className="mt-6 space-y-5 text-base leading-relaxed text-muted">
+              <p>
+                Trop de voitures de sport et de GT dorment dans les garages,
+                réservées aux beaux jours et aux trajets sans relief. Take
+                Your Gloves est né pour leur redonner leur usage premier : le
+                plaisir de conduire.
+              </p>
+              <p>
+                Depuis nos premiers rassemblements informels entre amis à
+                Strasbourg, nous avons structuré une véritable offre
+                d&apos;événements — rallyes touristiques, trackdays, sorties
+                conviviales et expériences atypiques — pour répondre à toutes
+                les envies, du conducteur occasionnel au pilote confirmé.
+              </p>
+              <p>
+                Aujourd&apos;hui, c&apos;est une communauté de plus de 800
+                passionnés qui se retrouve régulièrement autour de nos
+                événements, en Alsace et au-delà.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.15} className="grid grid-cols-2 gap-4">
+            <div className="col-span-2 h-64 overflow-hidden rounded-2xl">
+              <Photo
+                src="/images/groupe-drapeaux.jpg"
+                alt="L'équipe et la communauté Take Your Gloves"
+                label="L'équipe Take Your Gloves"
+                variant="dark"
+                className="h-full w-full"
+              />
+            </div>
+            <div className="h-44 overflow-hidden rounded-2xl">
+              <Photo
+                src="/images/glace-portrait.jpg"
+                alt="Briefing avant le roulage sur glace"
+                label="Briefing"
+                variant="red"
+                className="h-full w-full"
+              />
+            </div>
+            <div className="h-44 overflow-hidden rounded-2xl">
+              <Photo
+                src="/images/forest-porsche.jpg"
+                alt="Porsche sur une route forestière"
+                label="Sur la route"
+                variant="gold"
+                className="h-full w-full"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+          <SectionHeading
+            eyebrow="Nos valeurs"
+            title="Ce qui guide chaque événement"
+            align="center"
+          />
+          <div className="mt-14 grid gap-8 lg:grid-cols-3">
+            {values.map((v, i) => (
+              <Reveal key={v.title} delay={i * 0.1}>
+                <div className="rounded-2xl border border-line bg-background p-8">
+                  <span className="font-display text-3xl text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-5 font-display text-lg tracking-tight text-foreground">
+                    {v.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {v.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner />
+    </>
+  );
+}
