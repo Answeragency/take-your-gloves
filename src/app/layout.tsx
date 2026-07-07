@@ -14,9 +14,13 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Take Your Gloves | Émotions automobiles, Strasbourg",
+  title: "Take Your Gloves | Émotions automobiles",
   description:
-    "Rallyes touristiques, trackdays et sorties conviviales en voiture de sport. Take Your Gloves vous fait (re)découvrir le plaisir de conduire, à Strasbourg et en Alsace.",
+    "Rallyes touristiques, trackdays et sorties conviviales en voiture de sport. Take Your Gloves vous fait (re)découvrir le plaisir de conduire, en Alsace et Grand Est.",
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
