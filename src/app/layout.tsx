@@ -14,12 +14,29 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://take-your-gloves.vercel.app"),
   title: "Take Your Gloves | Émotions automobiles",
   description:
     "Rallyes touristiques, trackdays et sorties conviviales en voiture de sport. Take Your Gloves vous fait (re)découvrir le plaisir de conduire, en Alsace et Grand Est.",
   icons: {
     icon: "/images/logo.png",
     apple: "/images/logo.png",
+  },
+  openGraph: {
+    title: "Take Your Gloves | Émotions automobiles",
+    description:
+      "Rallyes touristiques, trackdays et sorties conviviales en voiture de sport. Vivez le plaisir de conduire en Alsace.",
+    url: "https://take-your-gloves.vercel.app",
+    siteName: "Take Your Gloves",
+    images: [
+      {
+        url: "/images/ardennes-chateau-parade.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Take Your Gloves — Émotions automobiles en Alsace",
+      },
+    ],
+    type: "website",
   },
 };
 
