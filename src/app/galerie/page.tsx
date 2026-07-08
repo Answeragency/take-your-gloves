@@ -32,7 +32,7 @@ const photos: Array<{
 export default function GaleriePage() {
   return (
     <>
-      <section className="pt-40 pb-16">
+      <section className="pt-28 pb-10 lg:pt-40 lg:pb-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading
             eyebrow="En images"
@@ -42,7 +42,7 @@ export default function GaleriePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-28">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">
           {photos.map((p, i) => (
             <Reveal

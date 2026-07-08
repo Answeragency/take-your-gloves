@@ -21,7 +21,7 @@ export default function Home() {
       <StatsStrip />
 
       {/* Upcoming events */}
-      <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             eyebrow="Calendrier 2026"
@@ -43,7 +43,7 @@ export default function Home() {
 
       {/* About / Spirit section */}
       <section className="border-y border-line bg-surface">
-        <div className="mx-auto grid max-w-7xl gap-16 px-6 py-28 lg:grid-cols-2 lg:items-center lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-16 px-6 py-16 lg:grid-cols-2 lg:items-center lg:px-10 lg:py-28">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
               L&apos;esprit Take Your Gloves
@@ -83,8 +83,8 @@ export default function Home() {
           </Reveal>
 
           {/* Editorial photo grid */}
-          <Reveal delay={0.12} className="grid grid-cols-12 grid-rows-2 gap-3 h-[420px]">
-            <div className="col-span-8 row-span-2 overflow-hidden rounded-2xl">
+          <Reveal delay={0.12} className="grid grid-cols-2 gap-3 sm:grid-cols-12 sm:grid-rows-2 sm:h-[420px]">
+            <div className="col-span-2 h-48 overflow-hidden rounded-2xl sm:col-span-8 sm:row-span-2 sm:h-full">
               <Photo
                 src="/images/groupe-drapeaux.jpg"
                 alt="La communauté Take Your Gloves"
@@ -93,7 +93,7 @@ export default function Home() {
                 className="h-full w-full"
               />
             </div>
-            <div className="col-span-4 row-span-1 overflow-hidden rounded-2xl">
+            <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
               <Photo
                 src="/images/forest-porsche.jpg"
                 alt="Porsche sur une route forestière"
@@ -102,7 +102,7 @@ export default function Home() {
                 className="h-full w-full"
               />
             </div>
-            <div className="col-span-4 row-span-1 overflow-hidden rounded-2xl">
+            <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
               <Photo
                 src="/images/interior-amg.jpg"
                 alt="Intérieur d'une Mercedes-AMG GT"
@@ -116,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
         <SectionHeading
           eyebrow="Ils en parlent"
           title="La parole à nos pilotes"

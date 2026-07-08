@@ -29,7 +29,7 @@ const values = [
 export default function AProposPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-40 pb-24">
+      <section className="relative overflow-hidden pt-28 pb-16 lg:pt-40 lg:pb-24">
         <div className="absolute inset-0">
           <Photo
             src="/images/ardennes-groupe.jpg"
@@ -51,7 +51,7 @@ export default function AProposPage() {
 
       <StatsStrip />
 
-      <section className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">

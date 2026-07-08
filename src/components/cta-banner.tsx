@@ -15,7 +15,7 @@ export default function CtaBanner() {
         />
         <div className="absolute inset-0 bg-background/75" />
       </div>
-      <div className="relative mx-auto max-w-4xl px-6 py-28 text-center lg:px-10">
+      <div className="relative mx-auto max-w-4xl px-6 py-16 text-center lg:px-10 lg:py-28">
         <Reveal>
           <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">
             Prêt à enfiler vos gants ?

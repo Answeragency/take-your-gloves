@@ -82,7 +82,7 @@ export default function Hero() {
           Strasbourg · Alsace · Émotions automobiles
         </motion.p>
 
-        <h1 className="text-balance mt-6 max-w-4xl font-display text-6xl leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+        <h1 className="text-balance mt-6 max-w-4xl font-display text-5xl leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
             {line1.map((word) => {
               wordIndex += 1;

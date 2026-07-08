@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function EvenementsPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-40 pb-20">
+      <section className="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-20">
         <div className="absolute inset-0">
           <Photo
             src="/images/nurburgring-trackday.jpg"
@@ -91,7 +91,7 @@ export default function EvenementsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
         <div className="grid gap-6">
           {calendar.map((event, i) => (
             <CalendarCard key={event.slug} event={event} index={i} />

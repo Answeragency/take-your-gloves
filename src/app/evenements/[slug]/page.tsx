@@ -39,7 +39,7 @@ export default async function EventDetailPage({
 
   return (
     <>
-      <section className="relative overflow-hidden pt-40 pb-20">
+      <section className="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <Reveal>
@@ -125,7 +125,7 @@ export default async function EventDetailPage({
       </section>
 
       <section className="border-t border-line bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
           <h3 className="font-display text-xs uppercase tracking-[0.3em] text-accent">
             À découvrir aussi
           </h3>
