@@ -43,33 +43,31 @@ export default function GaleriePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-28">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">
-          {photos.map((p, i) => (
-            <Reveal
-              key={p.label}
-              delay={(i % 6) * 0.06}
-              className={i % 5 === 0 ? "col-span-2 row-span-1" : ""}
-            >
-              <div
-                className={`group relative overflow-hidden rounded-xl ${
-                  i % 5 === 0 ? "h-72 sm:h-80" : "h-48 sm:h-56"
-                }`}
-              >
-                <Photo
-                  src={p.image}
-                  alt={p.label}
-                  label={p.label}
-                  variant={p.variant}
-                  className="h-full w-full transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/80 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="font-display text-xs uppercase tracking-[0.15em] text-foreground">
-                    {p.label}
-                  </span>
+        <div className="columns-2 gap-4 sm:columns-3">
+          {photos.map((p, i) => {
+            const ratio =
+              i % 5 === 0 ? "aspect-[16/9]" :
+              i % 3 === 1 ? "aspect-[3/4]" :
+              "aspect-[4/3]";
+            return (
+              <Reveal key={p.label} delay={(i % 6) * 0.06} className="mb-4 break-inside-avoid">
+                <div className={`group relative overflow-hidden rounded-xl ${ratio}`}>
+                  <Photo
+                    src={p.image}
+                    alt={p.label}
+                    label={p.label}
+                    variant={p.variant}
+                    className="h-full w-full transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/80 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="font-display text-xs uppercase tracking-[0.15em] text-foreground">
+                      {p.label}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
