@@ -90,7 +90,7 @@ export default function Nav() {
 
           <Link
             href="/contact"
-            className="hidden rounded-full border border-foreground/25 px-5 py-2.5 font-display text-xs uppercase tracking-[0.02em] text-foreground transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_rgba(56,120,232,0.28)] lg:inline-block"
+            className="hidden rounded-full border border-foreground/25 px-5 py-2.5 font-display text-xs uppercase tracking-[0.02em] text-foreground transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_rgba(30,98,204,0.28)] lg:inline-block"
           >
             Nous contacter
           </Link>
