@@ -123,7 +123,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          className="mt-8 max-w-xl text-balance text-lg leading-relaxed text-muted"
+          className="mt-3 max-w-xl text-balance text-sm leading-relaxed text-muted sm:mt-8 sm:text-lg"
         >
           Votre meilleur partenaire pour vivre des émotions automobiles
           uniques et (re)découvrir tout le potentiel de plaisir au volant de
@@ -135,7 +135,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.25 }}
-          className="mt-10 flex flex-wrap items-center gap-5"
+          className="mt-4 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-5"
         >
           <Button href="/evenements">Découvrir les événements</Button>
           <Button href="/contact" variant="outline">

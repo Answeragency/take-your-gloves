@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07090e;
-  --surface: #0b0f1a;
-  --surface-2: #111827;
-  --foreground: #ede8e0;
-  --muted: #7a8094;
-  --accent: #1042a0;
-  --accent-dim: #0c3282;
-  --accent-bright: #2d6edf;
-  --gold: #4a8ef0;
-  --line: rgba(180, 200, 240, 0.10);
+  --background: #04060f;
+  --surface: #08091c;
+  --surface-2: #0d1128;
+  --foreground: #eae8f2;
+  --muted: #6a7898;
+  --accent: #1848c8;
+  --accent-dim: #1238a8;
+  --accent-bright: #2d64e8;
+  --gold: #2755cc;
+  --line: rgba(70, 110, 220, 0.09);
 }
 
 @theme inline {
@@ -33,8 +33,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist), Arial, Helvetica, sans-serif;
   background-image:
-    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(16,66,160,0.20) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 20% at 88% 10%, rgba(74,142,240,0.08) 0%, transparent 55%);
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(24,72,200,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 20% at 88% 10%, rgba(45,100,232,0.06) 0%, transparent 55%);
 }
 
 ::selection {
@@ -73,7 +73,7 @@ html {
 
 .gold-border-top {
   border-top: 1px solid;
-  border-image: linear-gradient(90deg, #4a8ef0, transparent) 1;
+  border-image: linear-gradient(90deg, #2755cc, transparent) 1;
 }
 
 @keyframes shimmer {
@@ -82,7 +82,7 @@ html {
 }
 
 .shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(16,66,160,0.18) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(24,72,200,0.14) 50%, transparent 100%);
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
