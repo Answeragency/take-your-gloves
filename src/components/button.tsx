@@ -13,9 +13,9 @@ const base =
 
 const variants = {
   primary:
-    "bg-accent text-foreground hover:bg-accent-dim hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(184,82,40,0.45)] active:scale-[0.97]",
+    "bg-accent text-foreground hover:bg-accent-dim hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(56,120,232,0.45)] active:scale-[0.97]",
   outline:
-    "border border-foreground/25 text-foreground hover:border-accent/70 hover:text-accent hover:bg-accent/5 hover:shadow-[0_0_18px_rgba(184,82,40,0.15)] active:scale-[0.97]",
+    "border border-foreground/25 text-foreground hover:border-accent/70 hover:text-accent hover:bg-accent/5 hover:shadow-[0_0_18px_rgba(56,120,232,0.15)] active:scale-[0.97]",
   ghost: "text-foreground/80 hover:text-foreground",
 };
 

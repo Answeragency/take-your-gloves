@@ -6,9 +6,9 @@
   --surface-2: #181614;
   --foreground: #ede8e0;
   --muted: #857d74;
-  --accent: #b85228;
-  --accent-dim: #943f1e;
-  --gold: #c8982a;
+  --accent: #3878e8;
+  --accent-dim: #2660c8;
+  --gold: #64a8ff;
   --line: rgba(237, 232, 224, 0.10);
 }
 
@@ -31,8 +31,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist), Arial, Helvetica, sans-serif;
   background-image:
-    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(184,82,40,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 20% at 88% 10%, rgba(200,152,42,0.05) 0%, transparent 55%);
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(56,120,232,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 20% at 88% 10%, rgba(100,168,255,0.05) 0%, transparent 55%);
 }
 
 ::selection {
@@ -71,7 +71,7 @@ html {
 
 .gold-border-top {
   border-top: 1px solid;
-  border-image: linear-gradient(90deg, #c8982a, transparent) 1;
+  border-image: linear-gradient(90deg, #64a8ff, transparent) 1;
 }
 
 @keyframes shimmer {
@@ -80,7 +80,7 @@ html {
 }
 
 .shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(200,152,42,0.15) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(56,120,232,0.15) 50%, transparent 100%);
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
