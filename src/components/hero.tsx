@@ -25,8 +25,8 @@ export default function Hero() {
   });
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0.25, 0.95], [1, 0]);
 
   let wordIndex = -1;
 
