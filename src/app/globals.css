@@ -68,7 +68,17 @@ html {
 }
 
 .gold-text {
-  color: var(--gold);
+  background: linear-gradient(135deg, #a86020 0%, #d4922a 35%, #f0c060 60%, #c07830 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heading-gradient {
+  background: linear-gradient(120deg, #f5f0e8 0%, #e8d8b8 50%, #c8a060 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .gold-border-top {
