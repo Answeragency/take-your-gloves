@@ -60,8 +60,8 @@ export default function Cursor() {
         translateX: "-50%",
         translateY: "-50%",
         background: hovering
-          ? "radial-gradient(circle, rgba(58,92,168,0.35) 0%, rgba(58,92,168,0.10) 40%, transparent 70%)"
-          : "radial-gradient(circle, rgba(58,92,168,0.18) 0%, rgba(58,92,168,0.05) 40%, transparent 70%)",
+          ? "radial-gradient(circle, rgba(44,110,76,0.35) 0%, rgba(44,110,76,0.10) 40%, transparent 70%)"
+          : "radial-gradient(circle, rgba(44,110,76,0.18) 0%, rgba(44,110,76,0.05) 40%, transparent 70%)",
       }}
       animate={{
         width: hovering ? 120 : 80,
