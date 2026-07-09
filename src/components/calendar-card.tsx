@@ -57,7 +57,7 @@ export default function CalendarCard({
               background: useTransform(
                 [glowX, glowY],
                 ([gx, gy]) =>
-                  `radial-gradient(500px circle at ${gx}% ${gy}%, rgba(44,110,76,0.12), transparent 60%)`
+                  `radial-gradient(500px circle at ${gx}% ${gy}%, rgba(46,82,176,0.12), transparent 60%)`
               ),
             }}
           />

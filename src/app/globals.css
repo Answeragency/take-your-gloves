@@ -6,9 +6,9 @@
   --surface-2: #191610;
   --foreground: #ede8e0;
   --muted: #857d74;
-  --accent: #2c6e4c;
-  --accent-dim: #225a3c;
-  --accent-bright: #3a8a60;
+  --accent: #2e52b0;
+  --accent-dim: #223e90;
+  --accent-bright: #4068c8;
   --gold: #c07830;
   --line: rgba(200, 170, 110, 0.09);
 }
@@ -33,7 +33,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist), Arial, Helvetica, sans-serif;
   background-image:
-    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(44,110,76,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(46,82,176,0.10) 0%, transparent 55%),
     radial-gradient(ellipse 25% 18% at 88% 10%, rgba(192,120,48,0.08) 0%, transparent 50%);
 }
 
@@ -92,7 +92,7 @@ html {
 }
 
 .shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(44,110,76,0.08) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(46,82,176,0.09) 50%, transparent 100%);
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
