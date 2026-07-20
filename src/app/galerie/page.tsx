@@ -3,33 +3,16 @@ import Photo from "@/components/photo";
 import SectionHeading from "@/components/section-heading";
 import Reveal from "@/components/reveal";
 import CtaBanner from "@/components/cta-banner";
+import { getAllGalleryPhotos } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 
 export const metadata: Metadata = {
   title: "Galerie | Take Your Gloves",
   description: "Revivez nos rallyes, roulages sur glace et sorties en images.",
 };
 
-const photos: Array<{
-  label: string;
-  image?: string;
-  variant: "dark" | "red" | "gold";
-}> = [
-  { label: "Convoi devant le château — Les Ardennes", image: "/images/ardennes-chateau-parade.jpg", variant: "red" },
-  { label: "Roulage glace — Pegasus Racing", image: "/images/glace-toyota-noire.jpg", variant: "dark" },
-  { label: "Briefing au sommet", image: "/images/glace-portrait.jpg", variant: "gold" },
-  { label: "Convoi en montagne enneigée", image: "/images/glace-convoi.jpg", variant: "dark" },
-  { label: "Supra GR sur la neige", image: "/images/glace-supra-jaune.jpg", variant: "red" },
-  { label: "L'équipe au complet — glace 2026", image: "/images/glace-groupe.jpg", variant: "gold" },
-  { label: "Mercedes-AMG GT R en forêt", image: "/images/amg-gtr-foret.jpg", variant: "dark" },
-  { label: "Porsche sur les routes des Vosges", image: "/images/forest-porsche.jpg", variant: "red" },
-  { label: "Cockpit AMG GT", image: "/images/interior-amg.jpg", variant: "gold" },
-  { label: "La communauté Take Your Gloves", image: "/images/groupe-drapeaux.jpg", variant: "dark" },
-  { label: "Sur les courbes du Nürburgring", image: "/images/nurburgring-trackday.jpg", variant: "red" },
-  { label: "Château des Ardennes", image: "/images/ardennes-chateau-voitures.jpg", variant: "gold" },
-  { label: "Photo de groupe — Les Ardennes", image: "/images/ardennes-groupe.jpg", variant: "dark" },
-];
-
-export default function GaleriePage() {
+export default async function GaleriePage() {
+  const photos = await getAllGalleryPhotos();
   return (
     <>
       <section className="pt-28 pb-10 lg:pt-40 lg:pb-16">
@@ -49,11 +32,12 @@ export default function GaleriePage() {
               i % 5 === 0 ? "aspect-[16/9]" :
               i % 3 === 1 ? "aspect-[3/4]" :
               "aspect-[4/3]";
+            const src = urlFor(p.image).width(1200).auto("format").url();
             return (
               <Reveal key={p.label} delay={(i % 6) * 0.06} className="mb-4 break-inside-avoid">
                 <div className={`group relative overflow-hidden rounded-xl ${ratio}`}>
                   <Photo
-                    src={p.image}
+                    src={src}
                     alt={p.label}
                     label={p.label}
                     variant={p.variant}

@@ -3,7 +3,9 @@ import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
 import CalendarCard from "@/components/calendar-card";
 import CtaBanner from "@/components/cta-banner";
-import { calendar, categories } from "@/lib/calendar";
+import { categories } from "@/lib/calendar";
+import { getAllEvents } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 
 export const metadata: Metadata = {
   title: "Calendrier 2026 | Take Your Gloves",
@@ -11,7 +13,8 @@ export const metadata: Metadata = {
     "Découvrez le calendrier 2026 de Take Your Gloves : rallyes touristiques, sorties conviviales et expériences atypiques à travers l'Europe.",
 };
 
-export default function EvenementsPage() {
+export default async function EvenementsPage() {
+  const events = await getAllEvents();
   return (
     <>
       <section className="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-20">
@@ -93,7 +96,7 @@ export default function EvenementsPage() {
 
       <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
         <div className="grid gap-6">
-          {calendar.map((event, i) => (
+          {events.map((event, i) => (
             <CalendarCard key={event.slug} event={event} index={i} />
           ))}
         </div>

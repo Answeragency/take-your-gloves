@@ -5,10 +5,14 @@ import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
 import Button from "@/components/button";
 import CalendarCard from "@/components/calendar-card";
-import { calendar, statusStyles, categoryVariant } from "@/lib/calendar";
+import { statusStyles, categoryVariant } from "@/lib/calendar";
+import { getEventBySlug, getAllEventSlugs, getUpcomingEvents } from "@/sanity/lib/queries";
 
-export function generateStaticParams() {
-  return calendar.map((e) => ({ slug: e.slug }));
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const slugs = await getAllEventSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -17,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const event = calendar.find((e) => e.slug === slug);
+  const event = await getEventBySlug(slug);
   if (!event) return {};
   return {
     title: `${event.title} | Take Your Gloves`,
@@ -31,10 +35,10 @@ export default async function EventDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const event = calendar.find((e) => e.slug === slug);
+  const event = await getEventBySlug(slug);
   if (!event) notFound();
 
-  const others = calendar.filter((e) => e.slug !== slug).slice(0, 3);
+  const others = (await getUpcomingEvents(4)).filter((e) => e.slug !== slug).slice(0, 3);
   const variant = categoryVariant[event.category] ?? "dark";
 
   return (

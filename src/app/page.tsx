@@ -8,11 +8,13 @@ import CtaBanner from "@/components/cta-banner";
 import Button from "@/components/button";
 import Reveal from "@/components/reveal";
 import Photo from "@/components/photo";
-import { testimonials } from "@/lib/events";
-import { calendar } from "@/lib/calendar";
+import { getUpcomingEvents, getFeaturedTestimonials } from "@/sanity/lib/queries";
 
-export default function Home() {
-  const upcoming = calendar.slice(0, 3);
+export default async function Home() {
+  const [upcoming, testimonials] = await Promise.all([
+    getUpcomingEvents(3),
+    getFeaturedTestimonials(4),
+  ]);
 
   return (
     <>
