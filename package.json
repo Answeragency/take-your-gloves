@@ -21,6 +21,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "sanity": "^6.5.0",
+    "sanity-plugin-media": "^6.0.4",
     "styled-components": "^6.4.4"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
   "allowScripts": {
     "esbuild@0.28.1": true,
     "sharp@0.34.5": true,
-    "unrs-resolver@1.12.2": true
+    "unrs-resolver@1.12.2": true,
+    "sanity-plugin-media@6.0.4": true
   }
 }

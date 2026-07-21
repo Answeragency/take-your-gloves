@@ -1,6 +1,7 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
+import { mediaPlugin } from "sanity-plugin-media";
 import { schemaTypes } from "./src/sanity/schemaTypes";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
@@ -34,6 +35,7 @@ export default defineConfig({
           ]),
     }),
     visionTool({ defaultApiVersion: "2024-01-01" }),
+    mediaPlugin(),
   ],
   schema: { types: schemaTypes },
 });
