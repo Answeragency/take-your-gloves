@@ -3,18 +3,28 @@ import SectionHeading from "@/components/section-heading";
 import TestimonialCard from "@/components/testimonial-card";
 import Reveal from "@/components/reveal";
 import CtaBanner from "@/components/cta-banner";
-import { testimonials } from "@/lib/events";
-import { extraTestimonials, press } from "@/lib/testimonials-extra";
+import { press } from "@/lib/testimonials-extra";
+import { getAllTestimonials, getHomePage, getSiteSettings } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
-  title: "Témoignages | Take Your Gloves",
+  title: "Témoignages — Avis de nos Pilotes",
   description:
-    "Ce que nos pilotes disent de leurs rallyes, trackdays et sorties Take Your Gloves.",
+    "Plus de 800 passionnés automobiles témoignent de leurs expériences lors des rallyes touristiques, trackdays et sorties Take Your Gloves en Alsace. Lisez leurs avis.",
+  alternates: { canonical: "https://take-your-gloves.vercel.app/temoignages" },
+  openGraph: {
+    title: "Avis & Témoignages | Take Your Gloves",
+    description: "Ce que nos pilotes disent de leurs rallyes, trackdays et sorties en voiture de sport avec Take Your Gloves en Alsace.",
+    url: "https://take-your-gloves.vercel.app/temoignages",
+  },
 };
 
-const all = [...testimonials, ...extraTestimonials];
+export default async function TemoignagesPage() {
+  const [testimonials, home, settings] = await Promise.all([
+    getAllTestimonials(),
+    getHomePage(),
+    getSiteSettings(),
+  ]);
 
-export default function TemoignagesPage() {
   return (
     <>
       <section className="pt-40 pb-16">
@@ -29,8 +39,8 @@ export default function TemoignagesPage() {
 
       <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {all.map((t, i) => (
-            <TestimonialCard key={t.name} {...t} index={i} />
+          {testimonials.map((t, i) => (
+            <TestimonialCard key={t._id} {...t} index={i} />
           ))}
         </div>
       </section>
@@ -55,7 +65,12 @@ export default function TemoignagesPage() {
         </div>
       </section>
 
-      <CtaBanner />
+      <CtaBanner
+        eyebrow={home?.ctaEyebrow}
+        heading={home?.ctaHeading}
+        description={home?.ctaDescription}
+        imageUrl={settings?.ctaBannerImageUrl}
+      />
     </>
   );
 }

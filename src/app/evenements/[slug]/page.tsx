@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
+import { PortableText } from "@portabletext/react";
 import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
 import Button from "@/components/button";
@@ -23,9 +24,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const event = await getEventBySlug(slug);
   if (!event) return {};
+  const url = `https://take-your-gloves.vercel.app/evenements/${slug}`;
   return {
-    title: `${event.title} | Take Your Gloves`,
+    title: `${event.title} — ${event.category} en ${event.location}`,
     description: event.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${event.title} | Take Your Gloves`,
+      description: event.description,
+      url,
+      type: "article",
+      images: event.image
+        ? [{ url: event.image, width: 800, height: 1100, alt: event.title }]
+        : [{ url: "/images/ardennes-chateau-parade.jpg", width: 1200, height: 630, alt: event.title }],
+    },
   };
 }
 
@@ -41,8 +53,34 @@ export default async function EventDetailPage({
   const others = (await getUpcomingEvents(4)).filter((e) => e.slug !== slug).slice(0, 3);
   const variant = categoryVariant[event.category] ?? "dark";
 
+  const eventJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    description: event.description,
+    url: `https://take-your-gloves.vercel.app/evenements/${slug}`,
+    image: event.image ?? "https://take-your-gloves.vercel.app/images/ardennes-chateau-parade.jpg",
+    startDate: event.dateSort ?? undefined,
+    location: {
+      "@type": "Place",
+      name: event.location,
+      address: { "@type": "PostalAddress", addressCountry: "FR" },
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "Take Your Gloves",
+      url: "https://take-your-gloves.vercel.app",
+    },
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+      />
       <section className="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
@@ -96,6 +134,11 @@ export default async function EventDetailPage({
             <p className="text-base leading-relaxed text-foreground/85">
               {event.description}
             </p>
+            {event.body && Array.isArray(event.body) && event.body.length > 0 && (
+              <div className="prose prose-invert mt-8 max-w-none text-foreground/85">
+                <PortableText value={event.body as Parameters<typeof PortableText>[0]["value"]} />
+              </div>
+            )}
           </Reveal>
 
           <Reveal delay={0.1}>

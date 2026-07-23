@@ -5,8 +5,14 @@ import { useRef } from "react";
 import Button from "./button";
 import Photo from "./photo";
 
-const line1 = "Enfilez vos gants.".split(" ");
-const line2 = "Vivez la route.".split(" ");
+type HeroProps = {
+  eyebrow?: string;
+  line1?: string;
+  line2?: string;
+  subtitle?: string;
+  imageUrl?: string;
+  videoUrl?: string;
+};
 
 const wordVariants = {
   hidden: { opacity: 0, y: "100%" },
@@ -17,7 +23,16 @@ const wordVariants = {
   }),
 };
 
-export default function Hero() {
+export default function Hero({
+  eyebrow = "Strasbourg · Alsace · Émotions automobiles",
+  line1 = "Enfilez vos gants.",
+  line2 = "Vivez la route.",
+  subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Rallyes touristiques, trackdays, sorties conviviales et expériences atypiques.",
+  imageUrl,
+  videoUrl,
+}: HeroProps) {
+  const bgImageUrl = imageUrl ?? "/images/ardennes-chateau-parade.jpg";
+  const bgVideoUrl = videoUrl ?? "/videos/Full Edit-1.mp4";
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -28,30 +43,33 @@ export default function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const contentOpacity = useTransform(scrollYProgress, [0.25, 0.95], [1, 0]);
 
+  const words1 = line1.split(" ");
+  const words2 = line2.split(" ");
   let wordIndex = -1;
 
   return (
     <section ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28">
       <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
-        {/* Fallback image — always rendered, shown when video unavailable or reduced motion */}
         <Photo
-          src="/images/ardennes-chateau-parade.jpg"
+          src={bgImageUrl}
           alt="Convoi de voitures de sport devant un château"
           label="Take Your Gloves — Strasbourg"
           className="h-full w-full"
           variant="red"
           priority
         />
-        {/* Video background — hidden on prefers-reduced-motion */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
-        >
-          <source src="/videos/Full Edit-1.mp4" type="video/mp4" />
-        </video>
+        {bgVideoUrl && (
+          <video
+            key={bgVideoUrl}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+          >
+            <source src={bgVideoUrl} type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/40" />
       </motion.div>
@@ -79,12 +97,12 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="font-display text-xs uppercase tracking-[0.35em] text-foreground/55"
         >
-          Strasbourg · Alsace · Émotions automobiles
+          {eyebrow}
         </motion.p>
 
         <h1 className="text-balance mt-6 max-w-4xl font-display text-5xl leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
-            {line1.map((word) => {
+            {words1.map((word) => {
               wordIndex += 1;
               return (
                 <motion.span
@@ -101,7 +119,7 @@ export default function Hero() {
             })}
           </span>
           <span className="block overflow-hidden">
-            {line2.map((word) => {
+            {words2.map((word) => {
               wordIndex += 1;
               return (
                 <motion.span
@@ -125,10 +143,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.1 }}
           className="mt-3 max-w-xl text-balance text-sm leading-relaxed text-muted sm:mt-8 sm:text-lg"
         >
-          Votre meilleur partenaire pour vivre des émotions automobiles
-          uniques et (re)découvrir tout le potentiel de plaisir au volant de
-          votre voiture de sport. Rallyes touristiques, trackdays, sorties
-          conviviales et expériences atypiques.
+          {subtitle}
         </motion.p>
 
         <motion.div

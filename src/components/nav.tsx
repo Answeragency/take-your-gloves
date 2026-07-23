@@ -13,7 +13,7 @@ const links = [
   { href: "/temoignages", label: "Témoignages" },
 ];
 
-export default function Nav() {
+export default function Nav({ logoUrl = "/images/logo.png" }: { logoUrl?: string }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -54,7 +54,7 @@ export default function Nav() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo.png"
+              src={logoUrl}
               alt="Take Your Gloves"
               width={160}
               height={60}

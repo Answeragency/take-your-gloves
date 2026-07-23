@@ -154,6 +154,11 @@ export const calendar: CalendarEvent[] = [
   },
 ];
 
+// Fallback local posters keyed by slug (used when Sanity image not yet uploaded)
+export const POSTER_MAP: Record<string, string> = Object.fromEntries(
+  calendar.filter((e) => e.image).map((e) => [e.slug, e.image as string])
+);
+
 export const statusStyles: Record<StatusType, string> = {
   limited: "border-gold/40 text-gold bg-gold/10",
   soldout: "border-accent/40 text-accent bg-accent/10",

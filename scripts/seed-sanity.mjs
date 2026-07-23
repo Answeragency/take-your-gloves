@@ -12,6 +12,10 @@
 
 import { createClient } from "@sanity/client";
 import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Charge .env.local manuellement
 const env = Object.fromEntries(
@@ -69,6 +73,89 @@ const siteSettings = {
     "Road Trip",
     "Expérience Immersive",
   ],
+  email: "contact@takeyourgloves.fr",
+  phone: "+33 (0)6 00 00 00 00",
+  location: "Strasbourg, France",
+  facebookUrl: "https://www.facebook.com/TakeYourGlovesEvent/",
+  instagramUrl: "",
+  footerTagline: "Conduisez avec passion, roulez en sécurité.",
+  footerDescription: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Basé à Strasbourg.",
+};
+
+const homePage = {
+  _id: "homePage",
+  _type: "homePage",
+  heroEyebrow: "Strasbourg · Alsace · Émotions automobiles",
+  heroLine1: "Enfilez vos gants.",
+  heroLine2: "Vivez la route.",
+  heroSubtitle: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Rallyes touristiques, trackdays, sorties conviviales et expériences atypiques.",
+  spiritHeading: "Plus qu'un organisateur d'événements, une communauté de passionnés",
+  spiritDescription: "Depuis nos premiers rallyes entre amis à Strasbourg, Take Your Gloves est devenu un rendez-vous incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions.",
+  spiritBullets: [
+    "Encadrement par des pilotes expérimentés",
+    "Itinéraires et circuits sélectionnés avec soin",
+    "Une communauté de plus de 800 passionnés",
+    "Expériences sur-mesure, du débutant au confirmé",
+  ],
+  ctaEyebrow: "Prêt à enfiler vos gants ?",
+  ctaHeading: "Parlons de votre prochaine expérience automobile",
+  ctaDescription: "Racontez-nous votre projet — rallye, trackday, sortie entre amis ou expérience sur-mesure — et recevez une proposition personnalisée sous 48h.",
+};
+
+const aboutPage = {
+  _id: "aboutPage",
+  _type: "aboutPage",
+  heroHeading: "Né d'une passion partagée à Strasbourg",
+  heroDescription: "Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel — ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient.",
+  missionHeading: "Faire (re)découvrir le plaisir de conduire",
+  missionParagraphs: [
+    "Trop de voitures de sport et de GT dorment dans les garages, réservées aux beaux jours et aux trajets sans relief. Take Your Gloves est né pour leur redonner leur usage premier : le plaisir de conduire.",
+    "Depuis nos premiers rassemblements informels entre amis à Strasbourg, nous avons structuré une véritable offre d'événements — rallyes touristiques, trackdays, sorties conviviales et expériences atypiques — pour répondre à toutes les envies, du conducteur occasionnel au pilote confirmé.",
+    "Aujourd'hui, c'est une communauté de plus de 800 passionnés qui se retrouve régulièrement autour de nos événements, en Alsace et au-delà.",
+  ],
+  values: [
+    { title: "Sécurité avant tout", text: "Chaque événement est encadré par des pilotes expérimentés, avec des briefings sécurité systématiques et des groupes adaptés au niveau de chacun." },
+    { title: "Exigence dans l'organisation", text: "Roadbooks soignés, itinéraires repérés en amont, partenariats circuits sélectionnés : rien n'est laissé au hasard pour que vous profitiez pleinement." },
+    { title: "Convivialité avant la performance", text: "Take Your Gloves n'est pas une compétition. C'est une communauté de passionnés qui se retrouvent pour partager une passion commune." },
+  ],
+};
+
+const eventsPage = {
+  _id: "eventsPage",
+  _type: "eventsPage",
+  introLetter: [
+    { _type: "block", _key: "p1", style: "normal", markDefs: [], children: [{ _type: "span", _key: "s1", text: "Merci pour cette incroyable saison 2025 que nous avons vécue ensemble ! Des virages de Corse aux sommets des Alpes, sans oublier les routes sinueuses de notre massif des Vosges : les souvenirs indélébiles marqués par votre bonne humeur et votre passion ne manquent pas !" }] },
+    { _type: "block", _key: "p2", style: "normal", markDefs: [], children: [{ _type: "span", _key: "s2", text: "Je vous remercie chaleureusement de faire partie de cette aventure et vous souhaite une merveilleuse année 2026, qui sera, je l'espère, pleine d'émotions automobiles !" }] },
+    { _type: "block", _key: "p3", style: "normal", markDefs: [], children: [{ _type: "span", _key: "s3", text: "Pour la prochaine saison, j'ai voulu placer la barre encore plus haut et vous ai préparé un programme varié et conçu pour pleinement profiter de ces expériences au volant de vos autos." }] },
+    { _type: "block", _key: "p4", style: "normal", markDefs: [], children: [{ _type: "span", _key: "s4", text: "Attachez votre ceinture et découvrez plus bas l'ensemble des événements qui vous attendent tout au long de l'année !" }] },
+  ],
+  introNote: "N'hésitez pas à me faire part des dates qui peuvent vous intéresser, sans engagement définitif, afin de vous pré-réserver des places.",
+  signature: "Cédric Wetta",
+};
+
+// Photos existantes dans public/images (hors affiches d'événements et logo),
+// reprises depuis la liste statique de la galerie.
+const galleryPhotos = [
+  { id: "ardennes-chateau-parade", file: "ardennes-chateau-parade.jpg", label: "Convoi devant le château — Les Ardennes", variant: "dark" },
+  { id: "glace-supra-jaune", file: "glace-supra-jaune.jpg", label: "Supra sur glace", variant: "red" },
+  { id: "ardennes-groupe", file: "ardennes-groupe.jpg", label: "La troupe — Les Ardennes", variant: "dark" },
+  { id: "interior-amg", file: "interior-amg.jpg", label: "À bord — AMG GT", variant: "gold" },
+  { id: "groupe-drapeaux", file: "groupe-drapeaux.jpg", label: "La communauté Take Your Gloves", variant: "dark" },
+  { id: "glace-convoi", file: "glace-convoi.jpg", label: "Convoi sur glace", variant: "dark" },
+  { id: "ardennes-chateau-voitures", file: "ardennes-chateau-voitures.jpg", label: "Les Ardennes", variant: "dark" },
+  { id: "amg-gtr-foret", file: "amg-gtr-foret.jpg", label: "AMG GT-R en forêt", variant: "dark" },
+  { id: "glace-groupe", file: "glace-groupe.jpg", label: "Le groupe — Roulage Glace", variant: "dark" },
+  { id: "forest-porsche", file: "forest-porsche.jpg", label: "Porsche sur route forestière", variant: "dark" },
+  { id: "glace-toyota-noire", file: "glace-toyota-noire.jpg", label: "Toyota sur glace", variant: "dark" },
+  { id: "nurburgring-trackday", file: "nurburgring-trackday.jpg", label: "Trackday au Nürburgring", variant: "red" },
+  { id: "glace-portrait", file: "glace-portrait.jpg", label: "Portrait — Roulage Glace", variant: "gold" },
+];
+
+const contactPage = {
+  _id: "contactPage",
+  _type: "contactPage",
+  heading: "Construisons votre prochaine sortie",
+  description: "Que ce soit pour un rallye touristique, une journée trackday, une sortie entre amis ou une expérience sur-mesure, parlez-nous de votre projet. Nous vous répondons avec une proposition personnalisée sous 48h.",
 };
 
 // ─── Migration ─────────────────────────────────────────────────────────────────
@@ -76,10 +163,14 @@ const siteSettings = {
 async function seed() {
   console.log("🚀 Migration vers Sanity...\n");
 
-  // Paramètres du site
-  console.log("⚙️  Paramètres du site...");
+  // Singletons
+  console.log("⚙️  Paramètres & pages...");
   await client.createOrReplace(siteSettings);
-  console.log("   ✓ siteSettings créé\n");
+  await client.createOrReplace(homePage);
+  await client.createOrReplace(aboutPage);
+  await client.createOrReplace(eventsPage);
+  await client.createOrReplace(contactPage);
+  console.log("   ✓ siteSettings, homePage, aboutPage, eventsPage, contactPage\n");
 
   // Événements
   console.log("📅 Événements...");
@@ -104,9 +195,26 @@ async function seed() {
     console.log(`   ✓ ${t.name}`);
   }
 
+  // Photos galerie
+  console.log("\n📸 Photos galerie...");
+  for (const [i, p] of galleryPhotos.entries()) {
+    const filePath = path.join(__dirname, "..", "public", "images", p.file);
+    const asset = await client.assets.upload("image", readFileSync(filePath), {
+      filename: p.file,
+    });
+    await client.createOrReplace({
+      _id: `galleryPhoto-${p.id}`,
+      _type: "galleryPhoto",
+      image: { _type: "image", asset: { _type: "reference", _ref: asset._id } },
+      label: p.label,
+      variant: p.variant,
+      order: i,
+    });
+    console.log(`   ✓ ${p.label}`);
+  }
+
   console.log("\n✅ Migration terminée !");
-  console.log("👉 Les photos de la galerie doivent être uploadées manuellement dans le Studio (/studio).");
-  console.log("👉 Les affiches des événements aussi — cliquer sur chaque événement dans le Studio → champ Image.");
+  console.log("👉 Les affiches des événements sont à ajouter manuellement dans le Studio (/studio) — cliquer sur chaque événement → champ Image.");
 }
 
 seed().catch((err) => {

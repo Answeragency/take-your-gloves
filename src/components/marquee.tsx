@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 
-const items = [
+const DEFAULT_ITEMS = [
   "Rallye Touristique",
   "Trackday",
   "Sortie Conviviale",
@@ -13,8 +13,9 @@ const items = [
   "Musées Automobiles",
 ];
 
-export default function Marquee() {
-  const repeated = [...items, ...items, ...items, ...items];
+export default function Marquee({ items }: { items?: string[] }) {
+  const list = items && items.length > 0 ? items : DEFAULT_ITEMS;
+  const repeated = [...list, ...list, ...list, ...list, ...list, ...list];
 
   return (
     <div className="overflow-hidden border-y border-line bg-surface/60 py-4 select-none">

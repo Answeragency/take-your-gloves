@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Preloader() {
+export default function Preloader({ logoUrl = "/images/logo.png" }: { logoUrl?: string }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Preloader() {
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src="/images/logo.png"
+              src={logoUrl}
               alt="Take Your Gloves"
               width={200}
               height={75}

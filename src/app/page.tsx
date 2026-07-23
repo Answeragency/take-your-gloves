@@ -8,19 +8,42 @@ import CtaBanner from "@/components/cta-banner";
 import Button from "@/components/button";
 import Reveal from "@/components/reveal";
 import Photo from "@/components/photo";
-import { getUpcomingEvents, getFeaturedTestimonials } from "@/sanity/lib/queries";
+import {
+  getUpcomingEvents,
+  getFeaturedTestimonials,
+  getSiteSettings,
+  getHomePage,
+} from "@/sanity/lib/queries";
 
 export default async function Home() {
-  const [upcoming, testimonials] = await Promise.all([
+  const [upcoming, testimonials, settings, home] = await Promise.all([
     getUpcomingEvents(3),
     getFeaturedTestimonials(4),
+    getSiteSettings(),
+    getHomePage(),
   ]);
+
+  const spiritBullets = home?.spiritBullets ?? [
+    "Encadrement par des pilotes expérimentés",
+    "Itinéraires et circuits sélectionnés avec soin",
+    "Une communauté de plus de 800 passionnés",
+    "Expériences sur-mesure, du débutant au confirmé",
+  ];
+
+  const spiritImages = home?.spiritImageUrls ?? [];
 
   return (
     <>
-      <Hero />
-      <Marquee />
-      <StatsStrip />
+      <Hero
+        eyebrow={home?.heroEyebrow}
+        line1={home?.heroLine1}
+        line2={home?.heroLine2}
+        subtitle={home?.heroSubtitle}
+        imageUrl={home?.heroImageUrl}
+        videoUrl={home?.heroVideoUrl}
+      />
+      <Marquee items={settings?.marqueeItems} />
+      <StatsStrip stats={settings?.stats} />
 
       {/* Upcoming events */}
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
@@ -43,7 +66,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* About / Spirit section */}
+      {/* Spirit section */}
       <section className="border-y border-line bg-surface">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 py-16 lg:grid-cols-2 lg:items-center lg:px-10 lg:py-28">
           <Reveal>
@@ -51,23 +74,19 @@ export default async function Home() {
               L&apos;esprit Take Your Gloves
             </p>
             <h2 className="text-balance mt-5 font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-5xl">
-              Plus qu&apos;un organisateur d&apos;événements,{" "}
-              <span className="gold-text">une communauté de passionnés</span>
+              {home?.spiritHeading ?? (
+                <>
+                  Plus qu&apos;un organisateur d&apos;événements,{" "}
+                  <span className="gold-text">une communauté de passionnés</span>
+                </>
+              )}
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted">
-              Depuis nos premiers rallyes entre amis à Strasbourg, Take Your
-              Gloves est devenu un rendez-vous incontournable pour les
-              passionnés de voitures de sport en Alsace. Sécurité, convivialité
-              et exigence : chaque événement est pensé pour vous faire vivre
-              le plaisir de conduire dans les meilleures conditions.
+              {home?.spiritDescription ??
+                "Depuis nos premiers rallyes entre amis à Strasbourg, Take Your Gloves est devenu un rendez-vous incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions."}
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-              {[
-                "Encadrement par des pilotes expérimentés",
-                "Itinéraires et circuits sélectionnés avec soin",
-                "Une communauté de plus de 800 passionnés",
-                "Expériences sur-mesure, du débutant au confirmé",
-              ].map((item) => (
+              {spiritBullets.map((item) => (
                 <li
                   key={item}
                   className="flex items-start gap-3 text-sm text-foreground/80"
@@ -84,11 +103,10 @@ export default async function Home() {
             </div>
           </Reveal>
 
-          {/* Editorial photo grid */}
           <Reveal delay={0.12} className="grid grid-cols-2 gap-3 sm:grid-cols-12 sm:grid-rows-2 sm:h-[420px]">
             <div className="col-span-2 h-48 overflow-hidden rounded-2xl sm:col-span-8 sm:row-span-2 sm:h-full">
               <Photo
-                src="/images/groupe-drapeaux.jpg"
+                src={spiritImages[0] ?? "/images/groupe-drapeaux.jpg"}
                 alt="La communauté Take Your Gloves"
                 label="Take Your Gloves"
                 variant="dark"
@@ -97,7 +115,7 @@ export default async function Home() {
             </div>
             <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
               <Photo
-                src="/images/forest-porsche.jpg"
+                src={spiritImages[1] ?? "/images/forest-porsche.jpg"}
                 alt="Porsche sur une route forestière"
                 label="Sur la route"
                 variant="dark"
@@ -106,7 +124,7 @@ export default async function Home() {
             </div>
             <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
               <Photo
-                src="/images/interior-amg.jpg"
+                src={spiritImages[2] ?? "/images/interior-amg.jpg"}
                 alt="Intérieur d'une Mercedes-AMG GT"
                 label="À bord"
                 variant="gold"
@@ -131,7 +149,12 @@ export default async function Home() {
         </div>
       </section>
 
-      <CtaBanner />
+      <CtaBanner
+        eyebrow={home?.ctaEyebrow}
+        heading={home?.ctaHeading}
+        description={home?.ctaDescription}
+        imageUrl={settings?.ctaBannerImageUrl}
+      />
     </>
   );
 }

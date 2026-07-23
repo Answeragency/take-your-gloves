@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getSiteSettings } from "@/sanity/lib/queries";
 
 const columns = [
   {
@@ -22,7 +23,17 @@ const columns = [
   },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  const settings = await getSiteSettings();
+
+  const email = settings?.email ?? "contact@takeyourgloves.fr";
+  const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
+  const location = settings?.location ?? "Strasbourg, France";
+  const facebookUrl = settings?.facebookUrl ?? "https://www.facebook.com/TakeYourGlovesEvent/";
+  const instagramUrl = settings?.instagramUrl ?? "#";
+  const tagline = settings?.footerTagline ?? "Conduisez avec passion, roulez en sécurité.";
+  const description = settings?.footerDescription ?? "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Basé à Strasbourg.";
+
   return (
     <footer className="relative border-t border-line bg-surface">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
@@ -31,7 +42,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block">
               <Image
-                src="/images/logo.png"
+                src={settings?.logoUrl ?? "/images/logo.png"}
                 alt="Take Your Gloves"
                 width={140}
                 height={52}
@@ -39,13 +50,11 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              Votre meilleur partenaire pour vivre des émotions automobiles
-              uniques et (re)découvrir tout le potentiel de plaisir au volant
-              de votre voiture de sport. Basé à Strasbourg.
+              {description}
             </p>
             <div className="mt-6 flex gap-5">
               <a
-                href="https://www.facebook.com/TakeYourGlovesEvent/"
+                href={facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -56,7 +65,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-foreground/50 transition-all hover:border-accent/50 hover:text-accent"
               >
@@ -92,21 +103,15 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="mt-5 flex flex-col gap-3 text-sm text-muted">
-              <li>Strasbourg, France</li>
+              <li>{location}</li>
               <li>
-                <a
-                  href="mailto:contact@takeyourgloves.fr"
-                  className="transition-colors hover:text-foreground"
-                >
-                  contact@takeyourgloves.fr
+                <a href={`mailto:${email}`} className="transition-colors hover:text-foreground">
+                  {email}
                 </a>
               </li>
               <li>
-                <a
-                  href="tel:+33600000000"
-                  className="transition-colors hover:text-foreground"
-                >
-                  +33 (0)6 00 00 00 00
+                <a href={`tel:${phone.replace(/\s/g, "")}`} className="transition-colors hover:text-foreground">
+                  {phone}
                 </a>
               </li>
             </ul>
@@ -115,7 +120,7 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Take Your Gloves. Tous droits réservés.</p>
-          <p className="text-foreground/30">Conduisez avec passion, roulez en sécurité.</p>
+          <p className="text-foreground/30">{tagline}</p>
         </div>
       </div>
     </footer>
