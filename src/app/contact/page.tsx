@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg, réponse sous 48h.",
     url: "https://take-your-gloves.vercel.app/contact",
   },
+  twitter: {
+    card: "summary",
+    title: "Contact & Réservation | Take Your Gloves",
+    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg, réponse sous 48h.",
+  },
 };
 
 export default async function ContactPage() {

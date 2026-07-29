@@ -25,6 +25,7 @@ export async function generateMetadata({
   const event = await getEventBySlug(slug);
   if (!event) return {};
   const url = `https://take-your-gloves.vercel.app/evenements/${slug}`;
+  const shareImage = event.image ?? "/images/ardennes-chateau-parade.jpg";
   return {
     title: `${event.title} — ${event.category} en ${event.location}`,
     description: event.description,
@@ -37,6 +38,12 @@ export async function generateMetadata({
       images: event.image
         ? [{ url: event.image, width: 800, height: 1100, alt: event.title }]
         : [{ url: "/images/ardennes-chateau-parade.jpg", width: 1200, height: 630, alt: event.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${event.title} | Take Your Gloves`,
+      description: event.description,
+      images: [shareImage],
     },
   };
 }

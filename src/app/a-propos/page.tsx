@@ -17,6 +17,12 @@ export const metadata: Metadata = {
     url: "https://take-your-gloves.vercel.app/a-propos",
     images: [{ url: "/images/ardennes-groupe.jpg", width: 1200, height: 630, alt: "L'équipe Take Your Gloves" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "À propos de Take Your Gloves — Histoire & Valeurs",
+    description: "Découvrez l'histoire de Take Your Gloves, né à Strasbourg d'une passion pour la conduite sportive. Plus de 800 passionnés nous font confiance.",
+    images: ["/images/ardennes-groupe.jpg"],
+  },
 };
 
 export default async function AProposPage() {
@@ -62,6 +68,7 @@ export default async function AProposPage() {
         </div>
         <div className="relative mx-auto max-w-3xl px-6 lg:px-10">
           <SectionHeading
+            as="h1"
             eyebrow="Notre histoire"
             title={about?.heroHeading ?? "Né d'une passion partagée à Strasbourg"}
             description={about?.heroDescription ?? "Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel — ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient."}

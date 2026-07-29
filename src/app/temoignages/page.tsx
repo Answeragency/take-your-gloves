@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     description: "Ce que nos pilotes disent de leurs rallyes, trackdays et sorties en voiture de sport avec Take Your Gloves en Alsace.",
     url: "https://take-your-gloves.vercel.app/temoignages",
   },
+  twitter: {
+    card: "summary",
+    title: "Avis & Témoignages | Take Your Gloves",
+    description: "Ce que nos pilotes disent de leurs rallyes, trackdays et sorties en voiture de sport avec Take Your Gloves en Alsace.",
+  },
 };
 
 export default async function TemoignagesPage() {
@@ -30,6 +35,7 @@ export default async function TemoignagesPage() {
       <section className="pt-40 pb-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading
+            as="h1"
             eyebrow="Témoignages"
             title="La parole à ceux qui ont enfilé leurs gants"
             description="Plus de 800 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent."

@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     url: "https://take-your-gloves.vercel.app/evenements",
     images: [{ url: "/images/nurburgring-trackday.jpg", width: 1200, height: 630, alt: "Calendrier événements automobiles Take Your Gloves 2026" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Calendrier 2026 — Rallyes & Trackdays | Take Your Gloves",
+    description: "Tous les événements automobiles Take Your Gloves pour 2026 : rallyes, trackdays, roulage sur glace, road trips. Rejoignez la communauté.",
+    images: ["/images/nurburgring-trackday.jpg"],
+  },
 };
 
 export default async function EvenementsPage() {

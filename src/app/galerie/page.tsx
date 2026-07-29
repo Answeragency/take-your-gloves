@@ -17,6 +17,12 @@ export const metadata: Metadata = {
     url: "https://take-your-gloves.vercel.app/galerie",
     images: [{ url: "/images/ardennes-chateau-parade.jpg", width: 1200, height: 630, alt: "Galerie photos Take Your Gloves" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Galerie Photos | Take Your Gloves",
+    description: "Revivez nos meilleurs moments : rallyes, trackdays, road trips en voiture de sport en Alsace et toute l'Europe.",
+    images: ["/images/ardennes-chateau-parade.jpg"],
+  },
 };
 
 type GalleryItem = {
@@ -62,6 +68,7 @@ export default async function GaleriePage() {
       <section className="pt-28 pb-10 lg:pt-40 lg:pb-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading
+            as="h1"
             eyebrow="En images"
             title="Revivez chaque accélération"
             description="Un aperçu de nos rallyes, trackdays et rencontres entre passionnés. Galerie en cours d'enrichissement avec nos derniers événements."

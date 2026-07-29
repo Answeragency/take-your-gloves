@@ -82,37 +82,6 @@ export const metadata: Metadata = {
   },
 };
 
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SportsOrganization",
-  name: "Take Your Gloves",
-  description:
-    "Organisateur de rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et Grand Est.",
-  url: BASE_URL,
-  logo: `${BASE_URL}/images/logo.png`,
-  image: `${BASE_URL}/images/ardennes-chateau-parade.jpg`,
-  telephone: "+33600000000",
-  email: "contact@takeyourgloves.fr",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Strasbourg",
-    addressRegion: "Alsace",
-    addressCountry: "FR",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 48.5734,
-    longitude: 7.7521,
-  },
-  areaServed: {
-    "@type": "GeoRegion",
-    name: "Alsace, Grand Est, France",
-  },
-  sameAs: [
-    "https://www.facebook.com/TakeYourGlovesEvent/",
-  ],
-};
-
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -120,6 +89,40 @@ export default async function RootLayout({
 }>) {
   const settings = await getSiteSettings();
   const logoUrl = settings?.logoUrl ?? "/images/logo.png";
+  const email = settings?.email ?? "contact@takeyourgloves.fr";
+  const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
+
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    name: "Take Your Gloves",
+    description:
+      "Organisateur de rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et Grand Est.",
+    url: BASE_URL,
+    logo: logoUrl.startsWith("http") ? logoUrl : `${BASE_URL}${logoUrl}`,
+    image: `${BASE_URL}/images/ardennes-chateau-parade.jpg`,
+    telephone: phone.replace(/[()\s]/g, ""),
+    email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Strasbourg",
+      addressRegion: "Alsace",
+      addressCountry: "FR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 48.5734,
+      longitude: 7.7521,
+    },
+    areaServed: {
+      "@type": "GeoRegion",
+      name: "Alsace, Grand Est, France",
+    },
+    sameAs: [
+      settings?.facebookUrl ?? "https://www.facebook.com/TakeYourGlovesEvent/",
+      ...(settings?.instagramUrl ? [settings.instagramUrl] : []),
+    ],
+  };
 
   return (
     <html lang="fr" className={`${geist.variable} h-full antialiased`}>
