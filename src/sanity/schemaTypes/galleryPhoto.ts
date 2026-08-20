@@ -16,7 +16,7 @@ export const galleryPhotoSchema = defineType({
       name: "label",
       title: "Légende",
       type: "string",
-      description: 'Ex : "Convoi devant le château — Les Ardennes"',
+      description: 'Ex : "Convoi devant le château, Les Ardennes"',
       validation: (R) => R.required(),
     }),
     defineField({

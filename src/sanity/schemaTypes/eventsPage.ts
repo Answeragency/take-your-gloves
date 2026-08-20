@@ -7,7 +7,7 @@ export const eventsPageSchema = defineType({
   fields: [
     defineField({
       name: "heroImage",
-      title: "Hero — Photo de fond",
+      title: "Hero, photo de fond",
       type: "image",
       options: { hotspot: true },
     }),

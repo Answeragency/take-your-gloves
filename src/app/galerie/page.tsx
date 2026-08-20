@@ -78,6 +78,7 @@ export default async function GaleriePage() {
             as="h1"
             eyebrow="En images"
             title="Revivez chaque accélération"
+            highlight="accélération"
             description="Un aperçu de nos rallyes, trackdays et rencontres entre passionnés. Galerie en cours d'enrichissement avec nos derniers événements."
           />
         </div>

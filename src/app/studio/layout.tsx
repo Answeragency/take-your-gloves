@@ -1,4 +1,4 @@
-// Layout nu pour le studio — exclut la nav et le footer du site
+// Layout nu pour le studio, exclut la nav et le footer du site
 export default function StudioLayout({
   children,
 }: {

@@ -13,14 +13,14 @@ export const homePageSchema = defineType({
     // ── Hero ───────────────────────────────────────────────────────────────
     defineField({
       name: "heroImage",
-      title: "Hero — Photo de fond",
+      title: "Hero, photo de fond",
       group: "hero",
       type: "image",
       options: { hotspot: true },
     }),
     defineField({
       name: "heroVideo",
-      title: "Hero — Vidéo de fond",
+      title: "Hero, vidéo de fond",
       group: "hero",
       type: "file",
       options: { accept: "video/*" },
@@ -28,14 +28,14 @@ export const homePageSchema = defineType({
     }),
     defineField({
       name: "heroEyebrow",
-      title: "Hero — Accroche (petite ligne)",
+      title: "Hero, accroche (petite ligne)",
       group: "hero",
       type: "string",
       initialValue: "Strasbourg · Alsace · Émotions automobiles",
     }),
     defineField({
       name: "heroLine1",
-      title: "Hero — Titre ligne 1",
+      title: "Hero, titre ligne 1",
       group: "hero",
       type: "string",
       description: "Texte blanc (ex : « Enfilez vos gants. »)",
@@ -43,7 +43,7 @@ export const homePageSchema = defineType({
     }),
     defineField({
       name: "heroLine2",
-      title: "Hero — Titre ligne 2",
+      title: "Hero, titre ligne 2",
       group: "hero",
       type: "string",
       description: "Texte doré (ex : « Vivez la route. »)",
@@ -51,7 +51,7 @@ export const homePageSchema = defineType({
     }),
     defineField({
       name: "heroSubtitle",
-      title: "Hero — Sous-titre",
+      title: "Hero, sous-titre",
       group: "hero",
       type: "text",
       rows: 3,
@@ -61,14 +61,14 @@ export const homePageSchema = defineType({
     // ── Spirit ─────────────────────────────────────────────────────────────
     defineField({
       name: "spiritHeading",
-      title: "Spirit — Titre",
+      title: "Spirit, titre",
       group: "spirit",
       type: "string",
       initialValue: "Plus qu'un organisateur d'événements, une communauté de passionnés",
     }),
     defineField({
       name: "spiritDescription",
-      title: "Spirit — Texte",
+      title: "Spirit, texte",
       group: "spirit",
       type: "text",
       rows: 4,
@@ -76,7 +76,7 @@ export const homePageSchema = defineType({
     }),
     defineField({
       name: "spiritImages",
-      title: "Spirit — Photos (3 max, la 1ère est la grande)",
+      title: "Spirit, photos (3 max, la 1ère est la grande)",
       group: "spirit",
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
@@ -84,7 +84,7 @@ export const homePageSchema = defineType({
     }),
     defineField({
       name: "spiritBullets",
-      title: "Spirit — Points clés",
+      title: "Spirit, points clés",
       group: "spirit",
       type: "array",
       of: [{ type: "string" }],
@@ -99,21 +99,21 @@ export const homePageSchema = defineType({
     // ── CTA Banner ─────────────────────────────────────────────────────────
     defineField({
       name: "ctaEyebrow",
-      title: "CTA — Accroche",
+      title: "CTA, accroche",
       group: "cta",
       type: "string",
       initialValue: "Prêt à enfiler vos gants ?",
     }),
     defineField({
       name: "ctaHeading",
-      title: "CTA — Titre",
+      title: "CTA, titre",
       group: "cta",
       type: "string",
       initialValue: "Parlons de votre prochaine expérience automobile",
     }),
     defineField({
       name: "ctaDescription",
-      title: "CTA — Description",
+      title: "CTA, description",
       group: "cta",
       type: "text",
       rows: 3,

@@ -27,7 +27,7 @@ export default function Button({
 }: Props) {
   return (
     <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
-      {/* shimmer sweep — visible on primary */}
+      {/* shimmer sweep, visible on primary */}
       {variant === "primary" && (
         <span
           aria-hidden

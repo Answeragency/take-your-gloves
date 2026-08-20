@@ -13,21 +13,21 @@ export const aboutPageSchema = defineType({
     // ── Hero ───────────────────────────────────────────────────────────────
     defineField({
       name: "heroImage",
-      title: "Hero — Photo de fond",
+      title: "Hero, photo de fond",
       group: "hero",
       type: "image",
       options: { hotspot: true },
     }),
     defineField({
       name: "heroHeading",
-      title: "Hero — Titre",
+      title: "Hero, titre",
       group: "hero",
       type: "string",
       initialValue: "Né d'une passion partagée à Strasbourg",
     }),
     defineField({
       name: "heroDescription",
-      title: "Hero — Description",
+      title: "Hero, description",
       group: "hero",
       type: "text",
       rows: 3,
@@ -37,21 +37,21 @@ export const aboutPageSchema = defineType({
     // ── Mission ────────────────────────────────────────────────────────────
     defineField({
       name: "missionImage",
-      title: "Mission — Photo (grande, en haut du bloc)",
+      title: "Mission, photo (grande, en haut du bloc)",
       group: "mission",
       type: "image",
       options: { hotspot: true },
     }),
     defineField({
       name: "missionHeading",
-      title: "Mission — Titre",
+      title: "Mission, titre",
       group: "mission",
       type: "string",
       initialValue: "Faire (re)découvrir le plaisir de conduire",
     }),
     defineField({
       name: "missionParagraphs",
-      title: "Mission — Paragraphes",
+      title: "Mission, paragraphes",
       group: "mission",
       type: "array",
       of: [{ type: "text" }],
@@ -65,14 +65,14 @@ export const aboutPageSchema = defineType({
     // ── Values ─────────────────────────────────────────────────────────────
     defineField({
       name: "valuesImage1",
-      title: "Mission — Petite photo 1 (à côté de missionImage)",
+      title: "Mission, petite photo 1 (à côté de missionImage)",
       group: "mission",
       type: "image",
       options: { hotspot: true },
     }),
     defineField({
       name: "valuesImage2",
-      title: "Mission — Petite photo 2 (à côté de missionImage)",
+      title: "Mission, petite photo 2 (à côté de missionImage)",
       group: "mission",
       type: "image",
       options: { hotspot: true },

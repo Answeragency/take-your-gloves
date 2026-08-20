@@ -21,7 +21,7 @@ export const siteSettingsSchema = defineType({
     }),
     defineField({
       name: "ctaBannerImage",
-      title: "Photo de fond — Bannière « Nous contacter »",
+      title: "Photo de fond, bannière « Nous contacter »",
       group: "media",
       type: "image",
       options: { hotspot: true },
