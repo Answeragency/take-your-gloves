@@ -104,10 +104,10 @@ export default function Nav({
               <AnimatePresence>
                 {dropdownOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: 2 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                    exit={{ opacity: 0, y: 2 }}
+                    transition={{ duration: 0.12, ease: [0.22, 1, 0.36, 1] }}
                     onMouseEnter={() => setDropdownOpen(true)}
                     onMouseLeave={() => setDropdownOpen(false)}
                     className="absolute left-1/2 top-full -translate-x-1/2 pt-4"
