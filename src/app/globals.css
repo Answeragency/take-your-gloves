@@ -15,8 +15,8 @@
      `accent` sert au TEXTE et aux bordures (contraste 5.0:1 sur le fond).
      `accent-fill` sert aux aplats (boutons) — bleu nuit profond, texte blanc dessus (12.7:1). */
   --accent: #4a7fd0;
-  --accent-fill: #14243f;
-  --accent-fill-hover: #1c3355;
+  --accent-fill: #2a5488;
+  --accent-fill-hover: #35659c;
   --accent-dim: #0c1626;
   --accent-bright: #7aa8ec;
 
