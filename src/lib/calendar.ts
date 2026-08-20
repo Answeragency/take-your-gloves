@@ -71,7 +71,7 @@ export const calendar: CalendarEvent[] = [
   {
     slug: "rallye-gourmand",
     category: "Sortie conviviale",
-    title: "Rallye Gourmand — 6ème édition",
+    title: "Rallye Gourmand, 6ème édition",
     dateLabel: "Vendredi 1er Mai (férié)",
     location: "Alsace",
     description:
@@ -95,7 +95,7 @@ export const calendar: CalendarEvent[] = [
   {
     slug: "road-trip-banquet",
     category: "Journée conviviale",
-    title: "Road Trip & Banquet — 5ème édition",
+    title: "Road Trip & Banquet, 5ème édition",
     dateLabel: "Samedi 27 Juin",
     location: "Site privatisé, Alsace",
     description:

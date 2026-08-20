@@ -5,7 +5,7 @@ import CtaBanner from "@/components/cta-banner";
 import { getAllTestimonials, getHomePage, getSiteSettings, getTemoignagesPage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
-  title: "Témoignages — Avis de nos Pilotes",
+  title: "Témoignages, avis de nos pilotes",
   description:
     "Plus de 800 passionnés automobiles témoignent de leurs expériences lors des rallyes touristiques, trackdays et sorties Take Your Gloves en Alsace. Lisez leurs avis.",
   alternates: { canonical: "https://take-your-gloves.vercel.app/temoignages" },

@@ -26,7 +26,7 @@ export const extraTestimonials = [
 ];
 
 export const press = [
-  { name: "DNA — Dernières Nouvelles d'Alsace", note: "« Une communauté de passionnés qui redonne vie aux belles mécaniques. »" },
+  { name: "DNA, Dernières Nouvelles d'Alsace", note: "« Une communauté de passionnés qui redonne vie aux belles mécaniques. »" },
   { name: "Radio Alsace Auto", note: "« L'un des rendez-vous les plus attendus par les amateurs de sport-auto en région. »" },
   { name: "Le Mag du Pilote", note: "« Organisation exemplaire, sécurité irréprochable. »" },
 ];

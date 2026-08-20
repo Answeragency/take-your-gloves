@@ -69,7 +69,7 @@ export const entreprisesPageSchema = defineType({
       group: "advantages",
       type: "text",
       rows: 3,
-      initialValue: "Nous ne sommes pas une agence généraliste. Take Your Gloves est né de la passion automobile — chaque événement que nous organisons, nous le vivons nous-mêmes. Cette authenticité se ressent à chaque virage.",
+      initialValue: "Nous ne sommes pas une agence généraliste. Take Your Gloves est né de la passion automobile, chaque événement que nous organisons, nous le vivons nous-mêmes. Cette authenticité se ressent à chaque virage.",
     }),
     defineField({
       name: "advantages",
@@ -145,7 +145,7 @@ export const entreprisesPageSchema = defineType({
       group: "clients",
       type: "text",
       rows: 2,
-      initialValue: "Chaque événement est unique. Partagez-nous vos objectifs, votre budget et vos dates — nous vous proposons une formule sur-mesure sous 48h.",
+      initialValue: "Chaque événement est unique. Partagez-nous vos objectifs, votre budget et vos dates, nous vous proposons une formule sur-mesure sous 48h.",
     }),
   ],
   preview: {

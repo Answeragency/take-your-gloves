@@ -53,7 +53,7 @@ export default function Hero({
         <Photo
           src={bgImageUrl}
           alt="Convoi de voitures de sport devant un château"
-          label="Take Your Gloves — Strasbourg"
+          label="Take Your Gloves, Strasbourg"
           className="h-full w-full"
           variant="red"
           priority

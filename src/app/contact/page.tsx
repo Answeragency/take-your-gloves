@@ -4,7 +4,7 @@ import ContactForm from "@/components/contact-form";
 import { getContactPage, getSiteSettings } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
-  title: "Contact — Devis & Réservation",
+  title: "Contact, devis & réservation",
   description:
     "Réservez votre place pour un rallye touristique, trackday ou sortie automobile en Alsace. Réponse personnalisée sous 48h. Contactez Take Your Gloves à Strasbourg.",
   alternates: { canonical: "https://take-your-gloves.vercel.app/contact" },

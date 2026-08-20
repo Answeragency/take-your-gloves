@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: "/images/ardennes-chateau-parade.jpg",
         width: 1200,
         height: 630,
-        alt: "Take Your Gloves — Événements automobiles en Alsace",
+        alt: "Take Your Gloves, événements automobiles en Alsace",
       },
     ],
   },

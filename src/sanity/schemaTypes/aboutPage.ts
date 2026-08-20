@@ -31,7 +31,7 @@ export const aboutPageSchema = defineType({
       group: "hero",
       type: "text",
       rows: 3,
-      initialValue: "Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel — ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient.",
+      initialValue: "Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel, ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient.",
     }),
 
     // ── Mission ────────────────────────────────────────────────────────────
@@ -57,7 +57,7 @@ export const aboutPageSchema = defineType({
       of: [{ type: "text" }],
       initialValue: [
         "Trop de voitures de sport et de GT dorment dans les garages, réservées aux beaux jours et aux trajets sans relief. Take Your Gloves est né pour leur redonner leur usage premier : le plaisir de conduire.",
-        "Depuis nos premiers rassemblements informels entre amis à Strasbourg, nous avons structuré une véritable offre d'événements — rallyes touristiques, trackdays, sorties conviviales et expériences atypiques — pour répondre à toutes les envies, du conducteur occasionnel au pilote confirmé.",
+        "Depuis nos premiers rassemblements informels entre amis à Strasbourg, nous avons structuré une véritable offre d'événements, rallyes touristiques, trackdays, sorties conviviales et expériences atypiques, pour répondre à toutes les envies, du conducteur occasionnel au pilote confirmé.",
         "Aujourd'hui, c'est une communauté de plus de 800 passionnés qui se retrouve régulièrement autour de nos événements, en Alsace et au-delà.",
       ],
     }),

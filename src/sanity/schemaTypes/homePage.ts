@@ -117,7 +117,7 @@ export const homePageSchema = defineType({
       group: "cta",
       type: "text",
       rows: 3,
-      initialValue: "Racontez-nous votre projet — rallye, trackday, sortie entre amis ou expérience sur-mesure — et recevez une proposition personnalisée sous 48h.",
+      initialValue: "Racontez-nous votre projet, rallye, trackday, sortie entre amis ou expérience sur-mesure, et recevez une proposition personnalisée sous 48h.",
     }),
   ],
   preview: {

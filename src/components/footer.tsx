@@ -7,7 +7,7 @@ const columns = [
     title: "Calendrier 2026",
     links: [
       { href: "/evenements", label: "Tout le calendrier" },
-      { href: "/evenements/les-ardennes", label: "Rallye — Les Ardennes" },
+      { href: "/evenements/les-ardennes", label: "Rallye, Les Ardennes" },
       { href: "/evenements/rallye-gourmand", label: "Rallye Gourmand" },
       { href: "/evenements/500-nocturnes", label: "500 Nocturnes" },
     ],

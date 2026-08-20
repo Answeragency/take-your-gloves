@@ -27,7 +27,7 @@ export async function generateMetadata({
   const url = `https://take-your-gloves.vercel.app/evenements/${slug}`;
   const shareImage = event.image ?? "/images/ardennes-chateau-parade.jpg";
   return {
-    title: `${event.title} — ${event.category} en ${event.location}`,
+    title: `${event.title}, ${event.category} en ${event.location}`,
     description: event.description,
     alternates: { canonical: url },
     openGraph: {
@@ -171,7 +171,7 @@ export default async function EventDetailPage({
                 Nous contacter
               </Button>
               <p className="mt-4 text-center text-xs text-muted">
-                Sans engagement définitif — réponse personnalisée sous 48h.
+                Sans engagement définitif, réponse personnalisée sous 48h.
               </p>
             </div>
           </Reveal>

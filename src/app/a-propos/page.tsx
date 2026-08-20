@@ -7,19 +7,19 @@ import StatsStrip from "@/components/stats-strip";
 import { getAboutPage, getSiteSettings, getHomePage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
-  title: "À propos — Notre histoire & Nos valeurs",
+  title: "À propos, notre histoire & nos valeurs",
   description:
     "Née à Strasbourg d'une passion partagée, Take Your Gloves organise des rallyes touristiques et trackdays en Alsace depuis plusieurs années. Découvrez notre histoire, notre équipe et nos valeurs.",
   alternates: { canonical: "https://take-your-gloves.vercel.app/a-propos" },
   openGraph: {
-    title: "À propos de Take Your Gloves — Histoire & Valeurs",
+    title: "À propos de Take Your Gloves, histoire & valeurs",
     description: "Découvrez l'histoire de Take Your Gloves, né à Strasbourg d'une passion pour la conduite sportive. Plus de 800 passionnés nous font confiance.",
     url: "https://take-your-gloves.vercel.app/a-propos",
     images: [{ url: "/images/ardennes-groupe.jpg", width: 1200, height: 630, alt: "L'équipe Take Your Gloves" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "À propos de Take Your Gloves — Histoire & Valeurs",
+    title: "À propos de Take Your Gloves, histoire & valeurs",
     description: "Découvrez l'histoire de Take Your Gloves, né à Strasbourg d'une passion pour la conduite sportive. Plus de 800 passionnés nous font confiance.",
     images: ["/images/ardennes-groupe.jpg"],
   },
@@ -49,7 +49,7 @@ export default async function AProposPage() {
 
   const missionParagraphs = about?.missionParagraphs ?? [
     "Trop de voitures de sport et de GT dorment dans les garages, réservées aux beaux jours et aux trajets sans relief. Take Your Gloves est né pour leur redonner leur usage premier : le plaisir de conduire.",
-    "Depuis nos premiers rassemblements informels entre amis à Strasbourg, nous avons structuré une véritable offre d'événements — rallyes touristiques, trackdays, sorties conviviales et expériences atypiques — pour répondre à toutes les envies, du conducteur occasionnel au pilote confirmé.",
+    "Depuis nos premiers rassemblements informels entre amis à Strasbourg, nous avons structuré une véritable offre d'événements, rallyes touristiques, trackdays, sorties conviviales et expériences atypiques, pour répondre à toutes les envies, du conducteur occasionnel au pilote confirmé.",
     "Aujourd'hui, c'est une communauté de plus de 800 passionnés qui se retrouve régulièrement autour de nos événements, en Alsace et au-delà.",
   ];
 
@@ -60,7 +60,7 @@ export default async function AProposPage() {
           <Photo
             src={about?.heroImageUrl ?? "/images/ardennes-groupe.jpg"}
             alt="Groupe de passionnés Take Your Gloves devant un château"
-            label="Take Your Gloves — Notre histoire"
+            label="Take Your Gloves, notre histoire"
             variant="gold"
             className="h-full w-full"
           />
@@ -71,7 +71,7 @@ export default async function AProposPage() {
             as="h1"
             eyebrow="Notre histoire"
             title={about?.heroHeading ?? "Né d'une passion partagée à Strasbourg"}
-            description={about?.heroDescription ?? "Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel — ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient."}
+            description={about?.heroDescription ?? "Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel, ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient."}
           />
         </div>
       </section>

@@ -8,7 +8,7 @@ import StatsStrip from "@/components/stats-strip";
 import { getSiteSettings, getHomePage, getEntreprisesPage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
-  title: "Événements Entreprises — Concessions & Marques Automobiles",
+  title: "Événements Entreprises, concessions & marques automobiles",
   description:
     "Take Your Gloves organise vos événements automobiles corporate : journées concession, lancements de produit, séminaires team building et expériences clients VIP en Alsace et toute la France.",
   alternates: { canonical: "https://take-your-gloves.vercel.app/entreprises" },
@@ -78,7 +78,7 @@ export default async function EntreprisesPage() {
           <Photo
             src={page?.heroImageUrl ?? "/images/ardennes-chateau-parade.jpg"}
             alt="Convoi automobile lors d'un événement corporate Take Your Gloves"
-            label="Take Your Gloves — Événements Entreprises"
+            label="Take Your Gloves, événements entreprises"
             variant="dark"
             className="h-full w-full"
             priority
@@ -120,7 +120,7 @@ export default async function EntreprisesPage() {
                 {page?.advantagesHeading ?? "L'excellence opérationnelle, l'émotion en prime"}
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted">
-                {page?.advantagesDescription ?? "Nous ne sommes pas une agence généraliste. Take Your Gloves est né de la passion automobile — chaque événement que nous organisons, nous le vivons nous-mêmes. Cette authenticité se ressent à chaque virage."}
+                {page?.advantagesDescription ?? "Nous ne sommes pas une agence généraliste. Take Your Gloves est né de la passion automobile, chaque événement que nous organisons, nous le vivons nous-mêmes. Cette authenticité se ressent à chaque virage."}
               </p>
 
               <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -160,7 +160,7 @@ export default async function EntreprisesPage() {
               <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
                 <Photo
                   src="/images/interior-amg.jpg"
-                  alt="Intérieur Mercedes-AMG — expérience client VIP"
+                  alt="Intérieur Mercedes-AMG, expérience client VIP"
                   label="VIP"
                   variant="red"
                   className="h-full w-full"
@@ -203,7 +203,7 @@ export default async function EntreprisesPage() {
                 {page?.ctaBoxHeading ?? "Parlons de votre projet"}
               </h3>
               <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
-                {page?.ctaBoxDescription ?? "Chaque événement est unique. Partagez-nous vos objectifs, votre budget et vos dates — nous vous proposons une formule sur-mesure sous 48h."}
+                {page?.ctaBoxDescription ?? "Chaque événement est unique. Partagez-nous vos objectifs, votre budget et vos dates, nous vous proposons une formule sur-mesure sous 48h."}
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
