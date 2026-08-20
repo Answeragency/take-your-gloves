@@ -91,9 +91,9 @@ export default async function EntreprisesPage() {
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
               {page?.heroEyebrow ?? "Pour les professionnels"}
             </p>
-            <h1 className="text-balance mt-5 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              {page?.heroHeading ?? "L'émotion automobile"}{" "}
-              <span className="text-gold">{page?.heroHeadingAccent ?? "au service de votre marque"}</span>
+            <h1 className="mt-5 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              <span className="text-balance block">{page?.heroHeading ?? "L'émotion automobile"}</span>
+              <span className="text-balance text-gold block">{page?.heroHeadingAccent ?? "au service de votre marque"}</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/80">
               {page?.heroDescription ?? "Concessions, constructeurs, agences : Take Your Gloves conçoit des expériences automobiles sur-mesure qui marquent vos clients, fédèrent vos équipes et renforcent votre image."}
