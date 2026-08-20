@@ -130,12 +130,13 @@ export default async function EventDetailPage({
                 <PortableText value={event.body as Parameters<typeof PortableText>[0]["value"]} />
               </div>
             )}
-            <div className="relative mt-8 aspect-[16/10] w-full flex-1 overflow-hidden rounded-2xl border border-line shadow-2xl shadow-black/40">
+            <div className="relative mt-8 aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl border border-line shadow-2xl shadow-black/40">
               <Photo
                 src={event.image}
                 alt={event.title}
                 label={event.title}
                 variant={variant}
+                fit="contain"
                 className="h-full w-full"
                 priority
               />
