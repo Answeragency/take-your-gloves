@@ -1,32 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Surfaces — near-black with a faint cool cast */
-  --background: #09080c;
-  --surface: #121116;
-  --surface-2: #1b1920;
+  /* Surfaces — palette test client : noir #252525 */
+  --background: #252525;
+  --surface: #2d2d2c;
+  --surface-2: #363634;
 
   /* Texte — tous testés ≥ 4.5:1 sur --background et --surface */
-  --foreground: #ede8e0;   /* 15.1:1 */
-  --muted: #9b938a;        /*  6.5:1 — corps de texte secondaire */
-  --subtle: #766f68;       /*  3.4:1 — décoratif uniquement, jamais de texte lisible */
+  --foreground: #ede8e0;   /* 12.6:1 */
+  --muted: #9b938a;        /*  5.1:1 — corps de texte secondaire */
+  --subtle: #766f68;       /*  3.1:1 — décoratif uniquement, jamais de texte lisible */
 
-  /* Bleu de marque — bleu nuit, aligné sur le logo (~208-218°).
-     `accent` sert au TEXTE et aux bordures (contraste 5.0:1 sur le fond).
-     `accent-fill` sert aux aplats (boutons) — bleu nuit profond, texte blanc dessus (12.7:1). */
-  --accent: #4a7fd0;
-  --accent-fill: #2a5488;
-  --accent-fill-hover: #35659c;
-  --accent-dim: #0c1626;
-  --accent-bright: #7aa8ec;
+  /* Bleu de marque — palette test client : #022135 / #063a5d.
+     `accent-fill` = leur bleu foncé tel quel (aplats, boutons).
+     `accent` = même teinte éclaircie à #4a8fbf (4.4:1) : #063a5d en direct sur
+     ce fond ne fait que 1.3:1, illisible en texte — voir note ci-dessous. */
+  --accent: #4a8fbf;
+  --accent-fill: #022135;
+  --accent-fill-hover: #063a5d;
+  --accent-dim: #01141f;
+  --accent-bright: #6fb3de;
 
-  /* Or — plus vif et doré (hue ~45° au lieu d'orangé ~32°), cohérent partout */
-  --gold: #d0aa39;
-  --gold-bright: #e4c663;
+  /* Or — palette test client : logo #ffc926 / texte #ffde59 */
+  --gold: #ffc926;
+  --gold-bright: #ffde59;
 
   /* Bordures — assez visibles pour délimiter réellement */
-  --line: rgba(206, 180, 130, 0.16);
-  --line-strong: rgba(206, 180, 130, 0.28);
+  --line: rgba(255, 222, 89, 0.14);
+  --line-strong: rgba(255, 222, 89, 0.26);
 }
 
 @theme inline {
@@ -54,8 +55,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist), Arial, Helvetica, sans-serif;
   background-image:
-    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(20,36,63,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 25% 18% at 88% 10%, rgba(208,170,57,0.07) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(2,33,53,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 25% 18% at 88% 10%, rgba(255,201,38,0.07) 0%, transparent 50%);
 }
 
 ::selection {
@@ -105,7 +106,7 @@ html {
 }
 
 .shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(20,36,63,0.09) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(2,33,53,0.09) 50%, transparent 100%);
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
