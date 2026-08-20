@@ -7,7 +7,7 @@ type Props = {
 const variants = {
   dark: "from-[#32251c] via-[#1c1410] to-[#32251c]",
   red: "from-[#4a2414] via-[#1c1410] to-[#32251c]",
-  gold: "from-[#3a2c17] via-[#1c1410] to-[#32251c]",
+  gold: "from-[#4a3714] via-[#1c1410] to-[#3a2c14]",
 };
 
 export default function PlaceholderImage({

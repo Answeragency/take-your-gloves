@@ -11,18 +11,18 @@
   --muted: #9b938a;        /*  6.5:1 — corps de texte secondaire */
   --subtle: #766f68;       /*  3.4:1 — décoratif uniquement, jamais de texte lisible */
 
-  /* Bleu de marque — teinte marine alignée sur le logo (~208°), plus foncée.
-     `accent` sert au TEXTE et aux bordures (contraste 5.8:1 sur le fond).
-     `accent-fill` sert aux aplats (boutons) — marine profond, texte blanc dessus (10.2:1). */
-  --accent: #4e8dda;
-  --accent-fill: #1c3554;
-  --accent-fill-hover: #284a78;
-  --accent-dim: #13233c;
-  --accent-bright: #82b0f0;
+  /* Bleu de marque — bleu nuit, aligné sur le logo (~208-218°).
+     `accent` sert au TEXTE et aux bordures (contraste 5.0:1 sur le fond).
+     `accent-fill` sert aux aplats (boutons) — bleu nuit profond, texte blanc dessus (12.7:1). */
+  --accent: #4a7fd0;
+  --accent-fill: #14243f;
+  --accent-fill-hover: #1c3355;
+  --accent-dim: #0c1626;
+  --accent-bright: #7aa8ec;
 
-  /* Or — accent chaud secondaire (5.7:1) */
-  --gold: #cf8938;
-  --gold-bright: #e6a558;
+  /* Or — plus vif et doré (hue ~45° au lieu d'orangé ~32°), cohérent partout */
+  --gold: #d0aa39;
+  --gold-bright: #e4c663;
 
   /* Bordures — assez visibles pour délimiter réellement */
   --line: rgba(206, 180, 130, 0.16);
@@ -54,8 +54,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist), Arial, Helvetica, sans-serif;
   background-image:
-    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(46,82,176,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 25% 18% at 88% 10%, rgba(192,120,48,0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(20,36,63,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 25% 18% at 88% 10%, rgba(208,170,57,0.07) 0%, transparent 50%);
 }
 
 ::selection {
@@ -105,7 +105,7 @@ html {
 }
 
 .shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(46,82,176,0.09) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(20,36,63,0.09) 50%, transparent 100%);
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
