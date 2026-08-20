@@ -285,16 +285,9 @@ export async function getTemoignagesPage(): Promise<{
   eyebrow?: string;
   heading?: string;
   description?: string;
-  pressEyebrow?: string;
-  pressHeading?: string;
-  pressItems?: { name: string; note: string }[];
 } | null> {
   return client.fetch(
-    `*[_type == "temoignagesPage"][0]{
-      eyebrow, heading, description,
-      pressEyebrow, pressHeading,
-      pressItems[]{ name, note }
-    }`,
+    `*[_type == "temoignagesPage"][0]{ eyebrow, heading, description }`,
     {},
     { next: { revalidate: 60 } }
   );

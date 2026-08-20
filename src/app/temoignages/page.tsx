@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import SectionHeading from "@/components/section-heading";
 import TestimonialCard from "@/components/testimonial-card";
-import Reveal from "@/components/reveal";
 import CtaBanner from "@/components/cta-banner";
-import { press } from "@/lib/testimonials-extra";
 import { getAllTestimonials, getHomePage, getSiteSettings, getTemoignagesPage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
@@ -31,8 +29,6 @@ export default async function TemoignagesPage() {
     getTemoignagesPage(),
   ]);
 
-  const pressItems = page?.pressItems ?? press;
-
   return (
     <>
       <section className="pt-40 pb-16">
@@ -51,30 +47,6 @@ export default async function TemoignagesPage() {
           {testimonials.map((t, i) => (
             <TestimonialCard key={t._id} {...t} index={i} />
           ))}
-        </div>
-      </section>
-
-      <section className="border-y border-line bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
-          <SectionHeading
-            eyebrow={page?.pressEyebrow ?? "Presse"}
-            title={page?.pressHeading ?? "Ils parlent de nous"}
-            align="center"
-          />
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {pressItems.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.1}>
-                <div className="rounded-2xl border border-line bg-background p-7 text-center">
-                  <p className="text-sm italic leading-relaxed text-foreground/85">
-                    {p.note}
-                  </p>
-                  <p className="mt-5 font-display text-xs uppercase tracking-[0.15em] text-gold">
-                    {p.name}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
