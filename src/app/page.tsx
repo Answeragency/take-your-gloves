@@ -51,6 +51,7 @@ export default async function Home() {
           <SectionHeading
             eyebrow="Calendrier 2026"
             title="Les prochains rendez-vous"
+            highlight="rendez-vous"
           />
           <Reveal delay={0.1}>
             <Button href="/evenements" variant="ghost">
@@ -140,6 +141,7 @@ export default async function Home() {
         <SectionHeading
           eyebrow="Ils en parlent"
           title="La parole à nos pilotes"
+          highlight="pilotes"
           align="center"
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

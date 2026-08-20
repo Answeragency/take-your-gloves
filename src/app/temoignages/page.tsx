@@ -37,6 +37,7 @@ export default async function TemoignagesPage() {
             as="h1"
             eyebrow={page?.eyebrow ?? "Témoignages"}
             title={page?.heading ?? "La parole à ceux qui ont enfilé leurs gants"}
+            highlight="leurs gants"
             description={page?.description ?? "Plus de 800 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent."}
           />
         </div>

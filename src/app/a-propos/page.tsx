@@ -71,6 +71,7 @@ export default async function AProposPage() {
             as="h1"
             eyebrow="Notre histoire"
             title={about?.heroHeading ?? "Né d'une passion partagée à Strasbourg"}
+            highlight="Strasbourg"
             description={about?.heroDescription ?? "Take Your Gloves est parti d'un constat simple : conduire sa voiture de sport au quotidien ne suffit pas à en révéler tout le potentiel, ni tout le plaisir. Nous avons créé les rendez-vous qui nous manquaient."}
           />
         </div>
@@ -130,6 +131,7 @@ export default async function AProposPage() {
           <SectionHeading
             eyebrow="Nos valeurs"
             title="Ce qui guide chaque événement"
+            highlight="événement"
             align="center"
           />
           <div className="mt-14 grid gap-8 lg:grid-cols-3">
