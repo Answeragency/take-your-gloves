@@ -89,8 +89,7 @@ export default async function EventDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
       <section className="relative overflow-hidden pt-28 pb-8 lg:pt-40 lg:pb-10">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-2 lg:px-10">
-          <div className="hidden lg:block" aria-hidden="true" />
+        <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <Reveal>
             <Link
               href="/evenements"
@@ -98,7 +97,7 @@ export default async function EventDetailPage({
             >
               ← Tout le calendrier 2026
             </Link>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <span className="font-display text-xs uppercase tracking-[0.3em] text-accent">
                 {event.category}
               </span>
