@@ -89,7 +89,8 @@ export default async function EventDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
       <section className="relative overflow-hidden pt-28 pb-8 lg:pt-40 lg:pb-10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-2 lg:px-10">
+          <div className="hidden lg:block" aria-hidden="true" />
           <Reveal>
             <Link
               href="/evenements"
@@ -109,7 +110,7 @@ export default async function EventDetailPage({
                 </span>
               )}
             </div>
-            <h1 className="text-balance mt-4 max-w-4xl font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance mt-4 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               {event.title}
             </h1>
             <p className="mt-4 font-display text-sm uppercase tracking-[0.15em] text-muted">
