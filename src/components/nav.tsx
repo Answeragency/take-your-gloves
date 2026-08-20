@@ -119,7 +119,7 @@ export default function Nav({
                       >
                         Calendrier 2026 →
                       </Link>
-                      <div className="max-h-72 overflow-y-auto py-1">
+                      <div className="max-h-72 overflow-y-auto py-1" data-lenis-prevent>
                         {events.map((e) => (
                           <Link
                             key={e.slug}
