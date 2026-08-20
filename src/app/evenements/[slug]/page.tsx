@@ -88,9 +88,9 @@ export default async function EventDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
-      <section className="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-20">
+      <section className="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-14">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
             <Reveal>
               <Link
                 href="/evenements"
@@ -135,7 +135,7 @@ export default async function EventDetailPage({
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 pb-20 pt-4 lg:px-10 lg:pt-6">
         <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
             <p className="text-base leading-relaxed text-foreground/85">
@@ -168,7 +168,7 @@ export default async function EventDetailPage({
                 </div>
               </dl>
               <Button href="/contact" className="mt-7 w-full justify-center">
-                Me pré-réserver une place
+                Nous contacter
               </Button>
               <p className="mt-4 text-center text-xs text-muted">
                 Sans engagement définitif — réponse personnalisée sous 48h.
