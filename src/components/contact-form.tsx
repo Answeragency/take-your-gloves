@@ -79,7 +79,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-accent px-7 py-4 font-display text-sm uppercase tracking-[0.15em] text-foreground transition-colors hover:bg-accent-dim disabled:opacity-60 sm:w-auto"
+        className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-accent-fill px-7 py-4 font-display text-sm uppercase tracking-[0.15em] text-foreground transition-colors hover:bg-accent-fill-hover disabled:opacity-60 sm:w-auto"
       >
         <AnimatePresence mode="wait">
           {status === "submitting" ? (

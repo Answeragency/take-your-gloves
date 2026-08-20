@@ -4,7 +4,7 @@ import TestimonialCard from "@/components/testimonial-card";
 import Reveal from "@/components/reveal";
 import CtaBanner from "@/components/cta-banner";
 import { press } from "@/lib/testimonials-extra";
-import { getAllTestimonials, getHomePage, getSiteSettings } from "@/sanity/lib/queries";
+import { getAllTestimonials, getHomePage, getSiteSettings, getTemoignagesPage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Témoignages — Avis de nos Pilotes",
@@ -24,11 +24,14 @@ export const metadata: Metadata = {
 };
 
 export default async function TemoignagesPage() {
-  const [testimonials, home, settings] = await Promise.all([
+  const [testimonials, home, settings, page] = await Promise.all([
     getAllTestimonials(),
     getHomePage(),
     getSiteSettings(),
+    getTemoignagesPage(),
   ]);
+
+  const pressItems = page?.pressItems ?? press;
 
   return (
     <>
@@ -36,9 +39,9 @@ export default async function TemoignagesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading
             as="h1"
-            eyebrow="Témoignages"
-            title="La parole à ceux qui ont enfilé leurs gants"
-            description="Plus de 800 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent."
+            eyebrow={page?.eyebrow ?? "Témoignages"}
+            title={page?.heading ?? "La parole à ceux qui ont enfilé leurs gants"}
+            description={page?.description ?? "Plus de 800 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent."}
           />
         </div>
       </section>
@@ -53,9 +56,13 @@ export default async function TemoignagesPage() {
 
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
-          <SectionHeading eyebrow="Presse" title="Ils parlent de nous" align="center" />
+          <SectionHeading
+            eyebrow={page?.pressEyebrow ?? "Presse"}
+            title={page?.pressHeading ?? "Ils parlent de nous"}
+            align="center"
+          />
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {press.map((p, i) => (
+            {pressItems.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.1}>
                 <div className="rounded-2xl border border-line bg-background p-7 text-center">
                   <p className="text-sm italic leading-relaxed text-foreground/85">

@@ -6,6 +6,8 @@ import { homePageSchema } from "./homePage";
 import { aboutPageSchema } from "./aboutPage";
 import { eventsPageSchema } from "./eventsPage";
 import { contactPageSchema } from "./contactPage";
+import { entreprisesPageSchema } from "./entreprisesPage";
+import { temoignagesPageSchema } from "./temoignagesPage";
 
 export const schemaTypes = [
   eventSchema,
@@ -16,4 +18,6 @@ export const schemaTypes = [
   aboutPageSchema,
   eventsPageSchema,
   contactPageSchema,
+  entreprisesPageSchema,
+  temoignagesPageSchema,
 ];

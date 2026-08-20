@@ -22,7 +22,7 @@ function Avatar({ name }: { name: string }) {
 
   return (
     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/20 ring-1 ring-accent/30">
-      <span className="font-display text-xs text-accent">{initials}</span>
+      <span className="font-display text-xs text-accent-bright">{initials}</span>
     </div>
   );
 }

@@ -33,19 +33,25 @@ type GalleryItem = {
 };
 
 const STATIC_PHOTOS: GalleryItem[] = [
+  { id: "alpes-135", src: "/images/2025-09-18_Roadtrip_Alpes_135_@Veezione.jpg", label: "Road Trip Alpes — Septembre 2025", variant: "dark" },
+  { id: "alpes-177", src: "/images/2025-09-18_Roadtrip_Alpes_177_@Veezione.jpg", label: "Road Trip Alpes — Septembre 2025", variant: "gold" },
   { id: "ardennes-chateau-parade", src: "/images/ardennes-chateau-parade.jpg", label: "Convoi devant le château — Les Ardennes", variant: "dark" },
-  { id: "glace-supra-jaune", src: "/images/glace-supra-jaune.jpg", label: "Supra sur glace", variant: "red" },
+  { id: "alpes-484", src: "/images/2025-09-20_Roadtrip_Alpes_484_@Veezione.jpg", label: "Road Trip Alpes — Septembre 2025", variant: "dark" },
+  { id: "glace-supra-jaune", src: "/images/glace-supra-jaune.jpg", label: "Roulage sur glace — Autriche", variant: "red" },
+  { id: "alpes-509", src: "/images/2025-09-20_Roadtrip_Alpes_509_@Veezione.jpg", label: "Road Trip Alpes — Septembre 2025", variant: "dark" },
   { id: "ardennes-groupe", src: "/images/ardennes-groupe.jpg", label: "La troupe — Les Ardennes", variant: "dark" },
+  { id: "alpes-525", src: "/images/2025-09-20_Roadtrip_Alpes_525_@Veezione.jpg", label: "Road Trip Alpes — Septembre 2025", variant: "gold" },
   { id: "interior-amg", src: "/images/interior-amg.jpg", label: "À bord — AMG GT", variant: "gold" },
+  { id: "alpes-640", src: "/images/2025-09-21_Roadtrip_Alpes_640_@Veezione.jpg", label: "Road Trip Alpes — Septembre 2025", variant: "dark" },
   { id: "groupe-drapeaux", src: "/images/groupe-drapeaux.jpg", label: "La communauté Take Your Gloves", variant: "dark" },
-  { id: "glace-convoi", src: "/images/glace-convoi.jpg", label: "Convoi sur glace", variant: "dark" },
+  { id: "glace-convoi", src: "/images/glace-convoi.jpg", label: "Roulage sur glace — Autriche", variant: "dark" },
   { id: "ardennes-chateau-voitures", src: "/images/ardennes-chateau-voitures.jpg", label: "Les Ardennes", variant: "dark" },
   { id: "amg-gtr-foret", src: "/images/amg-gtr-foret.jpg", label: "AMG GT-R en forêt", variant: "dark" },
-  { id: "glace-groupe", src: "/images/glace-groupe.jpg", label: "Le groupe — Roulage Glace", variant: "dark" },
+  { id: "glace-groupe", src: "/images/glace-groupe.jpg", label: "Roulage sur glace — Autriche", variant: "dark" },
   { id: "forest-porsche", src: "/images/forest-porsche.jpg", label: "Porsche sur route forestière", variant: "dark" },
-  { id: "glace-toyota-noire", src: "/images/glace-toyota-noire.jpg", label: "Toyota sur glace", variant: "dark" },
+  { id: "glace-toyota-noire", src: "/images/glace-toyota-noire.jpg", label: "Roulage sur glace — Autriche", variant: "dark" },
   { id: "nurburgring-trackday", src: "/images/nurburgring-trackday.jpg", label: "Trackday au Nürburgring", variant: "red" },
-  { id: "glace-portrait", src: "/images/glace-portrait.jpg", label: "Portrait — Roulage Glace", variant: "gold" },
+  { id: "glace-portrait", src: "/images/glace-portrait.jpg", label: "Roulage sur glace — Autriche", variant: "gold" },
 ];
 
 export default async function GaleriePage() {
@@ -54,14 +60,15 @@ export default async function GaleriePage() {
     getSiteSettings(),
   ]);
 
-  const items: GalleryItem[] = sanityPhotos.length > 0
-    ? sanityPhotos.map((p) => ({
-        id: p._id,
-        src: urlFor(p.image).width(1200).auto("format").url(),
-        label: p.label,
-        variant: p.variant,
-      }))
-    : STATIC_PHOTOS;
+  const sanityItems: GalleryItem[] = sanityPhotos.map((p) => ({
+    id: p._id,
+    src: urlFor(p.image).width(1200).auto("format").url(),
+    label: p.label,
+    variant: p.variant,
+  }));
+
+  // Sanity photos first, then static ones (always show all)
+  const items: GalleryItem[] = [...sanityItems, ...STATIC_PHOTOS];
 
   return (
     <>

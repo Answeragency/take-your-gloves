@@ -249,3 +249,53 @@ export async function getContactPage(): Promise<{
     { next: { revalidate: 60 } }
   );
 }
+
+export async function getEntreprisesPage(): Promise<{
+  heroImageUrl?: string;
+  heroEyebrow?: string;
+  heroHeading?: string;
+  heroHeadingAccent?: string;
+  heroDescription?: string;
+  advantagesEyebrow?: string;
+  advantagesHeading?: string;
+  advantagesDescription?: string;
+  advantages?: { icon: string; title: string; text: string }[];
+  clientsEyebrow?: string;
+  clientsHeading?: string;
+  clients?: string[];
+  ctaBoxEyebrow?: string;
+  ctaBoxHeading?: string;
+  ctaBoxDescription?: string;
+} | null> {
+  return client.fetch(
+    `*[_type == "entreprisesPage"][0]{
+      "heroImageUrl": heroImage.asset->url,
+      heroEyebrow, heroHeading, heroHeadingAccent, heroDescription,
+      advantagesEyebrow, advantagesHeading, advantagesDescription,
+      advantages[]{ icon, title, text },
+      clientsEyebrow, clientsHeading, clients,
+      ctaBoxEyebrow, ctaBoxHeading, ctaBoxDescription
+    }`,
+    {},
+    { next: { revalidate: 60 } }
+  );
+}
+
+export async function getTemoignagesPage(): Promise<{
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  pressEyebrow?: string;
+  pressHeading?: string;
+  pressItems?: { name: string; note: string }[];
+} | null> {
+  return client.fetch(
+    `*[_type == "temoignagesPage"][0]{
+      eyebrow, heading, description,
+      pressEyebrow, pressHeading,
+      pressItems[]{ name, note }
+    }`,
+    {},
+    { next: { revalidate: 60 } }
+  );
+}

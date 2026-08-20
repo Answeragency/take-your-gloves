@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useInView, animate } from "motion/react";
 
 export default function CountUp({ value }: { value: string }) {
-  const match = value.match(/^(\d+(?:\.\d+)?)(.*)$/);
-  const target = match ? parseFloat(match[1]) : 0;
-  const decimals = match && match[1].includes(".") ? match[1].split(".")[1].length : 0;
-  const suffix = match ? match[2] : "";
+  const match = value.match(/^([+]?)(\d+(?:\.\d+)?)(.*)$/);
+  const prefix = match ? match[1] : "";
+  const target = match ? parseFloat(match[2]) : 0;
+  const decimals = match && match[2].includes(".") ? match[2].split(".")[1].length : 0;
+  const suffix = match ? match[3] : "";
 
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -25,8 +26,7 @@ export default function CountUp({ value }: { value: string }) {
 
   return (
     <span ref={ref}>
-      {display}
-      {suffix}
+      {prefix}{display}{suffix}
     </span>
   );
 }

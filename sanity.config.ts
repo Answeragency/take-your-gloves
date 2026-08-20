@@ -34,6 +34,8 @@ export default defineConfig({
                 singleton(S, "homePage", "Accueil"),
                 singleton(S, "eventsPage", "Événements"),
                 singleton(S, "aboutPage", "À propos"),
+                singleton(S, "entreprisesPage", "Entreprises"),
+                singleton(S, "temoignagesPage", "Témoignages"),
                 singleton(S, "contactPage", "Contact"),
               ])
             ),

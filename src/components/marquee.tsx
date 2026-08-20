@@ -26,10 +26,10 @@ export default function Marquee({ items }: { items?: string[] }) {
       >
         {repeated.map((item, i) => (
           <span key={i} className="flex items-center">
-            <span className="px-6 font-display text-[11px] uppercase tracking-[0.32em] text-foreground/40">
+            <span className="px-6 font-display text-[11px] uppercase tracking-[0.32em] text-foreground/70">
               {item}
             </span>
-            <span className="text-accent/50 text-sm">◆</span>
+            <span aria-hidden="true" className="text-accent/75 text-sm">◆</span>
           </span>
         ))}
       </motion.div>

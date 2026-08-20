@@ -7,7 +7,7 @@ import Cursor from "@/components/cursor";
 import LenisProvider from "@/components/lenis-provider";
 import Preloader from "@/components/preloader";
 import ScrollProgress from "@/components/scroll-progress";
-import { getSiteSettings } from "@/sanity/lib/queries";
+import { getSiteSettings, getAllEvents } from "@/sanity/lib/queries";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -87,7 +87,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const settings = await getSiteSettings();
+  const [settings, events] = await Promise.all([getSiteSettings(), getAllEvents()]);
   const logoUrl = settings?.logoUrl ?? "/images/logo.png";
   const email = settings?.email ?? "contact@takeyourgloves.fr";
   const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
@@ -138,7 +138,7 @@ export default async function RootLayout({
           <ScrollProgress />
           <div className="noise-overlay" />
           <Cursor />
-          <Nav logoUrl={logoUrl} />
+          <Nav logoUrl={logoUrl} events={events.map(e => ({ slug: e.slug, title: e.title }))} />
           <main className="flex-1">{children}</main>
           <Footer />
         </LenisProvider>
