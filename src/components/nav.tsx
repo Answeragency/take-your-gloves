@@ -156,7 +156,7 @@ export default function Nav({
 
           <Link
             href="/contact"
-            className="hidden rounded-full border border-foreground/25 px-5 py-2.5 font-display text-xs uppercase tracking-[0.02em] text-foreground transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_rgba(2,33,53,0.34)] lg:inline-block"
+            className="hidden rounded-full border border-foreground/25 px-5 py-2.5 font-display text-xs uppercase tracking-[0.02em] text-foreground transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_rgba(49,82,140,0.34)] lg:inline-block"
           >
             Nous contacter
           </Link>
