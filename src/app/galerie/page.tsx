@@ -55,6 +55,11 @@ const STATIC_PHOTOS: GalleryItem[] = [
   { id: "ecosse-507", src: "/images/2026-05-21_roadtrip-ecosse-507.jpg", label: "Road Trip Écosse, mai 2026", variant: "gold" },
   { id: "ecosse-567", src: "/images/2026-05-22_roadtrip-ecosse-567.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
   { id: "ecosse-781", src: "/images/2026-05-24_roadtrip-ecosse-781.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
+  { id: "banquet-marlenheim-028", src: "/images/banquet-marlenheim-028.jpg", label: "Banquet Marlenheim, juin 2025", variant: "gold" },
+  { id: "banquet-marlenheim-176", src: "/images/banquet-marlenheim-176.jpg", label: "Banquet Marlenheim, juin 2025", variant: "dark" },
+  { id: "banquet-marlenheim-210", src: "/images/banquet-marlenheim-210.jpg", label: "Banquet Marlenheim, juin 2025", variant: "red" },
+  { id: "banquet-marlenheim-227", src: "/images/banquet-marlenheim-227.jpg", label: "Banquet Marlenheim, juin 2025", variant: "dark" },
+  { id: "banquet-marlenheim-452", src: "/images/banquet-marlenheim-452.jpg", label: "Banquet Marlenheim, juin 2025", variant: "gold" },
 ];
 
 export default async function GaleriePage() {
