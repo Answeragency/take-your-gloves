@@ -168,21 +168,24 @@ export default async function EntreprisesPage() {
           align="center"
         />
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          {resolvedOffers.map((o, i) => (
-            <Reveal key={o.title} delay={i * 0.08}>
-              <div className="flex gap-5 rounded-2xl border border-line bg-surface p-7">
-                <span className="font-display text-2xl text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display text-lg tracking-tight text-foreground">
-                    {o.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{o.text}</p>
+          {resolvedOffers.map((o, i) => {
+            const isLastOdd = resolvedOffers.length % 2 === 1 && i === resolvedOffers.length - 1;
+            return (
+              <Reveal key={o.title} delay={i * 0.08} className={isLastOdd ? "lg:col-span-2" : undefined}>
+                <div className={`flex gap-5 rounded-2xl border border-line bg-surface p-7 ${isLastOdd ? "lg:mx-auto lg:max-w-[calc(50%-0.75rem)]" : ""}`}>
+                  <span className="font-display text-2xl text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-lg tracking-tight text-foreground">
+                      {o.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{o.text}</p>
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
