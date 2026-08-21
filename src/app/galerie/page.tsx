@@ -52,6 +52,14 @@ const STATIC_PHOTOS: GalleryItem[] = [
   { id: "glace-toyota-noire", src: "/images/glace-toyota-noire.jpg", label: "Roulage sur glace, Autriche", variant: "dark" },
   { id: "nurburgring-trackday", src: "/images/nurburgring-trackday.jpg", label: "Trackday au Nürburgring", variant: "red" },
   { id: "glace-portrait", src: "/images/glace-portrait.jpg", label: "Roulage sur glace, Autriche", variant: "gold" },
+  { id: "ecosse-107", src: "/images/2026-05-19_roadtrip-ecosse-107.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
+  { id: "ecosse-206", src: "/images/2026-05-19_roadtrip-ecosse-206.jpg", label: "Road Trip Écosse, mai 2026", variant: "gold" },
+  { id: "ecosse-300", src: "/images/2026-05-20_roadtrip-ecosse-300.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
+  { id: "ecosse-350", src: "/images/2026-05-20_roadtrip-ecosse-350.jpg", label: "Road Trip Écosse, mai 2026", variant: "red" },
+  { id: "ecosse-370", src: "/images/2026-05-20_roadtrip-ecosse-370.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
+  { id: "ecosse-507", src: "/images/2026-05-21_roadtrip-ecosse-507.jpg", label: "Road Trip Écosse, mai 2026", variant: "gold" },
+  { id: "ecosse-567", src: "/images/2026-05-22_roadtrip-ecosse-567.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
+  { id: "ecosse-781", src: "/images/2026-05-24_roadtrip-ecosse-781.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
 ];
 
 export default async function GaleriePage() {
