@@ -256,10 +256,15 @@ export async function getEntreprisesPage(): Promise<{
   heroHeading?: string;
   heroHeadingAccent?: string;
   heroDescription?: string;
-  advantagesEyebrow?: string;
-  advantagesHeading?: string;
-  advantagesDescription?: string;
-  advantages?: { icon: string; title: string; text: string }[];
+  partnershipEyebrow?: string;
+  partnershipHeading?: string;
+  partnershipText?: string;
+  offersEyebrow?: string;
+  offersHeading?: string;
+  offers?: { title: string; text: string }[];
+  secondaryEyebrow?: string;
+  secondaryHeading?: string;
+  secondaryText?: string;
   clientsEyebrow?: string;
   clientsHeading?: string;
   clients?: string[];
@@ -271,8 +276,10 @@ export async function getEntreprisesPage(): Promise<{
     `*[_type == "entreprisesPage"][0]{
       "heroImageUrl": heroImage.asset->url,
       heroEyebrow, heroHeading, heroHeadingAccent, heroDescription,
-      advantagesEyebrow, advantagesHeading, advantagesDescription,
-      advantages[]{ icon, title, text },
+      partnershipEyebrow, partnershipHeading, partnershipText,
+      offersEyebrow, offersHeading,
+      offers[]{ title, text },
+      secondaryEyebrow, secondaryHeading, secondaryText,
       clientsEyebrow, clientsHeading, clients,
       ctaBoxEyebrow, ctaBoxHeading, ctaBoxDescription
     }`,

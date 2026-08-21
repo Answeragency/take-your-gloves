@@ -10,12 +10,12 @@ import { getSiteSettings, getHomePage, getEntreprisesPage } from "@/sanity/lib/q
 export const metadata: Metadata = {
   title: "Événements Entreprises, concessions & marques automobiles",
   description:
-    "Take Your Gloves organise vos événements automobiles corporate : journées concession, lancements de produit, séminaires team building et expériences clients VIP en Alsace et toute la France.",
+    "Take Your Gloves organise, à votre nom ou en partenariat, des expériences automobiles pour vos clients : rallyes, journées circuit, stages glace et accès VIP en courses. Pour concessions, garages, carrossiers et selliers.",
   alternates: { canonical: "https://take-your-gloves.vercel.app/entreprises" },
   openGraph: {
     title: "Événements Entreprises | Take Your Gloves",
     description:
-      "Événements automobiles sur-mesure pour concessions, marques et entreprises. Expériences clients VIP, lancements de modèles, séminaires team building.",
+      "Des expériences automobiles à votre nom pour vos clients : concessions, garages, carrossiers, selliers. Rallyes, circuits, stages glace, coulisses de courses.",
     url: "https://take-your-gloves.vercel.app/entreprises",
     images: [
       {
@@ -28,36 +28,36 @@ export const metadata: Metadata = {
   },
 };
 
-const advantages = [
+const offers = [
   {
-    icon: "🏁",
-    title: "Expertise terrain",
-    text: "Plus de 5 ans d'organisation d'événements automobiles. Nos pilotes et coordinateurs connaissent chaque route, chaque circuit.",
+    title: "Pilotage & sensations circuit",
+    text: "Journées pilotage en GT de sport et baptêmes en véhicules de compétition, pour vivre l'adrénaline en toute sécurité.",
   },
   {
-    icon: "🛡️",
-    title: "Sécurité certifiée",
-    text: "Protocoles sécurité professionnels, briefings obligatoires, encadrement par des pilotes expérimentés. Zéro incident depuis la création.",
+    title: "Road trip & balade routière",
+    text: "Itinéraires sur-mesure à travers les plus belles routes d'Alsace et d'Europe, en convoi ou en autonomie encadrée.",
   },
   {
-    icon: "📍",
-    title: "Logistique complète",
-    text: "Roadbooks, assistance mobile, partenaires hôteliers et restaurateurs sélectionnés. Vous vous concentrez sur vos invités, on gère le reste.",
+    title: "Journée à l'atelier Pegasus",
+    text: "Accueil, visite de l'atelier, animation pit-stop et séance photo. Simulateurs, slot racing et repas traiteur en option.",
   },
   {
-    icon: "✦",
-    title: "Sur-mesure total",
-    text: "Chaque événement est conçu selon vos objectifs, votre budget et votre image de marque. Aucune formule standard, chaque detail compte.",
+    title: "Coulisses des courses",
+    text: "Accès paddock, loges privées, repas et services VIP lors des championnats de France et d'Europe. Visites guidées et rencontres pilotes.",
+  },
+  {
+    title: "Stage glace",
+    text: "Pilotage encadré sur circuit glace, hors saison, pour repousser les limites d'adhérence en toute sécurité.",
   },
 ];
 
 const clients = [
   "Concessions automobiles",
+  "Garages & carrossiers",
+  "Détailing & sellerie",
   "Constructeurs & importateurs",
-  "Agences événementielles",
   "Comités d'entreprise",
-  "Clubs automobiles & associations",
-  "Marques de prestige",
+  "Clubs automobiles",
 ];
 
 export default async function EntreprisesPage() {
@@ -67,7 +67,7 @@ export default async function EntreprisesPage() {
     getEntreprisesPage(),
   ]);
 
-  const resolvedAdvantages = page?.advantages ?? advantages;
+  const resolvedOffers = page?.offers ?? offers;
   const resolvedClients = page?.clients ?? clients;
 
   return (
@@ -89,14 +89,14 @@ export default async function EntreprisesPage() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
-              {page?.heroEyebrow ?? "Pour les professionnels"}
+              {page?.heroEyebrow ?? "Pour les professionnels de l'automobile"}
             </p>
             <h1 className="mt-5 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              <span className="text-balance block">{page?.heroHeading ?? "L'émotion automobile"}</span>
-              <span className="text-balance text-gold block">{page?.heroHeadingAccent ?? "au service de votre marque"}</span>
+              <span className="text-balance block">{page?.heroHeading ?? "Des expériences automobiles"}</span>
+              <span className="text-balance text-gold block">{page?.heroHeadingAccent ?? "à votre nom, à votre image"}</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/80">
-              {page?.heroDescription ?? "Concessions, constructeurs, agences : Take Your Gloves conçoit des expériences automobiles sur-mesure qui marquent vos clients, fédèrent vos équipes et renforcent votre image."}
+              {page?.heroDescription ?? "Concessions, garages, carrossiers, selliers : vos clients partagent la même passion que les nôtres. Take Your Gloves conçoit et organise pour vous des rallyes, journées circuit et stages glace, en marque blanche ou en partenariat visible."}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <Button href="/contact">Demander un devis</Button>
@@ -108,33 +108,22 @@ export default async function EntreprisesPage() {
       {/* ── Stats ────────────────────────────────────────────────────────── */}
       <StatsStrip stats={settings?.stats} />
 
-      {/* ── Pourquoi TYG ─────────────────────────────────────────────────── */}
+      {/* ── Partenariat (angle principal) ───────────────────────────────── */}
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <Reveal>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
-                {page?.advantagesEyebrow ?? "Pourquoi nous choisir"}
+                {page?.partnershipEyebrow ?? "Notre priorité"}
               </p>
               <h2 className="text-balance mt-5 font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-5xl">
-                {page?.advantagesHeading ?? "L'excellence opérationnelle, l'émotion en prime"}
+                {page?.partnershipHeading ?? "Vos clients sont déjà les nôtres"}
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted">
-                {page?.advantagesDescription ?? "Nous ne sommes pas une agence généraliste. Take Your Gloves est né de la passion automobile, chaque événement que nous organisons, nous le vivons nous-mêmes. Cette authenticité se ressent à chaque virage."}
+                {page?.partnershipText ?? "Vous vendez, entretenez ou personnalisez des voitures de sport. Vos clients cherchent l'occasion de les vivre pleinement. Nous organisons cette expérience à votre place, sous votre nom ou en partenariat affiché : vous renforcez la relation client, nous nous occupons de la logistique, de la sécurité et de l'animation."}
               </p>
-
-              <div className="mt-10 grid gap-6 sm:grid-cols-2">
-                {resolvedAdvantages.map((a) => (
-                  <div key={a.title} className="flex gap-4">
-                    <span className="text-xl" role="img" aria-label={a.title}>{a.icon}</span>
-                    <div>
-                      <h4 className="font-display text-sm tracking-tight text-foreground">
-                        {a.title}
-                      </h4>
-                      <p className="mt-1.5 text-sm leading-relaxed text-muted">{a.text}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="mt-9">
+                <Button href="/contact">En discuter avec nous</Button>
               </div>
             </Reveal>
 
@@ -143,7 +132,7 @@ export default async function EntreprisesPage() {
                 <Photo
                   src="/images/ardennes-chateau-parade.jpg"
                   alt="Convoi VIP lors d'un événement corporate"
-                  label="Expérience Corporate"
+                  label="Expérience client de marque"
                   variant="dark"
                   className="h-full w-full"
                 />
@@ -151,8 +140,8 @@ export default async function EntreprisesPage() {
               <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
                 <Photo
                   src="/images/forest-porsche.jpg"
-                  alt="Porsche lors d'un team building automobile"
-                  label="Team Building"
+                  alt="Porsche lors d'un événement client"
+                  label="Sur route"
                   variant="gold"
                   className="h-full w-full"
                 />
@@ -168,6 +157,49 @@ export default async function EntreprisesPage() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* ── 5 formats d'expérience ───────────────────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
+        <SectionHeading
+          eyebrow={page?.offersEyebrow ?? "Ce que nous organisons pour vous"}
+          title={page?.offersHeading ?? "5 formats d'expérience"}
+          align="center"
+        />
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          {resolvedOffers.map((o, i) => (
+            <Reveal key={o.title} delay={i * 0.08}>
+              <div className="flex gap-5 rounded-2xl border border-line bg-surface p-7">
+                <span className="font-display text-2xl text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="font-display text-lg tracking-tight text-foreground">
+                    {o.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{o.text}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Team building (secondaire) ──────────────────────────────────── */}
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto max-w-3xl px-6 py-14 text-center lg:px-10">
+          <Reveal>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
+              {page?.secondaryEyebrow ?? "Aussi pour vos équipes"}
+            </p>
+            <h3 className="text-balance mt-4 font-display text-2xl tracking-tight text-foreground sm:text-3xl">
+              {page?.secondaryHeading ?? "Team building, séminaires et relations d'affaires"}
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              {page?.secondaryText ?? "Au-delà de vos clients, ces mêmes formats se prêtent tout autant à la cohésion de vos équipes ou à la fidélisation de vos partenaires d'affaires."}
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -203,7 +235,7 @@ export default async function EntreprisesPage() {
                 {page?.ctaBoxHeading ?? "Parlons de votre projet"}
               </h3>
               <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
-                {page?.ctaBoxDescription ?? "Chaque événement est unique. Partagez-nous vos objectifs, votre budget et vos dates, nous vous proposons une formule sur-mesure sous 48h."}
+                {page?.ctaBoxDescription ?? "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur-mesure sous 48h."}
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">

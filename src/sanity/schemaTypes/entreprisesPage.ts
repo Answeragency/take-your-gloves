@@ -6,7 +6,9 @@ export const entreprisesPageSchema = defineType({
   type: "document",
   groups: [
     { name: "hero", title: "Hero" },
-    { name: "advantages", title: "Avantages" },
+    { name: "partnership", title: "Partenariat" },
+    { name: "offers", title: "5 formats" },
+    { name: "secondary", title: "Team building" },
     { name: "clients", title: "Clients & CTA" },
   ],
   fields: [
@@ -23,21 +25,21 @@ export const entreprisesPageSchema = defineType({
       title: "Hero, sous-titre (petite étiquette)",
       group: "hero",
       type: "string",
-      initialValue: "Pour les professionnels",
+      initialValue: "Pour les professionnels de l'automobile",
     }),
     defineField({
       name: "heroHeading",
       title: "Hero, titre (partie normale)",
       group: "hero",
       type: "string",
-      initialValue: "L'émotion automobile",
+      initialValue: "Des expériences automobiles",
     }),
     defineField({
       name: "heroHeadingAccent",
       title: "Hero, titre (partie dorée)",
       group: "hero",
       type: "string",
-      initialValue: "au service de votre marque",
+      initialValue: "à votre nom, à votre image",
     }),
     defineField({
       name: "heroDescription",
@@ -45,54 +47,109 @@ export const entreprisesPageSchema = defineType({
       group: "hero",
       type: "text",
       rows: 3,
-      initialValue: "Concessions, constructeurs, agences : Take Your Gloves conçoit des expériences automobiles sur-mesure qui marquent vos clients, fédèrent vos équipes et renforcent votre image.",
+      initialValue: "Concessions, garages, carrossiers, selliers : vos clients partagent la même passion que les nôtres. Take Your Gloves conçoit et organise pour vous des rallyes, journées circuit et stages glace, en marque blanche ou en partenariat visible.",
     }),
 
-    // ── Avantages ──────────────────────────────────────────────────────────
+    // ── Partenariat (angle principal) ────────────────────────────────────────
     defineField({
-      name: "advantagesEyebrow",
-      title: "Avantages, sous-titre",
-      group: "advantages",
+      name: "partnershipEyebrow",
+      title: "Partenariat, sous-titre",
+      group: "partnership",
       type: "string",
-      initialValue: "Pourquoi nous choisir",
+      initialValue: "Notre priorité",
     }),
     defineField({
-      name: "advantagesHeading",
-      title: "Avantages, titre",
-      group: "advantages",
+      name: "partnershipHeading",
+      title: "Partenariat, titre",
+      group: "partnership",
       type: "string",
-      initialValue: "L'excellence opérationnelle, l'émotion en prime",
+      initialValue: "Vos clients sont déjà les nôtres",
     }),
     defineField({
-      name: "advantagesDescription",
-      title: "Avantages, description",
-      group: "advantages",
+      name: "partnershipText",
+      title: "Partenariat, texte",
+      group: "partnership",
       type: "text",
-      rows: 3,
-      initialValue: "Nous ne sommes pas une agence généraliste. Take Your Gloves est né de la passion automobile, chaque événement que nous organisons, nous le vivons nous-mêmes. Cette authenticité se ressent à chaque virage.",
+      rows: 4,
+      initialValue: "Vous vendez, entretenez ou personnalisez des voitures de sport. Vos clients cherchent l'occasion de les vivre pleinement. Nous organisons cette expérience à votre place, sous votre nom ou en partenariat affiché : vous renforcez la relation client, nous nous occupons de la logistique, de la sécurité et de l'animation.",
+    }),
+
+    // ── 5 formats d'expérience ────────────────────────────────────────────────
+    defineField({
+      name: "offersEyebrow",
+      title: "Formats, sous-titre",
+      group: "offers",
+      type: "string",
+      initialValue: "Ce que nous organisons pour vous",
     }),
     defineField({
-      name: "advantages",
-      title: "Les 4 avantages",
-      group: "advantages",
+      name: "offersHeading",
+      title: "Formats, titre",
+      group: "offers",
+      type: "string",
+      initialValue: "5 formats d'expérience",
+    }),
+    defineField({
+      name: "offers",
+      title: "Les 5 formats",
+      group: "offers",
       type: "array",
       of: [
         {
           type: "object",
           fields: [
-            defineField({ name: "icon", title: "Emoji / Icône", type: "string" }),
             defineField({ name: "title", title: "Titre", type: "string" }),
-            defineField({ name: "text", title: "Texte", type: "text", rows: 2 }),
+            defineField({ name: "text", title: "Texte", type: "text", rows: 3 }),
           ],
-          preview: { select: { title: "title", subtitle: "icon" } },
+          preview: { select: { title: "title" } },
         },
       ],
       initialValue: [
-        { icon: "🏁", title: "Expertise terrain", text: "Plus de 5 ans d'organisation d'événements automobiles. Nos pilotes et coordinateurs connaissent chaque route, chaque circuit." },
-        { icon: "🛡️", title: "Sécurité certifiée", text: "Protocoles sécurité professionnels, briefings obligatoires, encadrement par des pilotes expérimentés. Zéro incident depuis la création." },
-        { icon: "📍", title: "Logistique complète", text: "Roadbooks, assistance mobile, partenaires hôteliers et restaurateurs sélectionnés. Vous vous concentrez sur vos invités, on gère le reste." },
-        { icon: "✦", title: "Sur-mesure total", text: "Chaque événement est conçu selon vos objectifs, votre budget et votre image de marque. Aucune formule standard, chaque detail compte." },
+        {
+          title: "Pilotage & sensations circuit",
+          text: "Journées pilotage en GT de sport et baptêmes en véhicules de compétition, pour vivre l'adrénaline en toute sécurité.",
+        },
+        {
+          title: "Road trip & balade routière",
+          text: "Itinéraires sur-mesure à travers les plus belles routes d'Alsace et d'Europe, en convoi ou en autonomie encadrée.",
+        },
+        {
+          title: "Journée à l'atelier Pegasus",
+          text: "Accueil, visite de l'atelier, animation pit-stop et séance photo. Simulateurs, slot racing et repas traiteur en option.",
+        },
+        {
+          title: "Coulisses des courses",
+          text: "Accès paddock, loges privées, repas et services VIP lors des championnats de France et d'Europe. Visites guidées et rencontres pilotes.",
+        },
+        {
+          title: "Stage glace",
+          text: "Pilotage encadré sur circuit glace, hors saison, pour repousser les limites d'adhérence en toute sécurité.",
+        },
       ],
+    }),
+
+    // ── Team building (secondaire) ───────────────────────────────────────────
+    defineField({
+      name: "secondaryEyebrow",
+      title: "Secondaire, sous-titre",
+      group: "secondary",
+      type: "string",
+      initialValue: "Aussi pour vos équipes",
+    }),
+    defineField({
+      name: "secondaryHeading",
+      title: "Secondaire, titre",
+      group: "secondary",
+      type: "string",
+      initialValue: "Team building, séminaires et relations d'affaires",
+    }),
+    defineField({
+      name: "secondaryText",
+      title: "Secondaire, texte",
+      group: "secondary",
+      type: "text",
+      rows: 3,
+      initialValue: "Au-delà de vos clients, ces mêmes formats se prêtent tout autant à la cohésion de vos équipes ou à la fidélisation de vos partenaires d'affaires.",
     }),
 
     // ── Clients & CTA ──────────────────────────────────────────────────────
@@ -118,11 +175,11 @@ export const entreprisesPageSchema = defineType({
       of: [{ type: "string" }],
       initialValue: [
         "Concessions automobiles",
+        "Garages & carrossiers",
+        "Détailing & sellerie",
         "Constructeurs & importateurs",
-        "Agences événementielles",
         "Comités d'entreprise",
-        "Clubs automobiles & associations",
-        "Marques de prestige",
+        "Clubs automobiles",
       ],
     }),
     defineField({
@@ -145,7 +202,7 @@ export const entreprisesPageSchema = defineType({
       group: "clients",
       type: "text",
       rows: 2,
-      initialValue: "Chaque événement est unique. Partagez-nous vos objectifs, votre budget et vos dates, nous vous proposons une formule sur-mesure sous 48h.",
+      initialValue: "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur-mesure sous 48h.",
     }),
   ],
   preview: {
