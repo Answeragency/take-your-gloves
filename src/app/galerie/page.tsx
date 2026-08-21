@@ -32,26 +32,20 @@ type GalleryItem = {
   variant: "dark" | "red" | "gold";
 };
 
+// Ne pas y remettre les photos déjà présentes dans Sanity (galleryPhoto) :
+// ardennes-chateau-parade, ardennes-groupe, interior-amg, groupe-drapeaux,
+// glace-convoi, ardennes-chateau-voitures, amg-gtr-foret, glace-groupe,
+// forest-porsche, glace-toyota-noire, nurburgring-trackday, glace-portrait.
+// Elles sont éditables/supprimables depuis le Studio ; les garder ici aussi
+// les ferait apparaître deux fois dans la galerie.
 const STATIC_PHOTOS: GalleryItem[] = [
   { id: "alpes-135", src: "/images/2025-09-18_Roadtrip_Alpes_135_@Veezione.jpg", label: "Road Trip Alpes, septembre 2025", variant: "dark" },
   { id: "alpes-177", src: "/images/2025-09-18_Roadtrip_Alpes_177_@Veezione.jpg", label: "Road Trip Alpes, septembre 2025", variant: "gold" },
-  { id: "ardennes-chateau-parade", src: "/images/ardennes-chateau-parade.jpg", label: "Convoi devant le château, Les Ardennes", variant: "dark" },
   { id: "alpes-484", src: "/images/2025-09-20_Roadtrip_Alpes_484_@Veezione.jpg", label: "Road Trip Alpes, septembre 2025", variant: "dark" },
   { id: "glace-supra-jaune", src: "/images/glace-supra-jaune.jpg", label: "Roulage sur glace, Autriche", variant: "red" },
   { id: "alpes-509", src: "/images/2025-09-20_Roadtrip_Alpes_509_@Veezione.jpg", label: "Road Trip Alpes, septembre 2025", variant: "dark" },
-  { id: "ardennes-groupe", src: "/images/ardennes-groupe.jpg", label: "La troupe, Les Ardennes", variant: "dark" },
   { id: "alpes-525", src: "/images/2025-09-20_Roadtrip_Alpes_525_@Veezione.jpg", label: "Road Trip Alpes, septembre 2025", variant: "gold" },
-  { id: "interior-amg", src: "/images/interior-amg.jpg", label: "À bord, AMG GT", variant: "gold" },
   { id: "alpes-640", src: "/images/2025-09-21_Roadtrip_Alpes_640_@Veezione.jpg", label: "Road Trip Alpes, septembre 2025", variant: "dark" },
-  { id: "groupe-drapeaux", src: "/images/groupe-drapeaux.jpg", label: "La communauté Take Your Gloves", variant: "dark" },
-  { id: "glace-convoi", src: "/images/glace-convoi.jpg", label: "Roulage sur glace, Autriche", variant: "dark" },
-  { id: "ardennes-chateau-voitures", src: "/images/ardennes-chateau-voitures.jpg", label: "Les Ardennes", variant: "dark" },
-  { id: "amg-gtr-foret", src: "/images/amg-gtr-foret.jpg", label: "AMG GT-R en forêt", variant: "dark" },
-  { id: "glace-groupe", src: "/images/glace-groupe.jpg", label: "Roulage sur glace, Autriche", variant: "dark" },
-  { id: "forest-porsche", src: "/images/forest-porsche.jpg", label: "Porsche sur route forestière", variant: "dark" },
-  { id: "glace-toyota-noire", src: "/images/glace-toyota-noire.jpg", label: "Roulage sur glace, Autriche", variant: "dark" },
-  { id: "nurburgring-trackday", src: "/images/nurburgring-trackday.jpg", label: "Trackday au Nürburgring", variant: "red" },
-  { id: "glace-portrait", src: "/images/glace-portrait.jpg", label: "Roulage sur glace, Autriche", variant: "gold" },
   { id: "ecosse-107", src: "/images/2026-05-19_roadtrip-ecosse-107.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
   { id: "ecosse-206", src: "/images/2026-05-19_roadtrip-ecosse-206.jpg", label: "Road Trip Écosse, mai 2026", variant: "gold" },
   { id: "ecosse-300", src: "/images/2026-05-20_roadtrip-ecosse-300.jpg", label: "Road Trip Écosse, mai 2026", variant: "dark" },
