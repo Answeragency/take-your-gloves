@@ -14,6 +14,7 @@ export default function Cursor() {
   const ry = useSpring(cy, { stiffness: 160, damping: 24, mass: 0.9 });
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- détection client uniquement, évite un écart d'hydratation
     setIsFinePointer(window.matchMedia("(pointer: fine)").matches);
   }, []);
 

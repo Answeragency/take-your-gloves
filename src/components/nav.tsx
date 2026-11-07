@@ -42,6 +42,7 @@ export default function Nav({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- referme le menu à chaque changement de page
   useEffect(() => { setOpen(false); setDropdownOpen(false); }, [pathname]);
 
   // Close dropdown on outside click

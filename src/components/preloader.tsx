@@ -9,6 +9,7 @@ export default function Preloader({ logoUrl = "/images/logo.png" }: { logoUrl?: 
 
   useEffect(() => {
     if (sessionStorage.getItem("tyg-v1")) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- sessionStorage n'existe que côté client
       setVisible(false);
       return;
     }

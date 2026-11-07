@@ -32,7 +32,7 @@ export default function Hero({
   videoUrl,
 }: HeroProps) {
   const bgImageUrl = imageUrl ?? "/images/ardennes-chateau-parade.jpg";
-  const bgVideoUrl = videoUrl ?? "/videos/Full Edit-1.mp4";
+  const bgVideoUrl = videoUrl ?? "/videos/hero.mp4";
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -45,7 +45,6 @@ export default function Hero({
 
   const words1 = line1.split(" ");
   const words2 = line2.split(" ");
-  let wordIndex = -1;
 
   return (
     <section ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28">
@@ -102,8 +101,8 @@ export default function Hero({
 
         <h1 className="text-balance mt-6 max-w-4xl font-display text-5xl leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
-            {words1.map((word) => {
-              wordIndex += 1;
+            {words1.map((word, i) => {
+              const wordIndex = i;
               return (
                 <motion.span
                   key={word + wordIndex}
@@ -119,8 +118,8 @@ export default function Hero({
             })}
           </span>
           <span className="block overflow-hidden">
-            {words2.map((word) => {
-              wordIndex += 1;
+            {words2.map((word, i) => {
+              const wordIndex = words1.length + i;
               return (
                 <motion.span
                   key={word + wordIndex}
