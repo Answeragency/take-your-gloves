@@ -103,6 +103,7 @@ export default async function EvenementsPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
+        <h2 className="sr-only">Tous les événements 2026</h2>
         <div className="grid gap-6">
           {events.map((event, i) => (
             <CalendarCard key={event.slug} event={event} index={i} />
