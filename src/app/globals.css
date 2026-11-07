@@ -15,7 +15,7 @@
      (teinte ~218°, #141e32 dominant). `accent-dim` reprend cette valeur
      telle quelle ; les autres sont la même teinte éclaircie par paliers
      pour rester visibles sur le fond quasi noir (bouton 2.5:1, texte 4.8:1). */
-  --accent: #557ec3;
+  --accent: #6086c7;
   --accent-fill: #31528c;
   --accent-fill-hover: #3a62a6;
   --accent-dim: #15243c;

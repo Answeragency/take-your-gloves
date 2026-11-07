@@ -107,6 +107,8 @@ export default async function GaleriePage() {
                     alt={p.label}
                     label={p.label}
                     variant={p.variant}
+                    priority={i < 4}
+                    sizes="(max-width: 640px) 50vw, 33vw"
                     className="h-full w-full transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/80 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

@@ -145,9 +145,9 @@ export default async function EventDetailPage({
 
           <Reveal delay={0.1}>
             <div className="sticky top-28 rounded-2xl border border-line bg-surface p-7">
-              <h3 className="font-display text-sm uppercase tracking-[0.2em] text-foreground">
+              <h2 className="font-display text-sm uppercase tracking-[0.2em] text-foreground">
                 Informations clés
-              </h3>
+              </h2>
               <dl className="mt-6 space-y-5">
                 <div className="flex items-center justify-between border-b border-line pb-3">
                   <dt className="text-xs uppercase tracking-[0.1em] text-muted">Dates</dt>
@@ -175,9 +175,9 @@ export default async function EventDetailPage({
 
       <section className="border-t border-line bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
-          <h3 className="font-display text-xs uppercase tracking-[0.3em] text-accent">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
             À découvrir aussi
-          </h3>
+          </p>
           <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground">
             Les autres dates du calendrier
           </h2>

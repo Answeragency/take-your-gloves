@@ -81,9 +81,9 @@ export default async function Footer() {
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-display text-xs uppercase tracking-[0.2em] text-foreground/70">
+              <h3 className="font-display text-xs uppercase tracking-[0.2em] text-foreground/70">
                 {col.title}
-              </h4>
+              </h3>
               <ul className="mt-5 flex flex-col gap-3">
                 {col.links.map((l) => (
                   <li key={l.href}>
@@ -100,9 +100,9 @@ export default async function Footer() {
           ))}
 
           <div>
-            <h4 className="font-display text-xs uppercase tracking-[0.2em] text-foreground/70">
+            <h3 className="font-display text-xs uppercase tracking-[0.2em] text-foreground/70">
               Contact
-            </h4>
+            </h3>
             <ul className="mt-5 flex flex-col gap-3 text-sm text-muted">
               <li>{location}</li>
               <li>

@@ -42,10 +42,11 @@ export default function ContactForm() {
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Téléphone" name="phone" />
         <div className="flex flex-col gap-2">
-          <label className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">
+          <label htmlFor="eventType" className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">
             Type d&apos;événement
           </label>
           <select
+            id="eventType"
             name="eventType"
             className="rounded-lg border border-line bg-surface px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
             defaultValue=""
@@ -64,10 +65,11 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">
+        <label htmlFor="message" className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">
           Votre projet
         </label>
         <textarea
+          id="message"
           name="message"
           required
           rows={5}
@@ -124,10 +126,11 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">
+      <label htmlFor={name} className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">
         {label}
       </label>
       <input
+        id={name}
         name={name}
         type={type}
         required={required}

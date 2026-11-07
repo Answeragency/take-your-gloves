@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./button";
 import Photo from "./photo";
 
@@ -34,6 +34,16 @@ export default function Hero({
   const bgImageUrl = imageUrl ?? "/images/ardennes-chateau-parade.jpg";
   const bgVideoUrl = videoUrl ?? "/videos/hero.mp4";
   const ref = useRef<HTMLDivElement>(null);
+  const [canPlayVideo, setCanPlayVideo] = useState(false);
+
+  // La vidéo (10 Mo) ne se charge que sur écran large, sans réduction de mouvement,
+  // et après le premier affichage, pour ne pas retarder l'image du hero.
+  useEffect(() => {
+    const ok = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)").matches;
+    if (!ok) return;
+    const id = window.setTimeout(() => setCanPlayVideo(true), 800);
+    return () => window.clearTimeout(id);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -57,9 +67,10 @@ export default function Hero({
           variant="red"
           priority
         />
-        {bgVideoUrl && (
+        {bgVideoUrl && canPlayVideo && (
           <video
             key={bgVideoUrl}
+            preload="auto"
             autoPlay
             muted
             loop

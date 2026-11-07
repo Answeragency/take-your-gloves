@@ -9,6 +9,7 @@ type Props = {
   className?: string;
   priority?: boolean;
   fit?: "cover" | "contain";
+  sizes?: string;
 };
 
 export default function Photo({
@@ -19,6 +20,7 @@ export default function Photo({
   className = "",
   priority = false,
   fit = "cover",
+  sizes = "(max-width: 768px) 100vw, 50vw",
 }: Props) {
   if (!src) {
     return <PlaceholderImage label={label} variant={variant} className={className} />;
@@ -30,7 +32,7 @@ export default function Photo({
         src={src}
         alt={alt}
         fill
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes={sizes}
         priority={priority}
         className={fit === "contain" ? "object-contain" : "object-cover"}
       />
