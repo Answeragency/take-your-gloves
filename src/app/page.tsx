@@ -24,10 +24,10 @@ export default async function Home() {
   ]);
 
   const spiritBullets = home?.spiritBullets ?? [
-    "Encadrement par des pilotes expérimentés",
-    "Itinéraires et circuits sélectionnés avec soin",
-    "Une communauté de plus de 800 passionnés",
-    "Expériences sur-mesure, du débutant au confirmé",
+    "Encadrement par une équipe expérimentée",
+    "Itinéraires et programmes sélectionnés avec soin",
+    "Une communauté de plus de 200 passionnés",
+    "Une organisation complète pour vous permettre de pleinement vivre nos expériences",
   ];
 
   const spiritImages = home?.spiritImageUrls ?? [];
@@ -77,14 +77,14 @@ export default async function Home() {
             <h2 className="text-balance mt-5 font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-5xl">
               {home?.spiritHeading ?? (
                 <>
-                  Plus qu&apos;un organisateur d&apos;événements,{" "}
+                  Plus que des événements,{" "}
                   <span className="gold-text">une communauté de passionnés</span>
                 </>
               )}
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted">
               {home?.spiritDescription ??
-                "Depuis nos premiers rallyes entre amis à Strasbourg, Take Your Gloves est devenu un rendez-vous incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions."}
+                "Depuis nos premiers événements entre amis à Strasbourg, Take Your Gloves est devenu une référence incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions."}
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {spiritBullets.map((item) => (

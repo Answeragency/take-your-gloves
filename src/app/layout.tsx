@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Take Your Gloves",
   },
   description:
-    "Organisateur de rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et Grand Est. Rejoignez une communauté de plus de 800 passionnés automobiles. Strasbourg.",
+    "Organisateur de rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et Grand Est. Rejoignez une communauté de plus de 200 passionnés automobiles. Strasbourg.",
   keywords: [
     "rallye touristique Alsace",
     "trackday Alsace",

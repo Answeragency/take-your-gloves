@@ -22,7 +22,7 @@ export const temoignagesPageSchema = defineType({
       title: "En-tête, description",
       type: "text",
       rows: 3,
-      initialValue: "Plus de 800 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent.",
+      initialValue: "Plus de 200 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent.",
     }),
   ],
   preview: {

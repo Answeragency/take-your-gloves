@@ -58,7 +58,7 @@ export const aboutPageSchema = defineType({
       initialValue: [
         "Trop de voitures de sport et de GT dorment dans les garages, réservées aux beaux jours et aux trajets sans relief. Take Your Gloves est né pour leur redonner leur usage premier : le plaisir de conduire.",
         "Depuis nos premiers rassemblements informels entre amis à Strasbourg, nous avons structuré une véritable offre d'événements, rallyes touristiques, trackdays, sorties conviviales et expériences atypiques, pour répondre à toutes les envies, du conducteur occasionnel au pilote confirmé.",
-        "Aujourd'hui, c'est une communauté de plus de 800 passionnés qui se retrouve régulièrement autour de nos événements, en Alsace et au-delà.",
+        "Aujourd'hui, c'est une communauté de plus de 200 passionnés qui se retrouve régulièrement autour de nos événements, en Alsace et au-delà.",
       ],
     }),
 

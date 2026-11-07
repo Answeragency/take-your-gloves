@@ -27,7 +27,7 @@ export default function Hero({
   eyebrow = "Strasbourg · Alsace · Émotions automobiles",
   line1 = "Enfilez vos gants.",
   line2 = "Vivez la route.",
-  subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Rallyes touristiques, trackdays, sorties conviviales et expériences atypiques.",
+  subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sortie circuit, journée thématiques.",
   imageUrl,
   videoUrl,
 }: HeroProps) {
@@ -141,7 +141,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          className="mt-3 max-w-xl text-balance text-sm leading-relaxed text-muted sm:mt-8 sm:text-lg"
+          className="mt-3 max-w-xl whitespace-pre-line text-balance text-sm leading-relaxed text-muted sm:mt-8 sm:text-lg"
         >
           {subtitle}
         </motion.p>
@@ -152,7 +152,7 @@ export default function Hero({
           transition={{ duration: 0.8, delay: 1.25 }}
           className="mt-4 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-5"
         >
-          <Button href="/evenements">Découvrir les événements</Button>
+          <Button href="/evenements">Découvrir nos événements</Button>
           <Button href="/contact" variant="outline">
             Nous contacter
           </Button>

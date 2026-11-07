@@ -7,7 +7,7 @@ import { getAllTestimonials, getHomePage, getSiteSettings, getTemoignagesPage } 
 export const metadata: Metadata = {
   title: "Témoignages, avis de nos pilotes",
   description:
-    "Plus de 800 passionnés automobiles témoignent de leurs expériences lors des rallyes touristiques, trackdays et sorties Take Your Gloves en Alsace. Lisez leurs avis.",
+    "Plus de 200 passionnés automobiles témoignent de leurs expériences lors des rallyes touristiques, trackdays et sorties Take Your Gloves en Alsace. Lisez leurs avis.",
   alternates: { canonical: "https://take-your-gloves.vercel.app/temoignages" },
   openGraph: {
     title: "Avis & Témoignages | Take Your Gloves",
@@ -38,7 +38,7 @@ export default async function TemoignagesPage() {
             eyebrow={page?.eyebrow ?? "Témoignages"}
             title={page?.heading ?? "La parole à ceux qui ont enfilé leurs gants"}
             highlight="leurs gants"
-            description={page?.description ?? "Plus de 800 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent."}
+            description={page?.description ?? "Plus de 200 passionnés nous ont déjà fait confiance pour vivre une expérience automobile unique. Voici ce qu'ils en disent."}
           />
         </div>
       </section>

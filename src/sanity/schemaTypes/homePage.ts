@@ -55,7 +55,7 @@ export const homePageSchema = defineType({
       group: "hero",
       type: "text",
       rows: 3,
-      initialValue: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Rallyes touristiques, trackdays, sorties conviviales et expériences atypiques.",
+      initialValue: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sortie circuit, journée thématiques.",
     }),
 
     // ── Spirit ─────────────────────────────────────────────────────────────
@@ -64,7 +64,7 @@ export const homePageSchema = defineType({
       title: "Spirit, titre",
       group: "spirit",
       type: "string",
-      initialValue: "Plus qu'un organisateur d'événements, une communauté de passionnés",
+      initialValue: "Plus que des événements, une communauté de passionnés",
     }),
     defineField({
       name: "spiritDescription",
@@ -72,7 +72,7 @@ export const homePageSchema = defineType({
       group: "spirit",
       type: "text",
       rows: 4,
-      initialValue: "Depuis nos premiers rallyes entre amis à Strasbourg, Take Your Gloves est devenu un rendez-vous incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions.",
+      initialValue: "Depuis nos premiers événements entre amis à Strasbourg, Take Your Gloves est devenu une référence incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions.",
     }),
     defineField({
       name: "spiritImages",
@@ -89,10 +89,10 @@ export const homePageSchema = defineType({
       type: "array",
       of: [{ type: "string" }],
       initialValue: [
-        "Encadrement par des pilotes expérimentés",
-        "Itinéraires et circuits sélectionnés avec soin",
-        "Une communauté de plus de 800 passionnés",
-        "Expériences sur-mesure, du débutant au confirmé",
+        "Encadrement par une équipe expérimentée",
+        "Itinéraires et programmes sélectionnés avec soin",
+        "Une communauté de plus de 200 passionnés",
+        "Une organisation complète pour vous permettre de pleinement vivre nos expériences",
       ],
     }),
 
@@ -117,7 +117,7 @@ export const homePageSchema = defineType({
       group: "cta",
       type: "text",
       rows: 3,
-      initialValue: "Racontez-nous votre projet, rallye, trackday, sortie entre amis ou expérience sur-mesure, et recevez une proposition personnalisée sous 48h.",
+      initialValue: "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé sous 48h.",
     }),
   ],
   preview: {
