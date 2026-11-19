@@ -91,7 +91,7 @@ export default async function EntreprisesPage() {
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
               {page?.heroEyebrow ?? "Pour les professionnels de l'automobile"}
             </p>
-            <h1 className="mt-5 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="mt-5 font-display text-[clamp(1.9rem,8vw,3rem)] leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               <span className="text-balance block">{page?.heroHeading ?? "Des expériences automobiles"}</span>
               <span className="text-balance text-gold block">{page?.heroHeadingAccent ?? "à votre nom, à votre image"}</span>
             </h1>
@@ -116,7 +116,7 @@ export default async function EntreprisesPage() {
               <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
                 {page?.partnershipEyebrow ?? "Notre priorité"}
               </p>
-              <h2 className="text-balance mt-5 font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-5xl">
+              <h2 className="text-balance mt-5 font-display text-3xl leading-[1.05] tracking-tight text-foreground sm:text-4xl xl:text-5xl">
                 {page?.partnershipHeading ?? "Vos clients sont déjà les nôtres"}
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted">

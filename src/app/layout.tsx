@@ -66,10 +66,6 @@ export const metadata: Metadata = {
       "Rallyes touristiques, trackdays et sorties conviviales en voiture de sport en Alsace.",
     images: ["/images/ardennes-chateau-parade.jpg"],
   },
-  icons: {
-    icon: "/images/logo.png",
-    apple: "/images/logo.png",
-  },
   robots: {
     index: true,
     follow: true,

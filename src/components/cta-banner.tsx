@@ -33,7 +33,7 @@ export default function CtaBanner({
           <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">
             {eyebrow}
           </p>
-          <h2 className="text-balance mt-5 font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-5xl">
+          <h2 className="text-balance mt-5 font-display text-3xl leading-[1.05] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {heading}
           </h2>
           <p className="mt-5 text-balance text-base leading-relaxed text-muted">

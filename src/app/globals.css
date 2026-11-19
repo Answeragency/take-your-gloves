@@ -76,6 +76,11 @@ html {
   }
 }
 
+/* Évite les mots isolés sur une ligne dans tous les titres */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
 .text-balance {
   text-wrap: balance;
 }

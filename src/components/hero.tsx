@@ -110,7 +110,7 @@ export default function Hero({
           {eyebrow}
         </motion.p>
 
-        <h1 className="text-balance mt-6 max-w-4xl font-display text-5xl leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+        <h1 className="text-balance mt-6 max-w-4xl font-display text-[clamp(1.9rem,8.6vw,3rem)] leading-[0.98] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
             {words1.map((word, i) => {
               const wordIndex = i;

@@ -37,7 +37,7 @@ export default async function ContactPage() {
           <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
             Contact
           </p>
-          <h1 className="text-balance mt-5 font-display text-5xl leading-[1.02] tracking-tight text-foreground sm:text-6xl">
+          <h1 className="text-balance mt-5 font-display text-4xl leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-4xl xl:text-5xl">
             {page?.heading ?? "Construisons votre prochaine sortie"}
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
