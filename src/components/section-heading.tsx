@@ -1,4 +1,5 @@
 import Reveal from "./reveal";
+import WordReveal from "./word-reveal";
 
 export default function SectionHeading({
   eyebrow,
@@ -27,7 +28,19 @@ export default function SectionHeading({
       <Heading
         className={`text-balance mt-4 max-w-4xl font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-5xl lg:text-6xl ${center ? "mx-auto" : ""}`}
       >
-        {parts ? (
+        {Heading === "h2" ? (
+          <WordReveal
+            segments={
+              parts
+                ? [
+                    { text: parts[0] },
+                    { text: highlight as string, className: "text-gold-bright" },
+                    { text: parts[1] },
+                  ]
+                : [{ text: title }]
+            }
+          />
+        ) : parts ? (
           <>
             {parts[0]}
             <span className="text-gold-bright">{highlight}</span>

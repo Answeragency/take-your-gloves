@@ -13,6 +13,7 @@ export default function LenisProvider({
 
   useEffect(() => {
     if (pathname.startsWith("/studio")) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
       duration: 1.2,

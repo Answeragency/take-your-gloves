@@ -2,9 +2,8 @@ import { Metadata } from "next";
 import { PortableText } from "@portabletext/react";
 import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
-import CalendarCard from "@/components/calendar-card";
+import EventsList from "@/components/events-list";
 import CtaBanner from "@/components/cta-banner";
-import { categories } from "@/lib/calendar";
 import { getAllEvents, getEventsPage, getHomePage, getSiteSettings } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
@@ -87,29 +86,7 @@ export default async function EvenementsPage() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-6 lg:px-10">
-          <div className="flex flex-wrap items-center justify-center gap-3 py-4">
-            {categories.map((c) => (
-              <span
-                key={c}
-                className="rounded-full border border-line px-4 py-1.5 font-display text-[10px] uppercase tracking-[0.15em] text-muted"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
-        <h2 className="sr-only">Tous les événements 2026</h2>
-        <div className="grid gap-6">
-          {events.map((event, i) => (
-            <CalendarCard key={event.slug} event={event} index={i} />
-          ))}
-        </div>
-      </section>
+      <EventsList events={events} />
 
       <CtaBanner
         eyebrow={home?.ctaEyebrow}

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import Photo from "@/components/photo";
+import GalleryGrid, { type GalleryItem } from "@/components/gallery-grid";
 import SectionHeading from "@/components/section-heading";
-import Reveal from "@/components/reveal";
 import CtaBanner from "@/components/cta-banner";
 import { getAllGalleryPhotos, getSiteSettings } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
@@ -23,13 +22,6 @@ export const metadata: Metadata = {
     description: "Revivez nos meilleurs moments : rallyes, trackdays, road trips en voiture de sport en Alsace et toute l'Europe.",
     images: ["/images/ardennes-chateau-parade.jpg"],
   },
-};
-
-type GalleryItem = {
-  id: string;
-  src: string;
-  label: string;
-  variant: "dark" | "red" | "gold";
 };
 
 // Ne pas y remettre les photos déjà présentes dans Sanity (galleryPhoto) :
@@ -93,34 +85,7 @@ export default async function GaleriePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-28">
-        <div className="columns-2 gap-4 sm:columns-3">
-          {items.map((p, i) => {
-            const ratio =
-              i % 5 === 0 ? "aspect-[16/9]" :
-              i % 3 === 1 ? "aspect-[3/4]" :
-              "aspect-[4/3]";
-            return (
-              <Reveal key={p.id} delay={(i % 6) * 0.06} className="mb-4 break-inside-avoid">
-                <div className={`group relative overflow-hidden rounded-xl ${ratio}`}>
-                  <Photo
-                    src={p.src}
-                    alt={p.label}
-                    label={p.label}
-                    variant={p.variant}
-                    priority={i < 4}
-                    sizes="(max-width: 640px) 50vw, 33vw"
-                    className="h-full w-full transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/80 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="font-display text-xs uppercase tracking-[0.15em] text-foreground">
-                      {p.label}
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
+        <GalleryGrid items={items} />
       </section>
 
       <CtaBanner imageUrl={settings?.ctaBannerImageUrl} />

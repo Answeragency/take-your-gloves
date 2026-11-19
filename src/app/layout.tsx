@@ -5,6 +5,7 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import Cursor from "@/components/cursor";
 import LenisProvider from "@/components/lenis-provider";
+import MotionProvider from "@/components/motion-provider";
 import Preloader from "@/components/preloader";
 import ScrollProgress from "@/components/scroll-progress";
 import { getSiteSettings, getAllEvents } from "@/sanity/lib/queries";
@@ -129,15 +130,23 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
+        <a
+          href="#contenu"
+          className="sr-only fixed left-4 top-4 z-[100000] rounded-full bg-accent-fill px-5 py-3 font-display text-xs uppercase tracking-[0.1em] text-foreground focus:not-sr-only"
+        >
+          Aller au contenu
+        </a>
+        <MotionProvider>
         <LenisProvider>
           <Preloader logoUrl={logoUrl} />
           <ScrollProgress />
           <div className="noise-overlay" />
           <Cursor />
           <Nav logoUrl={logoUrl} events={events.map(e => ({ slug: e.slug, title: e.title }))} />
-          <main className="flex-1">{children}</main>
+          <main id="contenu" className="flex-1">{children}</main>
           <Footer />
         </LenisProvider>
+        </MotionProvider>
       </body>
     </html>
   );
