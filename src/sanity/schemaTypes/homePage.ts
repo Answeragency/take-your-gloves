@@ -38,8 +38,8 @@ export const homePageSchema = defineType({
       title: "Hero, titre ligne 1",
       group: "hero",
       type: "string",
-      description: "Texte blanc (ex : « Enfilez vos gants. »)",
-      initialValue: "Enfilez vos gants.",
+      description: "Texte blanc (ex : « Prenez le volant, »)",
+      initialValue: "Prenez le volant,",
     }),
     defineField({
       name: "heroLine2",

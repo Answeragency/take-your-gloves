@@ -114,17 +114,17 @@ export default async function Home() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.12} className="grid grid-cols-2 gap-3 sm:grid-cols-12 sm:grid-rows-2 sm:h-[420px]">
-            <div className="col-span-2 h-48 overflow-hidden rounded-2xl sm:col-span-8 sm:row-span-2 sm:h-full">
+          <Reveal delay={0.12} className="grid grid-cols-2 gap-3">
+            <div className="col-span-2 aspect-[3/2] overflow-hidden rounded-2xl">
               <Photo
-                src={spiritImages[0] ?? "/images/groupe-drapeaux.jpg"}
-                alt="La communauté Take Your Gloves"
+                src={spiritImages[0] ?? "/images/ardennes-groupe.jpg"}
+                alt="Photo de groupe de la communauté Take Your Gloves"
                 label="Take Your Gloves"
                 variant="dark"
                 className="h-full w-full"
               />
             </div>
-            <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
+            <div className="aspect-[4/3] overflow-hidden rounded-2xl">
               <Photo
                 src={spiritImages[1] ?? "/images/2025-09-20_Roadtrip_Alpes_509_@Veezione.jpg"}
                 alt="Porsche sur une route forestière"
@@ -133,7 +133,7 @@ export default async function Home() {
                 className="h-full w-full"
               />
             </div>
-            <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
+            <div className="aspect-[4/3] overflow-hidden rounded-2xl">
               <Photo
                 src={spiritImages[2] ?? "/images/interior-amg.jpg"}
                 alt="Intérieur d'une Mercedes-AMG GT"
