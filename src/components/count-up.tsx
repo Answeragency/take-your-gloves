@@ -3,7 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView, animate } from "motion/react";
 
-export default function CountUp({ value }: { value: string }) {
+export default function CountUp({
+  value,
+  delay = 0,
+  duration = 1.6,
+}: {
+  value: string;
+  /** Secondes avant le départ du comptage (ex : attendre la fin d'une entrée). */
+  delay?: number;
+  duration?: number;
+}) {
   const match = value.match(/^([+]?)(\d+(?:\.\d+)?)(.*)$/);
   const prefix = match ? match[1] : "";
   const target = match ? parseFloat(match[2]) : 0;
@@ -17,12 +26,13 @@ export default function CountUp({ value }: { value: string }) {
   useEffect(() => {
     if (!inView) return;
     const controls = animate(0, target, {
-      duration: 1.6,
+      delay,
+      duration,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (v) => setDisplay(v.toFixed(decimals)),
     });
     return () => controls.stop();
-  }, [inView, target, decimals]);
+  }, [inView, target, decimals, delay, duration]);
 
   return (
     <span ref={ref}>

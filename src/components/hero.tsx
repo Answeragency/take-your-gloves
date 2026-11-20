@@ -169,10 +169,8 @@ export default function Hero({
       >
         <div className="mx-auto grid max-w-7xl grid-cols-3 gap-4 px-6 sm:gap-10 lg:px-10">
           {figures.map((s, i) => (
-            <motion.div
+            <div
               key={s.label}
-              animate={{ y: [0, -7, 0] }}
-              transition={{ duration: 5 + i * 0.8, repeat: Infinity, ease: "easeInOut", delay: 3 + i * 0.5 }}
               className="flex flex-col-reverse items-center justify-end gap-2 text-center [text-shadow:0_2px_28px_rgba(0,0,0,0.65)]"
             >
               <motion.dt
@@ -184,9 +182,9 @@ export default function Hero({
                 {s.label}
               </motion.dt>
               <motion.dd
-                initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 1, delay: 1.4 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, y: 28, scale: 0.9, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                transition={{ duration: 1.1, delay: 1.4 + i * 0.18, ease: [0.22, 1, 0.36, 1] }}
                 className="font-display text-4xl leading-none tracking-tight text-foreground sm:text-7xl"
               >
                 <motion.span
@@ -196,9 +194,9 @@ export default function Hero({
                   transition={{ duration: 0.9, delay: 1.6 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
                   className="mx-auto mb-3 block h-px w-10 origin-center bg-gradient-to-r from-transparent via-gold to-transparent sm:mb-5 sm:w-16"
                 />
-                <CountUp value={s.value} />
+                <CountUp value={s.value} delay={1.5 + i * 0.18} duration={2.4} />
               </motion.dd>
-            </motion.div>
+            </div>
           ))}
         </div>
       </motion.dl>
