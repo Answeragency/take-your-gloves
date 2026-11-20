@@ -12,7 +12,7 @@ type CtaBannerProps = {
 export default function CtaBanner({
   eyebrow = "Prêt à enfiler vos gants ?",
   heading = "Parlons de votre prochaine expérience automobile",
-  description = "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé sous 48h.",
+  description = "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé.",
   imageUrl,
 }: CtaBannerProps) {
   const bgImageUrl = imageUrl ?? "/images/amg-gtr-foret.jpg";

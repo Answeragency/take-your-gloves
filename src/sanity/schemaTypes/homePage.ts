@@ -117,7 +117,7 @@ export const homePageSchema = defineType({
       group: "cta",
       type: "text",
       rows: 3,
-      initialValue: "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé sous 48h.",
+      initialValue: "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé.",
     }),
   ],
   preview: {

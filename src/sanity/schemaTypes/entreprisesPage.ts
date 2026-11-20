@@ -202,7 +202,7 @@ export const entreprisesPageSchema = defineType({
       group: "clients",
       type: "text",
       rows: 2,
-      initialValue: "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur-mesure sous 48h.",
+      initialValue: "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur-mesure.",
     }),
   ],
   preview: {

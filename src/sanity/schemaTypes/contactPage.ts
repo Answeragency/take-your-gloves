@@ -16,7 +16,7 @@ export const contactPageSchema = defineType({
       title: "Description",
       type: "text",
       rows: 4,
-      initialValue: "Que ce soit pour un rallye touristique, une journée trackday, une sortie entre amis ou une expérience sur-mesure, parlez-nous de votre projet. Nous vous répondons avec une proposition personnalisée sous 48h.",
+      initialValue: "Que ce soit pour un rallye touristique, une journée trackday, une sortie entre amis ou une expérience sur-mesure, parlez-nous de votre projet. Nous vous répondons avec une proposition personnalisée.",
     }),
   ],
   preview: {

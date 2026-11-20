@@ -240,7 +240,7 @@ export default async function EntreprisesPage() {
                 {page?.ctaBoxHeading ?? "Parlons de votre projet"}
               </h3>
               <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
-                {page?.ctaBoxDescription ?? "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur-mesure sous 48h."}
+                {page?.ctaBoxDescription ?? "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur-mesure."}
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">

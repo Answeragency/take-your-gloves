@@ -43,7 +43,7 @@ export default function ContactForm() {
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Votre demande a bien été enregistrée. Notre équipe vous recontacte
-          sous 48h avec une proposition personnalisée.
+          avec une proposition personnalisée.
         </p>
       </motion.div>
     );

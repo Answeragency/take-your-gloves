@@ -202,7 +202,7 @@ export default async function EventDetailPage({
                 Nous contacter
               </Button>
               <p className="mt-4 text-center text-xs text-muted">
-                Sans engagement définitif, réponse personnalisée sous 48h.
+                Sans engagement définitif, réponse personnalisée.
               </p>
             </div>
           </Reveal>

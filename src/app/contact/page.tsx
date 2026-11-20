@@ -9,17 +9,17 @@ import { getContactPage, getSiteSettings } from "@/sanity/lib/queries";
 export const metadata: Metadata = {
   title: "Contact, devis & réservation",
   description:
-    "Réservez votre place pour un rallye touristique, trackday ou sortie automobile en Alsace. Réponse personnalisée sous 48h. Contactez Take Your Gloves à Strasbourg.",
+    "Réservez votre place pour un rallye touristique, trackday ou sortie automobile en Alsace. Réponse personnalisée. Contactez Take Your Gloves à Strasbourg.",
   alternates: { canonical: "https://take-your-gloves.vercel.app/contact" },
   openGraph: {
     title: "Contact & Réservation | Take Your Gloves",
-    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg, réponse sous 48h.",
+    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg.",
     url: "https://take-your-gloves.vercel.app/contact",
   },
   twitter: {
     card: "summary",
     title: "Contact & Réservation | Take Your Gloves",
-    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg, réponse sous 48h.",
+    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg.",
   },
 };
 
@@ -44,7 +44,7 @@ export default async function ContactPage() {
             {page?.heading ?? "Construisons votre prochaine sortie"}
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
-            {page?.description ?? "Que ce soit pour un rallye touristique, une journée trackday, une sortie entre amis ou une expérience sur-mesure, parlez-nous de votre projet. Nous vous répondons avec une proposition personnalisée sous 48h."}
+            {page?.description ?? "Que ce soit pour un rallye touristique, une journée trackday, une sortie entre amis ou une expérience sur-mesure, parlez-nous de votre projet. Nous vous répondons avec une proposition personnalisée."}
           </p>
 
           <div className="mt-10 space-y-5 border-t border-line pt-8 text-sm text-muted">

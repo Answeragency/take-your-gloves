@@ -19,7 +19,7 @@ const FIXES: Record<string, string> = {
 
   // Bandeau final
   "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé sous 48h.":
-    "Racontez-nous votre projet ou vos envies : rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé sous 48h.",
+    "Racontez-nous votre projet ou vos envies : rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé.",
 
   // Bandeau défilant : tout au pluriel
   "Rallye Touristique": "Rallyes Touristiques",
@@ -39,7 +39,10 @@ const FIXES: Record<string, string> = {
 /** Pas de long tiret dans les textes : une virgule à la place. */
 const DASH = /\s[—–]\s/g;
 
-export const fixCopy = (s: string): string => FIXES[s] ?? s.replace(DASH, ", ");
+/** Plus de promesse de délai « sous 48h » dans les textes. */
+const DELAY = / sous 48 ?h(?:eures)?/gi;
+
+export const fixCopy = (s: string): string => (FIXES[s] ?? s).replace(DASH, ", ").replace(DELAY, "");
 
 export function fixDeep<T>(value: T): T {
   if (typeof value === "string") return fixCopy(value) as T;
