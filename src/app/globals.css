@@ -6,20 +6,20 @@
   --surface: #161615;
   --surface-2: #201f1e;
 
-  /* Texte — tous testés ≥ 4.5:1 sur --background et --surface */
+  /* Texte — tous testés ≥ 4.5:1 sur --background et --surface (neutres chauds : complémentaires du bleu) */
   --foreground: #ede8e0;   /* 16.0:1 */
-  --muted: #9b938a;        /*  6.5:1 — corps de texte secondaire */
+  --muted: #b7b0a5;        /*  9.2:1 — corps de texte secondaire (même teinte chaude que --foreground) */
   --subtle: #766f68;       /*  3.6:1 — décoratif uniquement, jamais de texte lisible */
 
   /* Bleu de marque — bleu nuit échantillonné directement sur le logo
      (teinte ~218°, #141e32 dominant). `accent-dim` reprend cette valeur
      telle quelle ; les autres sont la même teinte éclaircie par paliers
      pour rester visibles sur le fond quasi noir (bouton 2.5:1, texte 4.8:1). */
-  --accent: #6086c7;
+  --accent: #7b9fdc;      /*  6.9:1 — intitulés et liens sur fond noir */
   --accent-fill: #31528c;
   --accent-fill-hover: #3a62a6;
   --accent-dim: #15243c;
-  --accent-bright: #7092cd;
+  --accent-bright: #98b6ea;
 
   /* Or — palette test client : logo #ffc926 / texte #ffde59 */
   --gold: #ffc926;

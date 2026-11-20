@@ -40,7 +40,7 @@ export default function CtaBanner({
           <h2 className="text-balance mt-5 font-display text-2xl leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {heading}
           </h2>
-          <p className="mt-5 text-balance text-base leading-relaxed text-muted">
+          <p className="mt-5 text-balance text-base leading-relaxed text-foreground/90 [text-shadow:0_1px_16px_rgba(0,0,0,0.7)]">
             {description}
           </p>
           <div className="mt-9 flex justify-center">

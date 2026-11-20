@@ -69,7 +69,7 @@ export default function Hero({
   const words2 = line2.split(" ");
 
   return (
-    <section ref={ref} className="relative flex min-h-screen items-center overflow-hidden pb-40 pt-28 sm:pb-48">
+    <section ref={ref} className="relative flex min-h-svh items-center overflow-hidden pb-40 pt-28 sm:pb-48">
       <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
         {/* Première image de la vidéo : affichée instantanément, puis recouverte par la vidéo */}
         <Image
@@ -108,7 +108,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-xs uppercase tracking-[0.35em] text-foreground/70"
+          className="font-display text-xs uppercase tracking-[0.35em] text-foreground/90 [text-shadow:0_1px_16px_rgba(0,0,0,0.7)]"
         >
           {eyebrow}
         </motion.p>
@@ -155,7 +155,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          className="mx-auto mt-3 max-w-2xl space-y-1 text-sm leading-relaxed text-muted sm:mt-8 sm:space-y-2 sm:text-lg"
+          className="mx-auto mt-3 max-w-2xl space-y-1 text-sm leading-relaxed text-foreground/90 [text-shadow:0_1px_18px_rgba(0,0,0,0.75)] sm:mt-8 sm:space-y-2 sm:text-lg"
         >
           {subtitle.split(/\r?\n/).map((line) => (
             <p key={line} className="text-balance">
@@ -209,7 +209,7 @@ export default function Hero({
                   transition={{ duration: 0.9, delay: 1.6 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
                   className="mx-auto mb-3 block h-px w-10 origin-center bg-gradient-to-r from-transparent via-gold to-transparent sm:mb-5 sm:w-16"
                 />
-                <CountUp value={s.value} delay={1.5 + i * 0.18} duration={2.4} />
+                <CountUp value={s.value} delay={1.5 + i * 0.18} duration={2.4} immediate />
               </motion.dd>
             </div>
           ))}

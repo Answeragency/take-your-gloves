@@ -7,11 +7,14 @@ export default function CountUp({
   value,
   delay = 0,
   duration = 1.6,
+  immediate = false,
 }: {
   value: string;
   /** Secondes avant le départ du comptage (ex : attendre la fin d'une entrée). */
   delay?: number;
   duration?: number;
+  /** Démarre sans attendre que le chiffre soit visible à l'écran (ex : bas de héros, parfois coupé sur mobile). */
+  immediate?: boolean;
 }) {
   const match = value.match(/^([+]?)(\d+(?:\.\d+)?)(.*)$/);
   const prefix = match ? match[1] : "";
@@ -20,7 +23,8 @@ export default function CountUp({
   const suffix = match ? match[3] : "";
 
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const seen = useInView(ref, { once: true, margin: "-80px" });
+  const inView = immediate || seen;
   const [display, setDisplay] = useState(decimals ? "0.0" : "0");
 
   useEffect(() => {

@@ -29,7 +29,7 @@ export default function Marquee({ items }: { items?: string[] }) {
             <span className="px-6 font-display text-xs uppercase tracking-[0.32em] text-foreground/70">
               {item}
             </span>
-            <span aria-hidden="true" className="text-accent/75 text-sm">◆</span>
+            <span aria-hidden="true" className="text-accent text-sm">◆</span>
           </span>
         ))}
       </motion.div>
