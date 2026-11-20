@@ -174,7 +174,6 @@ export async function getAllGalleryPhotos(): Promise<SanityGalleryPhoto[]> {
 
 export async function getSiteSettings(): Promise<{
   stats?: SanityStat[];
-  marqueeItems?: string[];
   email?: string;
   phone?: string;
   location?: string;
@@ -187,7 +186,7 @@ export async function getSiteSettings(): Promise<{
 } | null> {
   return fetchFixed(
     `*[_type == "siteSettings"][0]{
-      stats, marqueeItems, email, phone, location,
+      stats, email, phone, location,
       facebookUrl, instagramUrl,
       footerTagline, footerDescription,
       "logoUrl": logo.asset->url,

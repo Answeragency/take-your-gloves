@@ -1,5 +1,4 @@
 import Hero from "@/components/hero";
-import Marquee from "@/components/marquee";
 import SectionHeading from "@/components/section-heading";
 import { Carousel } from "@/components/ui/specials-linear-carousel";
 import TestimonialCard from "@/components/testimonial-card";
@@ -41,7 +40,6 @@ export default async function Home() {
         videoUrl={home?.heroVideoUrl}
         stats={settings?.stats}
       />
-      <Marquee items={settings?.marqueeItems} />
 
       {/* Upcoming events */}
       <section className="mx-auto max-w-7xl px-6 pb-4 pt-16 lg:px-10 lg:pt-28">

@@ -28,7 +28,7 @@ export const siteSettingsSchema = defineType({
       description: "Photo de fond utilisée derrière la bannière d'appel à l'action, sur toutes les pages.",
     }),
 
-    // ── Chiffres & marquee ─────────────────────────────────────────────────
+    // ── Chiffres clés ─────────────────────────────────────────────────
     defineField({
       name: "stats",
       title: "Chiffres clés",
@@ -45,14 +45,6 @@ export const siteSettingsSchema = defineType({
           preview: { select: { title: "value", subtitle: "label" } },
         },
       ],
-    }),
-    defineField({
-      name: "marqueeItems",
-      title: "Textes du ticker défilant",
-      group: "general",
-      type: "array",
-      of: [{ type: "string" }],
-      description: 'Ex : "Rallye Touristique", "Roulage sur Glace"',
     }),
 
     // ── Contact ────────────────────────────────────────────────────────────
