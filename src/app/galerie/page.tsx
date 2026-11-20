@@ -4,6 +4,7 @@ import SectionHeading from "@/components/section-heading";
 import CtaBanner from "@/components/cta-banner";
 import { getAllGalleryPhotos, getSiteSettings } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import { safeImageSrc } from "@/lib/masked-images";
 
 export const metadata: Metadata = {
   title: "Galerie Photos, rallyes & sorties automobiles",
@@ -73,7 +74,7 @@ export default async function GaleriePage() {
 
   const sanityItems: GalleryItem[] = sanityPhotos.map((p) => ({
     id: p._id,
-    src: urlFor(p.image).width(1200).auto("format").url(),
+    src: safeImageSrc(p.filename, urlFor(p.image).width(1200).auto("format").url()),
     label: p.label,
     variant: p.variant,
   }));

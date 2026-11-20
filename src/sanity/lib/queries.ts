@@ -1,5 +1,6 @@
 import { client } from "./client";
 import { fixDeep } from "@/lib/copy-fixes";
+import { safeImageSrc } from "@/lib/masked-images";
 
 async function fetchFixed<T>(
   query: string,
@@ -58,6 +59,7 @@ export type SanityGalleryPhoto = {
   label: string;
   variant: "dark" | "red" | "gold";
   image: SanityImage;
+  filename?: string;
 };
 
 export type SanityStat = {
@@ -111,12 +113,12 @@ export async function getEventBySlug(
 }
 
 export async function getGalleryByLabel(match: string): Promise<string[]> {
-  const rows = await fetchFixed<{ src: string }[]>(
-    `*[_type == "galleryPhoto" && label match $match]{ "src": image.asset->url }`,
+  const rows = await fetchFixed<{ src: string; file?: string }[]>(
+    `*[_type == "galleryPhoto" && label match $match]{ "src": image.asset->url, "file": image.asset->originalFilename }`,
     { match },
     { next: { revalidate: 60 } }
   );
-  return rows.map((r) => r.src).filter(Boolean);
+  return rows.filter((r) => r.src).map((r) => safeImageSrc(r.file, r.src));
 }
 
 export async function getAllEventSlugs(): Promise<string[]> {
@@ -162,7 +164,8 @@ export async function getFeaturedTestimonials(
 export async function getAllGalleryPhotos(): Promise<SanityGalleryPhoto[]> {
   return fetchFixed(
     `*[_type == "galleryPhoto"] | order(order asc) {
-      _id, label, variant, image
+      _id, label, variant, image,
+      "filename": image.asset->originalFilename
     }`,
     {},
     { next: { revalidate: 60 } }
