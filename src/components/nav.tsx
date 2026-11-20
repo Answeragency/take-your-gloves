@@ -24,18 +24,14 @@ export default function Nav({
 }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const lastY = useRef(0);
   const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 16);
-      setHidden(y > lastY.current && y > 100);
-      lastY.current = y;
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -60,9 +56,7 @@ export default function Nav({
 
   return (
     <>
-      <motion.header
-        animate={{ y: hidden ? "-100%" : "0%" }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      <header
         className={`fixed top-0 z-50 w-full border-b transition-[background,border-color,box-shadow,backdrop-filter] duration-500 ${
           scrolled
             ? "border-line bg-background/95 backdrop-blur-md shadow-lg shadow-black/20"
@@ -216,7 +210,7 @@ export default function Nav({
             <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6 : 0 }} className="h-px w-7 bg-foreground" />
           </button>
         </nav>
-      </motion.header>
+      </header>
 
       {/* Mobile menu */}
       <AnimatePresence>

@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useRef, useSyncExternalStore } from "react";
 import Button from "./button";
 import CountUp from "./count-up";
-import Photo from "./photo";
 import { DEFAULT_STATS, type Stat } from "@/lib/stats";
 
 type HeroProps = {
@@ -13,7 +13,6 @@ type HeroProps = {
   line1?: string;
   line2?: string;
   subtitle?: string;
-  imageUrl?: string;
   videoUrl?: string;
 };
 
@@ -26,29 +25,37 @@ const wordVariants = {
   }),
 };
 
+const noopSubscribe = () => () => {};
+
+function useMedia(query: string) {
+  return useSyncExternalStore(
+    (cb) => {
+      const m = window.matchMedia(query);
+      m.addEventListener("change", cb);
+      return () => m.removeEventListener("change", cb);
+    },
+    () => window.matchMedia(query).matches,
+    () => false
+  );
+}
+
 export default function Hero({
   eyebrow = "Strasbourg · Alsace · Émotions automobiles",
   line1 = "Prenez le volant,",
   line2 = "Vivez la route.",
   subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage.",
-  imageUrl,
   videoUrl,
   stats,
 }: HeroProps) {
   const figures = stats && stats.length > 0 ? stats : DEFAULT_STATS;
-  const bgImageUrl = imageUrl ?? "/images/ardennes-chateau-parade.jpg";
-  const bgVideoUrl = videoUrl ?? "/videos/hero-teaser.mp4";
   const ref = useRef<HTMLDivElement>(null);
-  const [canPlayVideo, setCanPlayVideo] = useState(false);
+  // La vidéo ne s'insère qu'après l'affichage (la page ne charge pas 28 Mo avant d'être visible),
+  // en 720p sur mobile et en 1080p ailleurs. Sans mouvement souhaité : image fixe, extraite de la vidéo.
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
+  const small = useMedia("(max-width: 767px)");
+  const reduced = useMedia("(prefers-reduced-motion: reduce)");
+  const bgVideoUrl = videoUrl ?? (small ? "/videos/hero-mobile.mp4" : "/videos/hero-desktop.mp4");
 
-  // La vidéo (10 Mo) ne se charge que sur écran large, sans réduction de mouvement,
-  // et après le premier affichage, pour ne pas retarder l'image du hero.
-  useEffect(() => {
-    const ok = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)").matches;
-    if (!ok) return;
-    const id = window.setTimeout(() => setCanPlayVideo(true), 800);
-    return () => window.clearTimeout(id);
-  }, []);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -64,28 +71,31 @@ export default function Hero({
   return (
     <section ref={ref} className="relative flex min-h-screen items-center overflow-hidden pb-40 pt-28 sm:pb-48">
       <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
-        <Photo
-          src={bgImageUrl}
-          alt="Convoi de voitures de sport devant un château"
-          label="Take Your Gloves, Strasbourg"
-          className="h-full w-full"
-          variant="red"
+        {/* Première image de la vidéo : affichée instantanément, puis recouverte par la vidéo */}
+        <Image
+          src="/images/hero-poster.jpg"
+          alt=""
+          fill
           priority
+          sizes="100vw"
+          quality={85}
+          className="object-cover"
         />
-        {bgVideoUrl && canPlayVideo && (
+        {mounted && !reduced && (
           <video
             key={bgVideoUrl}
+            poster="/images/hero-poster.jpg"
             preload="auto"
             autoPlay
             muted
             loop
             playsInline
-            className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+            disablePictureInPicture
+            className="absolute inset-0 h-full w-full object-cover"
           >
             <source src={bgVideoUrl} type="video/mp4" />
           </video>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/55 via-background/25 to-background/55" />
         <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-background/70 to-transparent" />
       </motion.div>

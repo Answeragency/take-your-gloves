@@ -38,7 +38,6 @@ export default async function Home() {
         line1={home?.heroLine1}
         line2={home?.heroLine2}
         subtitle={home?.heroSubtitle}
-        imageUrl={home?.heroImageUrl ?? "/images/2026-05-19_roadtrip-ecosse-107.jpg"}
         videoUrl={home?.heroVideoUrl}
         stats={settings?.stats}
       />

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Photo from "./photo";
 import Reveal from "./reveal";
@@ -11,11 +11,29 @@ export type GalleryItem = {
   src: string;
   label: string;
   variant: "dark" | "red" | "gold";
-  /** Sous-titre de section : les photos d'un même groupe sont regroupées sous ce titre. */
+  /** Catégorie de la photo : sert aux bulles de tri en haut de la galerie. */
   group?: string;
 };
 
-export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
+const ALL = "Toutes";
+
+/** Mélange ordonné : une photo de chaque catégorie à tour de rôle, pour varier à l'ouverture. */
+function interleave(items: GalleryItem[], categories: string[]): GalleryItem[] {
+  const buckets = categories.map((c) => items.filter((i) => (i.group ?? "") === c));
+  const out: GalleryItem[] = [];
+  for (let n = 0; out.length < items.length; n++) {
+    for (const b of buckets) if (b[n]) out.push(b[n]);
+  }
+  return out;
+}
+
+export default function GalleryGrid({ items: all }: { items: GalleryItem[] }) {
+  const categories = useMemo(() => Array.from(new Set(all.map((i) => i.group ?? "").filter(Boolean))), [all]);
+  const [active, setActive] = useState(ALL);
+  const items = useMemo(
+    () => (active === ALL ? interleave(all, categories) : all.filter((i) => i.group === active)),
+    [all, categories, active]
+  );
   const [open, setOpen] = useState<number | null>(null);
   const opener = useRef<HTMLElement | null>(null);
   const touchX = useRef<number | null>(null);
@@ -47,28 +65,47 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
 
   const current = open === null ? null : items[open];
 
-  // Sections dans l'ordre d'apparition ; on garde l'index global pour la visionneuse.
-  const groups: { name: string; indexes: number[] }[] = [];
-  items.forEach((it, i) => {
-    const name = it.group ?? "";
-    const g = groups.find((x) => x.name === name);
-    if (g) g.indexes.push(i);
-    else groups.push({ name, indexes: [i] });
-  });
-
   return (
     <>
-      <div className="space-y-16">
-        {groups.map((g) => (
-          <section key={g.name} aria-label={g.name || undefined}>
-            {g.name && (
-              <h2 className="mb-6 font-display text-2xl tracking-tight text-foreground sm:text-3xl">
-                {g.name}
-              </h2>
-            )}
-            <div className="columns-2 gap-4 sm:columns-3">
-        {g.indexes.map((i) => {
-          const p = items[i];
+      {categories.length > 1 && (
+        <div
+          role="group"
+          aria-label="Trier les photos par catégorie"
+          className="mb-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
+        >
+          {[ALL, ...categories].map((c) => {
+            const on = c === active;
+            return (
+              <button
+                key={c}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setActive(c)}
+                className={`relative rounded-full border px-4 py-2.5 font-display text-xs uppercase tracking-[0.15em] transition-colors duration-200 ${
+                  on
+                    ? "border-transparent text-foreground"
+                    : "border-line text-muted hover:border-accent/50 hover:text-foreground"
+                }`}
+              >
+                {on && (
+                  <motion.span
+                    layoutId="gallery-filter-pill"
+                    className="absolute inset-0 rounded-full bg-accent-fill"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="relative">{c}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+      <p className="sr-only" aria-live="polite">
+        {items.length} photo{items.length > 1 ? "s" : ""} affichée{items.length > 1 ? "s" : ""}
+      </p>
+
+      <div key={active} className="columns-2 gap-4 sm:columns-3">
+        {items.map((p, i) => {
           const ratio =
             i % 5 === 0 ? "aspect-[16/9]" : i % 3 === 1 ? "aspect-[3/4]" : "aspect-[4/3]";
           return (
@@ -100,9 +137,6 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
             </Reveal>
           );
         })}
-            </div>
-          </section>
-        ))}
       </div>
 
       <AnimatePresence>
