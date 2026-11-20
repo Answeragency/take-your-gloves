@@ -62,7 +62,7 @@ export default async function Home() {
 
         <div className="mt-12 grid gap-6">
           {upcoming.map((event, i) => (
-            <CalendarCard key={event.slug} event={event} index={i} />
+            <CalendarCard key={event.slug} event={event} index={i} showImage={false} />
           ))}
         </div>
       </section>

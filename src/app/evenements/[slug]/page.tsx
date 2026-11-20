@@ -295,7 +295,7 @@ export default async function EventDetailPage({
           </h2>
           <div className="mt-10 grid gap-6">
             {others.map((e, i) => (
-              <CalendarCard key={e.slug} event={e} index={i} />
+              <CalendarCard key={e.slug} event={e} index={i} showImage={false} />
             ))}
           </div>
         </div>

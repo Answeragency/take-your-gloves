@@ -12,9 +12,12 @@ const tiltSpring = { stiffness: 200, damping: 20, mass: 0.4 };
 export default function CalendarCard({
   event,
   index = 0,
+  showImage = true,
 }: {
   event: CalendarEvent;
   index?: number;
+  /** false : carte sans affiche (accueil, « à découvrir aussi »), pour ne pas répéter les visuels d'une page à l'autre. */
+  showImage?: boolean;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const mouseX = useMotionValue(0);
@@ -61,17 +64,19 @@ export default function CalendarCard({
               ),
             }}
           />
-          <div className="relative mx-auto aspect-[707/1000] w-36 shrink-0 overflow-hidden sm:mx-0 sm:w-48 sm:self-start">
-            <Photo
-              src={event.image}
-              alt={event.title}
-              label={event.title}
-              variant={categoryVariant[event.category] ?? "dark"}
-              fit="cover"
-              className="h-full w-full"
-            />
-          </div>
-          <div className="relative z-10 flex flex-1 flex-col p-6">
+          {showImage && (
+            <div className="relative mx-auto aspect-[707/1000] w-36 shrink-0 overflow-hidden sm:mx-0 sm:w-48 sm:self-start">
+              <Photo
+                src={event.image}
+                alt={event.title}
+                label={event.title}
+                variant={categoryVariant[event.category] ?? "dark"}
+                fit="cover"
+                className="h-full w-full"
+              />
+            </div>
+          )}
+          <div className={`relative z-10 flex flex-1 flex-col ${showImage ? "p-6" : "p-6 sm:p-8"}`}>
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-display text-xs uppercase tracking-[0.2em] text-accent">
                 {event.category}
