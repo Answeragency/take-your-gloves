@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://take-your-gloves.vercel.app/entreprises",
     images: [
       {
-        url: "/images/ardennes-chateau-parade.jpg",
+        url: "/images/2026-05-19_roadtrip-ecosse-206.jpg",
         width: 1200,
         height: 630,
         alt: "Événements automobiles entreprises Take Your Gloves",
@@ -53,15 +53,6 @@ const offers = [
   },
 ];
 
-const clients = [
-  "Concessions automobiles",
-  "Garages & carrossiers",
-  "Détailing & sellerie",
-  "Constructeurs & importateurs",
-  "Comités d'entreprise",
-  "Clubs automobiles",
-];
-
 export default async function EntreprisesPage() {
   const [settings, home, page] = await Promise.all([
     getSiteSettings(),
@@ -70,7 +61,6 @@ export default async function EntreprisesPage() {
   ]);
 
   const resolvedOffers = page?.offers ?? offers;
-  const resolvedClients = page?.clients ?? clients;
 
   return (
     <>
@@ -78,7 +68,7 @@ export default async function EntreprisesPage() {
       <section className="relative overflow-hidden pt-28 pb-16 lg:pt-40 lg:pb-24">
         <div className="absolute inset-0">
           <Photo
-            src={page?.heroImageUrl ?? "/images/ardennes-chateau-parade.jpg"}
+            src={page?.heroImageUrl ?? "/images/2026-05-19_roadtrip-ecosse-206.jpg"}
             alt="Convoi automobile lors d'un événement corporate Take Your Gloves"
             label="Take Your Gloves, événements entreprises"
             variant="dark"
@@ -132,7 +122,7 @@ export default async function EntreprisesPage() {
             <Reveal delay={0.12} className="grid grid-cols-2 gap-3 sm:h-[460px] sm:grid-cols-12 sm:grid-rows-2">
               <div className="col-span-2 h-48 overflow-hidden rounded-2xl sm:col-span-8 sm:row-span-2 sm:h-full">
                 <Photo
-                  src="/images/ardennes-chateau-parade.jpg"
+                  src="/images/2025-09-21_Roadtrip_Alpes_640_@Veezione.jpg"
                   alt="Convoi VIP lors d'un événement corporate"
                   label="Expérience client de marque"
                   variant="dark"
@@ -141,7 +131,7 @@ export default async function EntreprisesPage() {
               </div>
               <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
                 <Photo
-                  src="/images/forest-porsche.jpg"
+                  src="/images/banquet-marlenheim-452.jpg"
                   alt="Porsche lors d'un événement client"
                   label="Sur route"
                   variant="gold"
@@ -150,7 +140,7 @@ export default async function EntreprisesPage() {
               </div>
               <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
                 <Photo
-                  src="/images/interior-amg.jpg"
+                  src="/images/2026-05-22_roadtrip-ecosse-567.jpg"
                   alt="Intérieur Mercedes-AMG, expérience client VIP"
                   label="VIP"
                   variant="red"
@@ -217,20 +207,7 @@ export default async function EntreprisesPage() {
             align="center"
           />
         </Reveal>
-        <Reveal delay={0.1}>
-          <div className="mt-12 flex flex-wrap justify-center gap-3">
-            {resolvedClients.map((c) => (
-              <span
-                key={c}
-                className="rounded-full border border-line bg-surface px-5 py-2.5 font-display text-xs uppercase tracking-[0.15em] text-foreground/70"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.15} className="mt-14 rounded-2xl border border-accent/20 bg-surface p-8 sm:p-12">
+        <Reveal delay={0.1} className="mt-12 rounded-2xl border border-accent/20 bg-surface p-8 sm:p-12">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="font-display text-xs uppercase tracking-[0.25em] text-accent">
@@ -260,6 +237,7 @@ export default async function EntreprisesPage() {
         eyebrow={home?.ctaEyebrow}
         heading={home?.ctaHeading}
         description={home?.ctaDescription}
+        imageUrl="/images/2026-05-20_roadtrip-ecosse-350.jpg"
       />
     </>
   );

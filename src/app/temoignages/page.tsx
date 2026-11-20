@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import SectionHeading from "@/components/section-heading";
 import TestimonialCard from "@/components/testimonial-card";
 import CtaBanner from "@/components/cta-banner";
-import { getAllTestimonials, getHomePage, getSiteSettings, getTemoignagesPage } from "@/sanity/lib/queries";
+import { getAllTestimonials, getHomePage, getTemoignagesPage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Témoignages, avis de nos pilotes",
@@ -22,10 +22,9 @@ export const metadata: Metadata = {
 };
 
 export default async function TemoignagesPage() {
-  const [testimonials, home, settings, page] = await Promise.all([
+  const [testimonials, home, page] = await Promise.all([
     getAllTestimonials(),
     getHomePage(),
-    getSiteSettings(),
     getTemoignagesPage(),
   ]);
 
@@ -55,7 +54,7 @@ export default async function TemoignagesPage() {
         eyebrow={home?.ctaEyebrow}
         heading={home?.ctaHeading}
         description={home?.ctaDescription}
-        imageUrl={settings?.ctaBannerImageUrl}
+        imageUrl="/images/2025-09-18_Roadtrip_Alpes_135_@Veezione.jpg"
       />
     </>
   );

@@ -39,7 +39,7 @@ export default async function Home() {
         line1={home?.heroLine1}
         line2={home?.heroLine2}
         subtitle={home?.heroSubtitle}
-        imageUrl={home?.heroImageUrl}
+        imageUrl={home?.heroImageUrl ?? "/images/2026-05-19_roadtrip-ecosse-107.jpg"}
         videoUrl={home?.heroVideoUrl}
       />
       <Marquee items={settings?.marqueeItems} />
@@ -116,7 +116,7 @@ export default async function Home() {
             </div>
             <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
               <Photo
-                src={spiritImages[1] ?? "/images/forest-porsche.jpg"}
+                src={spiritImages[1] ?? "/images/2025-09-20_Roadtrip_Alpes_509_@Veezione.jpg"}
                 alt="Porsche sur une route forestière"
                 label="Sur la route"
                 variant="dark"
@@ -155,7 +155,7 @@ export default async function Home() {
         eyebrow={home?.ctaEyebrow}
         heading={home?.ctaHeading}
         description={home?.ctaDescription}
-        imageUrl={settings?.ctaBannerImageUrl}
+        imageUrl="/images/2025-09-20_Roadtrip_Alpes_525_@Veezione.jpg"
       />
     </>
   );

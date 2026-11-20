@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     title: "À propos de Take Your Gloves, histoire & valeurs",
     description: "Découvrez l'histoire de Take Your Gloves, né à Strasbourg d'une passion pour la conduite sportive. Plus de 250 passionnés nous font confiance.",
     url: "https://take-your-gloves.vercel.app/a-propos",
-    images: [{ url: "/images/ardennes-groupe.jpg", width: 1200, height: 630, alt: "L'équipe Take Your Gloves" }],
+    images: [{ url: "/images/2026-05-24_roadtrip-ecosse-781.jpg", width: 1200, height: 630, alt: "L'équipe Take Your Gloves" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "À propos de Take Your Gloves, histoire & valeurs",
     description: "Découvrez l'histoire de Take Your Gloves, né à Strasbourg d'une passion pour la conduite sportive. Plus de 250 passionnés nous font confiance.",
-    images: ["/images/ardennes-groupe.jpg"],
+    images: ["/images/2026-05-24_roadtrip-ecosse-781.jpg"],
   },
 };
 
@@ -58,7 +58,7 @@ export default async function AProposPage() {
       <section className="relative overflow-hidden pt-28 pb-16 lg:pt-40 lg:pb-24">
         <div className="absolute inset-0">
           <Photo
-            src={about?.heroImageUrl ?? "/images/ardennes-groupe.jpg"}
+            src={about?.heroImageUrl ?? "/images/2026-05-24_roadtrip-ecosse-781.jpg"}
             alt="Groupe de passionnés Take Your Gloves devant un château"
             label="Take Your Gloves, notre histoire"
             variant="gold"
@@ -97,7 +97,7 @@ export default async function AProposPage() {
           <Reveal delay={0.15} className="grid grid-cols-2 gap-4">
             <div className="col-span-2 h-64 overflow-hidden rounded-2xl">
               <Photo
-                src={about?.missionImageUrl ?? "/images/groupe-drapeaux.jpg"}
+                src={about?.missionImageUrl ?? "/images/2026-05-20_roadtrip-ecosse-415.jpg"}
                 alt="L'équipe et la communauté Take Your Gloves"
                 label="L'équipe Take Your Gloves"
                 variant="dark"
@@ -115,7 +115,7 @@ export default async function AProposPage() {
             </div>
             <div className="h-44 overflow-hidden rounded-2xl">
               <Photo
-                src={about?.valuesImage2Url ?? "/images/forest-porsche.jpg"}
+                src={about?.valuesImage2Url ?? "/images/banquet-marlenheim-227.jpg"}
                 alt="Porsche sur une route forestière"
                 label="Sur la route"
                 variant="gold"
@@ -158,7 +158,7 @@ export default async function AProposPage() {
         eyebrow={home?.ctaEyebrow}
         heading={home?.ctaHeading}
         description={home?.ctaDescription}
-        imageUrl={settings?.ctaBannerImageUrl}
+        imageUrl="/images/2025-09-18_Roadtrip_Alpes_177_@Veezione.jpg"
       />
     </>
   );

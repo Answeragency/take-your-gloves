@@ -4,7 +4,7 @@ import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
 import EventsList from "@/components/events-list";
 import CtaBanner from "@/components/cta-banner";
-import { getAllEvents, getEventsPage, getHomePage, getSiteSettings } from "@/sanity/lib/queries";
+import { getAllEvents, getEventsPage, getHomePage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Calendrier 2027, rallyes & trackdays en Alsace",
@@ -26,11 +26,10 @@ export const metadata: Metadata = {
 };
 
 export default async function EvenementsPage() {
-  const [events, eventsPage, home, settings] = await Promise.all([
+  const [events, eventsPage, home] = await Promise.all([
     getAllEvents(),
     getEventsPage(),
     getHomePage(),
-    getSiteSettings(),
   ]);
 
   const title = eventsPage?.introTitle || "Découvrez le calendrier 2027";
@@ -102,7 +101,7 @@ export default async function EvenementsPage() {
         eyebrow={home?.ctaEyebrow}
         heading={home?.ctaHeading}
         description={home?.ctaDescription}
-        imageUrl={settings?.ctaBannerImageUrl}
+        imageUrl="/images/2026-05-21_roadtrip-ecosse-507.jpg"
       />
     </>
   );

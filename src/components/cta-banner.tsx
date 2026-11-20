@@ -21,7 +21,7 @@ export default function CtaBanner({
       <div className="absolute inset-0">
         <Photo
           src={bgImageUrl}
-          alt="Mercedes-AMG GT R verte sur une route en forêt"
+          alt=""
           label="Take Your Gloves"
           variant="gold"
           className="h-full w-full"
