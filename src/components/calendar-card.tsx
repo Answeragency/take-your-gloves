@@ -73,12 +73,12 @@ export default function CalendarCard({
           </div>
           <div className="relative z-10 flex flex-1 flex-col p-6">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-display text-[11px] uppercase tracking-[0.2em] text-accent">
+              <span className="font-display text-xs uppercase tracking-[0.2em] text-accent">
                 {event.category}
               </span>
               {event.status && (
                 <span
-                  className={`rounded-full border px-2.5 py-0.5 text-[11px] uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
+                  className={`rounded-full border px-2.5 py-0.5 text-xs uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
                 >
                   {event.status.replace(/\.$/, "")}
                 </span>
