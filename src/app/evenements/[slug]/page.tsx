@@ -6,8 +6,24 @@ import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
 import Button from "@/components/button";
 import CalendarCard from "@/components/calendar-card";
-import { statusStyles, categoryVariant } from "@/lib/calendar";
-import { getEventBySlug, getAllEventSlugs, getUpcomingEvents } from "@/sanity/lib/queries";
+import PhotoCarousel from "@/components/photo-carousel";
+import EventInfoForm from "@/components/event-info-form";
+import TestimonialCard from "@/components/testimonial-card";
+import { statusStyles, categoryVariant, splitStatus, EVENT_EXTRAS } from "@/lib/calendar";
+import {
+  getEventBySlug,
+  getAllEventSlugs,
+  getUpcomingEvents,
+  getGalleryByLabel,
+  getFeaturedTestimonials,
+} from "@/sanity/lib/queries";
+
+const DEFAULT_PERKS = [
+  { title: "Roadbook soigné", text: "Itinéraires repérés en amont : rien n'est laissé au hasard." },
+  { title: "Encadrement sécurité", text: "Briefings systématiques et pilotes expérimentés." },
+  { title: "Groupe à taille humaine", text: "Une communauté de passionnés, sans compétition." },
+  { title: "Étapes sélectionnées", text: "Lieux et partenaires choisis pour en profiter pleinement." },
+];
 
 export const dynamicParams = true;
 
@@ -57,8 +73,27 @@ export default async function EventDetailPage({
   const event = await getEventBySlug(slug);
   if (!event) notFound();
 
-  const others = (await getUpcomingEvents(4)).filter((e) => e.slug !== slug).slice(0, 3);
+  const extras = EVENT_EXTRAS[slug] ?? {};
+  const [upcoming, testimonials, matched] = await Promise.all([
+    getUpcomingEvents(4),
+    getFeaturedTestimonials(3),
+    extras.galleryMatch ? getGalleryByLabel(extras.galleryMatch) : Promise.resolve([] as string[]),
+  ]);
+  const others = upcoming.filter((e) => e.slug !== slug).slice(0, 3);
   const variant = categoryVariant[event.category] ?? "dark";
+  const { capacity, badge } = splitStatus(event.status);
+  const duration = event.duration ?? extras.duration;
+  const inclusions = event.inclusions ?? extras.inclusions;
+  const photos = event.gallery?.length ? event.gallery : matched.length > 0 ? matched : (extras.gallery ?? []);
+  const perks = event.perks?.length ? event.perks.map((title) => ({ title, text: "" })) : DEFAULT_PERKS;
+  const infos: [string, string | undefined][] = [
+    ["Dates", event.dateLabel],
+    ["Lieu", event.location],
+    ["Format", event.category],
+    ["Durée", duration],
+    ["Places", capacity],
+    ["Inclus", inclusions],
+  ];
 
   const eventJsonLd = {
     "@context": "https://schema.org",
@@ -101,11 +136,11 @@ export default async function EventDetailPage({
               <span className="font-display text-xs uppercase tracking-[0.3em] text-accent">
                 {event.category}
               </span>
-              {event.status && (
+              {badge && (
                 <span
-                  className={`rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
+                  className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
                 >
-                  {event.status.replace(/\.$/, "")}
+                  {badge.replace(/\.$/, "")}
                 </span>
               )}
             </div>
@@ -119,10 +154,10 @@ export default async function EventDetailPage({
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-20 pt-4 lg:px-10 lg:pt-6">
-        <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr]">
-          <Reveal className="flex flex-col">
-            <p className="text-base leading-relaxed text-foreground/85">
+      <section className="mx-auto max-w-7xl px-6 pb-16 pt-4 lg:px-10 lg:pb-24 lg:pt-6">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+          <Reveal className="min-w-0">
+            <p className="text-balance text-lg leading-relaxed text-foreground/90 sm:text-xl">
               {event.description}
             </p>
             {event.body && Array.isArray(event.body) && event.body.length > 0 && (
@@ -130,7 +165,15 @@ export default async function EventDetailPage({
                 <PortableText value={event.body as Parameters<typeof PortableText>[0]["value"]} />
               </div>
             )}
-            <div className="relative mt-8 aspect-[707/1000] w-full max-w-sm overflow-hidden rounded-2xl border border-line shadow-2xl shadow-black/40">
+            {photos.length > 0 && (
+              <div className="mt-10">
+                <PhotoCarousel photos={photos} label={event.title} />
+              </div>
+            )}
+          </Reveal>
+
+          <Reveal delay={0.1} className="space-y-6">
+            <div className="relative mx-auto aspect-[707/1000] w-full max-w-sm overflow-hidden rounded-2xl border border-line shadow-2xl shadow-black/40 lg:mx-0">
               <Photo
                 src={event.image}
                 alt={event.title}
@@ -141,26 +184,19 @@ export default async function EventDetailPage({
                 priority
               />
             </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="sticky top-28 rounded-2xl border border-line bg-surface p-7">
+            <div className="rounded-2xl border border-line bg-surface p-7">
               <h2 className="font-display text-sm uppercase tracking-[0.2em] text-foreground">
                 Informations clés
               </h2>
-              <dl className="mt-6 space-y-5">
-                <div className="flex items-center justify-between border-b border-line pb-3">
-                  <dt className="text-xs uppercase tracking-[0.1em] text-muted">Dates</dt>
-                  <dd className="text-right text-sm text-foreground">{event.dateLabel}</dd>
-                </div>
-                <div className="flex items-center justify-between border-b border-line pb-3">
-                  <dt className="text-xs uppercase tracking-[0.1em] text-muted">Lieu</dt>
-                  <dd className="text-right text-sm text-foreground">{event.location}</dd>
-                </div>
-                <div className="flex items-center justify-between border-b border-line pb-3">
-                  <dt className="text-xs uppercase tracking-[0.1em] text-muted">Format</dt>
-                  <dd className="text-right text-sm text-foreground">{event.category}</dd>
-                </div>
+              <dl className="mt-6 space-y-4">
+                {infos
+                  .filter((row): row is [string, string] => Boolean(row[1]))
+                  .map(([label, value]) => (
+                    <div key={label} className="flex items-baseline justify-between gap-6 border-b border-line pb-3">
+                      <dt className="text-xs uppercase tracking-[0.1em] text-muted">{label}</dt>
+                      <dd className="text-right text-sm text-foreground">{value}</dd>
+                    </div>
+                  ))}
               </dl>
               <Button href="/contact" className="mt-7 w-full justify-center">
                 Nous contacter
@@ -172,6 +208,82 @@ export default async function EventDetailPage({
           </Reveal>
         </div>
       </section>
+
+      <section className="border-y border-line bg-surface">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:px-10 lg:py-24">
+          <Reveal>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Au programme</p>
+            <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
+              Le programme
+            </h2>
+            {event.program && event.program.length > 0 ? (
+              <ol className="mt-8 space-y-4">
+                {event.program.map((d) => (
+                  <li key={d._key} className="rounded-2xl border border-line bg-background p-6">
+                    {d.day && (
+                      <p className="font-display text-xs uppercase tracking-[0.2em] text-gold">{d.day}</p>
+                    )}
+                    {d.title && (
+                      <h3 className="mt-2 font-display text-lg tracking-tight text-foreground">{d.title}</h3>
+                    )}
+                    {d.text && <p className="mt-2 text-sm leading-relaxed text-muted">{d.text}</p>}
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
+                Le programme détaillé de {event.title} est en cours de finalisation. Laissez-nous vos
+                coordonnées : vous le recevrez en avant-première.
+              </p>
+            )}
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-display text-2xl tracking-tight text-foreground">Recevoir les infos</h2>
+            <p className="mb-6 mt-2 text-sm leading-relaxed text-muted">
+              Laissez votre email ou votre téléphone, nous vous recontactons.
+            </p>
+            <EventInfoForm eventTitle={event.title} dateLabel={event.dateLabel} category={event.category} />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <Reveal>
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Pourquoi nous suivre</p>
+          <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
+            Les + de nos séjours
+          </h2>
+        </Reveal>
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {perks.map((p, i) => (
+            <li key={p.title} className="h-full">
+              <Reveal delay={i * 0.06} className="h-full">
+                <div className="h-full rounded-2xl border border-line bg-surface p-6">
+                  <span aria-hidden className="mb-4 block h-px w-8 bg-gold" />
+                  <p className="font-display text-base tracking-tight text-foreground">{p.title}</p>
+                  {p.text && <p className="mt-2 text-sm leading-relaxed text-muted">{p.text}</p>}
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {testimonials.length > 0 && (
+        <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-24">
+          <Reveal>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Avis</p>
+            <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
+              Ils ont roulé avec nous
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <TestimonialCard key={t.name} {...t} index={i} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="border-t border-line bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">

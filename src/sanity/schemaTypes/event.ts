@@ -25,7 +25,7 @@ export const eventSchema = defineType({
       options: {
         list: [
           "Rallye touristique",
-          "Sortie conviviale",
+          "Sport automobile",
           "Expérience atypique",
           "Journée conviviale",
           "Expérience immersive",
@@ -117,6 +117,49 @@ export const eventSchema = defineType({
           description: "Description pour l'accessibilité et le SEO",
         }),
       ],
+    }),
+    defineField({
+      name: "duration",
+      title: "Durée",
+      type: "string",
+      description: 'Info clé. Ex : "3 jours et 2 nuits"',
+    }),
+    defineField({
+      name: "inclusions",
+      title: "Inclus",
+      type: "string",
+      description: 'Info clé. Ex : "Hôtels 4 étoiles, pension complète"',
+    }),
+    defineField({
+      name: "gallery",
+      title: "Carrousel photos",
+      type: "array",
+      of: [{ type: "image", options: { hotspot: true } }],
+      description: "Photos affichées sous l'introduction de la page événement",
+    }),
+    defineField({
+      name: "program",
+      title: "Programme",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "programDay",
+          fields: [
+            defineField({ name: "day", title: "Jour", type: "string", description: 'Ex : "Vendredi 17 avril"' }),
+            defineField({ name: "title", title: "Titre", type: "string" }),
+            defineField({ name: "text", title: "Détail", type: "text", rows: 3 }),
+          ],
+          preview: { select: { title: "day", subtitle: "title" } },
+        },
+      ],
+    }),
+    defineField({
+      name: "perks",
+      title: "Les + de ce séjour",
+      type: "array",
+      of: [{ type: "string" }],
+      description: "Laisser vide pour afficher les + habituels de nos séjours",
     }),
     defineField({
       name: "maxParticipants",

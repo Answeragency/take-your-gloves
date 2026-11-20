@@ -25,7 +25,10 @@ export async function POST(req: Request) {
   const eventType = clean(body.eventType, MAX.eventType);
   const message = clean(body.message, MAX.message);
 
-  if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  // Un email valide OU un téléphone suffisent pour être recontacté.
+  const hasEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const hasPhone = phone.replace(/\D/g, "").length >= 6;
+  if (!name || !message || (!hasEmail && !hasPhone)) {
     return NextResponse.json({ error: "invalid" }, { status: 400 });
   }
 
@@ -39,7 +42,7 @@ export async function POST(req: Request) {
   const html = `
     <h2>Nouvelle demande depuis takeyourgloves</h2>
     <p><strong>Nom :</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email :</strong> ${escapeHtml(email)}</p>
+    <p><strong>Email :</strong> ${escapeHtml(email) || "non renseigné"}</p>
     <p><strong>Téléphone :</strong> ${escapeHtml(phone) || "non renseigné"}</p>
     <p><strong>Type d'événement :</strong> ${escapeHtml(eventType) || "non renseigné"}</p>
     <p><strong>Message :</strong></p>
@@ -52,7 +55,7 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         from: process.env.CONTACT_FROM_EMAIL ?? "Take Your Gloves <onboarding@resend.dev>",
         to: [to],
-        reply_to: email,
+        ...(hasEmail ? { reply_to: email } : {}),
         subject: `Nouvelle demande de ${name}`,
         html,
       }),

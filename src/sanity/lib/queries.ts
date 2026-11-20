@@ -1,9 +1,10 @@
 import { client } from "./client";
 import type { StatusType } from "@/lib/calendar";
-import { POSTER_MAP } from "@/lib/calendar";
+import { POSTER_MAP, displayCategory } from "@/lib/calendar";
 
-function withPoster<T extends { slug: string; image?: string }>(event: T): T {
-  return event.image ? event : { ...event, image: POSTER_MAP[event.slug] };
+function withPoster<T extends { slug: string; category: string; image?: string }>(event: T): T {
+  const category = displayCategory(event.category);
+  return { ...event, category, image: event.image ?? POSTER_MAP[event.slug] };
 }
 
 // ─── Types retournés par Sanity ───────────────────────────────────────────────
@@ -30,6 +31,11 @@ export type SanityEvent = {
   image?: string; // URL string projetée depuis Sanity
   imageRaw?: SanityImage; // objet complet pour urlFor() (page détail)
   maxParticipants?: number;
+  duration?: string;
+  inclusions?: string;
+  perks?: string[];
+  program?: { _key: string; day?: string; title?: string; text?: string }[];
+  gallery?: string[]; // URLs projetées depuis Sanity
 };
 
 export type SanityTestimonial = {
@@ -84,12 +90,26 @@ export async function getEventBySlug(
       ${EVENT_FIELDS},
       body,
       maxParticipants,
+      duration,
+      inclusions,
+      perks,
+      program[]{ _key, day, title, text },
+      "gallery": gallery[].asset->url,
       "imageRaw": image
     }`,
     { slug },
     { next: { revalidate: 60 } }
   );
   return result ? withPoster(result) : null;
+}
+
+export async function getGalleryByLabel(match: string): Promise<string[]> {
+  const rows = await client.fetch<{ src: string }[]>(
+    `*[_type == "galleryPhoto" && label match $match]{ "src": image.asset->url }`,
+    { match },
+    { next: { revalidate: 60 } }
+  );
+  return rows.map((r) => r.src).filter(Boolean);
 }
 
 export async function getAllEventSlugs(): Promise<string[]> {
@@ -225,14 +245,14 @@ export async function getAboutPage(): Promise<{
 
 export async function getEventsPage(): Promise<{
   heroImageUrl?: string;
-  introLetter?: unknown[];
-  introNote?: string;
-  signature?: string;
+  introTitle?: string;
+  introBody?: unknown[];
+  signatureLine?: string;
 } | null> {
   return client.fetch(
     `*[_type == "eventsPage"][0]{
       "heroImageUrl": heroImage.asset->url,
-      introLetter, introNote, signature
+      introTitle, introBody, signatureLine
     }`,
     {},
     { next: { revalidate: 60 } }

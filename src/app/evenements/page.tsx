@@ -33,8 +33,8 @@ export default async function EvenementsPage() {
     getSiteSettings(),
   ]);
 
-  const signature = eventsPage?.signature ?? "Cédric Wetta";
-  const introNote = eventsPage?.introNote ?? "N'hésitez pas à me faire part des dates qui peuvent vous intéresser, sans engagement définitif, afin de vous pré-réserver des places.";
+  const title = eventsPage?.introTitle || "Découvrez le calendrier 2027";
+  const [signName, ...signRole] = (eventsPage?.signatureLine || "Cédric Wetta, Créateur d'émotions automobile, Take Your Gloves").split(/,\s*/);
 
   return (
     <>
@@ -43,7 +43,7 @@ export default async function EvenementsPage() {
           <Photo
             src={eventsPage?.heroImageUrl ?? "/images/nurburgring-trackday.jpg"}
             alt="Convoi de voitures de sport sur circuit"
-            label="Les Alpes Françaises, septembre 2025"
+            label="Convoi de voitures de sport"
             variant="dark"
             className="h-full w-full"
             priority
@@ -53,35 +53,45 @@ export default async function EvenementsPage() {
         <div className="relative mx-auto max-w-3xl px-6 lg:px-10">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
-              Calendrier 2026
+              Saison 2027
             </p>
             <h1 className="text-balance mt-5 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Découvrez le calendrier 2026 !
+              {title}
             </h1>
-            <p className="mt-3 text-sm uppercase tracking-[0.15em] text-muted">
-              Les Alpes Françaises, en Septembre dernier
-            </p>
           </Reveal>
 
           <Reveal delay={0.1} className="mt-8 text-base leading-relaxed text-foreground/85">
-            {eventsPage?.introLetter && Array.isArray(eventsPage.introLetter) && eventsPage.introLetter.length > 0 ? (
+            {eventsPage?.introBody && Array.isArray(eventsPage.introBody) && eventsPage.introBody.length > 0 ? (
               <div className="space-y-5 [&_p]:leading-relaxed">
-                <PortableText value={eventsPage.introLetter as Parameters<typeof PortableText>[0]["value"]} />
+                <PortableText
+                  value={eventsPage.introBody as Parameters<typeof PortableText>[0]["value"]}
+                  components={{
+                    block: {
+                      h2: ({ children }) => (
+                        <h2 className="pt-3 font-display text-2xl leading-tight tracking-tight text-foreground">{children}</h2>
+                      ),
+                    },
+                  }}
+                />
               </div>
             ) : (
               <div className="space-y-5">
-                <p>Merci pour cette incroyable saison 2025 que nous avons vécue ensemble ! Des virages de Corse aux sommets des Alpes, sans oublier les routes sinueuses de notre massif des Vosges : les souvenirs indélébiles marqués par votre bonne humeur et votre passion ne manquent pas !</p>
-                <p>Je vous remercie chaleureusement de faire partie de cette aventure et vous souhaite une merveilleuse année 2026, qui sera, je l&apos;espère, pleine d&apos;émotions automobiles !</p>
-                <p>Pour la prochaine saison, j&apos;ai voulu placer la barre encore plus haut et vous ai préparé un programme varié et conçu pour pleinement profiter de ces expériences au volant de vos autos.</p>
-                <p>Attachez votre ceinture et découvrez plus bas l&apos;ensemble des événements qui vous attendent tout au long de l&apos;année !</p>
+                <p>Après cette formidable saison 2026, marquée par nos échappées sur les routes écossaises aux allures de bout du monde ou encore notre périple à travers les somptueux cols pyrénéens, chaque kilomètre partagé a confirmé notre exigence commune pour le beau pilotage et la convivialité.</p>
+                <h2 className="pt-3 font-display text-2xl leading-tight tracking-tight text-foreground">
+                  La saison 2027 : nouvelles expériences, nouveaux standards
+                </h2>
+                <p>2027 sera plus que jamais placée sous le signe de l&apos;évasion et des belles mécaniques. Pour cette nouvelle année, nous avons conçu un programme encore plus affûté, alliant tracés d&apos;exception et prestations au cordeau.</p>
+                <p>Je vous souhaite une belle découverte de l&apos;ensemble des rendez-vous de la saison. J&apos;espère que ce calendrier saura éveiller vos sens de passionnés d&apos;automobile.</p>
               </div>
             )}
-            <p className="mt-5 text-sm text-muted">{introNote}</p>
-            <p className="mt-5 font-display text-sm uppercase tracking-[0.15em] text-foreground">
+            <p className="mt-8 font-display text-sm uppercase tracking-[0.15em] text-foreground">
               Passionnément,
               <br />
-              <span className="text-gold">{signature}</span>
+              <span className="text-gold">{signName}</span>
             </p>
+            {signRole.length > 0 && (
+              <p className="mt-1 text-sm text-muted">{signRole.join(", ")}</p>
+            )}
           </Reveal>
         </div>
       </section>

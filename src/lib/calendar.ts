@@ -12,9 +12,34 @@ export type CalendarEvent = {
   image?: string;
 };
 
+/** Ancien nom de catégorie encore présent dans Sanity : affiché sous son nouveau nom. */
+export const CATEGORY_RENAMES: Record<string, string> = {
+  "Sortie conviviale": "Sport automobile",
+};
+export const displayCategory = (c: string) => CATEGORY_RENAMES[c] ?? c;
+
+/** "Limité à 20 équipages." est une info clé (colonne de droite), pas un badge d'en-tête. */
+export function splitStatus(status?: string): { capacity?: string; badge?: string } {
+  if (!status) return {};
+  const m = status.match(/Limité à \d+ équipages/i);
+  const badge = status.replace(/Limité à \d+ équipages\.?/i, "").trim();
+  return { capacity: m?.[0], badge: badge || undefined };
+}
+
+export type EventExtras = { duration?: string; inclusions?: string; gallery?: string[]; galleryMatch?: string };
+/** Valeurs par défaut (modifiables dans Sanity : les champs Sanity prennent le dessus). */
+export const EVENT_EXTRAS: Record<string, EventExtras> = {
+  "les-ardennes": {
+    duration: "3 jours et 2 nuits",
+    inclusions: "Hôtels 4 étoiles, pension complète",
+    galleryMatch: "*Ardennes*",
+    gallery: ["/images/ardennes-chateau-parade.jpg", "/images/ardennes-groupe.jpg"],
+  },
+};
+
 export const categories = [
   "Rallye touristique",
-  "Sortie conviviale",
+  "Sport automobile",
   "Expérience atypique",
   "Journée conviviale",
   "Expérience immersive",
@@ -23,7 +48,7 @@ export const categories = [
 export const calendar: CalendarEvent[] = [
   {
     slug: "soiree-simulateurs",
-    category: "Sortie conviviale",
+    category: "Sport automobile",
     title: "Soirée Simulateurs",
     dateLabel: "Vendredi 16 Janvier, en soirée",
     location: "Legend Track, Colmar",
@@ -70,7 +95,7 @@ export const calendar: CalendarEvent[] = [
   },
   {
     slug: "rallye-gourmand",
-    category: "Sortie conviviale",
+    category: "Sport automobile",
     title: "Rallye Gourmand, 6ème édition",
     dateLabel: "Vendredi 1er Mai (férié)",
     location: "Alsace",
@@ -168,7 +193,7 @@ export const statusStyles: Record<StatusType, string> = {
 
 export const categoryVariant: Record<string, "dark" | "red" | "gold"> = {
   "Rallye touristique": "red",
-  "Sortie conviviale": "gold",
+  "Sport automobile": "gold",
   "Expérience atypique": "dark",
   "Journée conviviale": "gold",
   "Expérience immersive": "red",
