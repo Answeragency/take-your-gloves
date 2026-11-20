@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { Metadata } from "next";
 import { PortableText } from "@portabletext/react";
-import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
-import Button from "@/components/button";
 import CalendarCard from "@/components/calendar-card";
 import PhotoCarousel from "@/components/photo-carousel";
+import EventHero from "@/components/event-hero";
+import EventActionBar from "@/components/event-action-bar";
+import EventFacts, { type EventFact } from "@/components/event-facts";
 import EventInfoForm from "@/components/event-info-form";
 import TestimonialCard from "@/components/testimonial-card";
 import { statusStyles, categoryVariant, splitStatus, EVENT_EXTRAS } from "@/lib/calendar";
@@ -86,13 +86,13 @@ export default async function EventDetailPage({
   const inclusions = event.inclusions ?? extras.inclusions;
   const photos = event.gallery?.length ? event.gallery : matched.length > 0 ? matched : (extras.gallery ?? []);
   const perks = event.perks?.length ? event.perks.map((title) => ({ title, text: "" })) : DEFAULT_PERKS;
-  const infos: [string, string | undefined][] = [
-    ["Dates", event.dateLabel],
-    ["Lieu", event.location],
-    ["Format", event.category],
-    ["Durée", duration],
-    ["Places", capacity],
-    ["Inclus", inclusions],
+  const facts: EventFact[] = [
+    { key: "date", label: "Dates", value: event.dateLabel },
+    { key: "place", label: "Lieu", value: event.location },
+    { key: "format", label: "Format", value: event.category },
+    ...(duration ? [{ key: "duration" as const, label: "Durée", value: duration }] : []),
+    ...(capacity ? [{ key: "places" as const, label: "Places", value: capacity }] : []),
+    ...(inclusions ? [{ key: "inclus" as const, label: "Inclus", value: inclusions }] : []),
   ];
 
   const eventJsonLd = {
@@ -123,90 +123,36 @@ export default async function EventDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
-      <section className="relative overflow-hidden pt-28 pb-8 lg:pt-40 lg:pb-10">
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
-          <Reveal>
-            <Link
-              href="/evenements"
-              className="font-display text-xs uppercase tracking-[0.2em] text-muted hover:text-foreground"
-            >
-              ← Tout le calendrier 2027
-            </Link>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <span className="font-display text-xs uppercase tracking-[0.3em] text-accent">
-                {event.category}
-              </span>
-              {badge && (
-                <span
-                  className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
-                >
-                  {badge.replace(/\.$/, "")}
-                </span>
-              )}
-            </div>
-            <h1 className="text-balance mt-4 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              {event.title}
-            </h1>
-            <p className="mt-4 font-display text-sm uppercase tracking-[0.15em] text-muted">
-              {event.dateLabel} · {event.location}
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <EventHero
+        title={event.title}
+        category={event.category}
+        badge={badge?.replace(/\.$/, "")}
+        badgeClass={statusStyles[event.statusType]}
+        dateLabel={event.dateLabel}
+        location={event.location}
+        image={event.image}
+        variant={variant}
+      />
+      <EventActionBar title={event.title} dateLabel={event.dateLabel} />
+      <EventFacts facts={facts} />
 
-      <section className="mx-auto max-w-7xl px-6 pb-16 pt-4 lg:px-10 lg:pb-24 lg:pt-6">
-        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
-          <Reveal className="min-w-0">
-            <p className="text-balance text-lg leading-relaxed text-foreground/90 sm:text-xl">
-              {event.description}
-            </p>
-            {event.body && Array.isArray(event.body) && event.body.length > 0 && (
-              <div className="prose prose-invert mt-8 max-w-none text-foreground/85">
-                <PortableText value={event.body as Parameters<typeof PortableText>[0]["value"]} />
-              </div>
-            )}
-            {photos.length > 0 && (
-              <div className="mt-10">
-                <PhotoCarousel photos={photos} label={event.title} />
-              </div>
-            )}
-          </Reveal>
-
-          <Reveal delay={0.1} className="space-y-6">
-            <div className="relative mx-auto aspect-[707/1000] w-full max-w-sm overflow-hidden rounded-2xl border border-line shadow-2xl shadow-black/40 lg:mx-0">
-              <Photo
-                src={event.image}
-                alt={event.title}
-                label={event.title}
-                variant={variant}
-                fit="contain"
-                className="h-full w-full"
-                priority
-              />
+      <section className="mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-10 lg:pb-24 lg:pt-24">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">L&apos;événement</p>
+          <p className="text-balance mt-5 font-display text-2xl leading-snug tracking-tight text-foreground sm:text-3xl">
+            {event.description}
+          </p>
+          {event.body && Array.isArray(event.body) && event.body.length > 0 && (
+            <div className="prose prose-invert mx-auto mt-8 max-w-none text-left text-foreground/85">
+              <PortableText value={event.body as Parameters<typeof PortableText>[0]["value"]} />
             </div>
-            <div className="rounded-2xl border border-line bg-surface p-7">
-              <h2 className="font-display text-sm uppercase tracking-[0.2em] text-foreground">
-                Informations clés
-              </h2>
-              <dl className="mt-6 space-y-4">
-                {infos
-                  .filter((row): row is [string, string] => Boolean(row[1]))
-                  .map(([label, value]) => (
-                    <div key={label} className="flex items-baseline justify-between gap-6 border-b border-line pb-3">
-                      <dt className="text-xs uppercase tracking-[0.1em] text-muted">{label}</dt>
-                      <dd className="text-right text-sm text-foreground">{value}</dd>
-                    </div>
-                  ))}
-              </dl>
-              <Button href="/contact" className="mt-7 w-full justify-center">
-                Nous contacter
-              </Button>
-              <p className="mt-4 text-center text-xs text-muted">
-                Sans engagement définitif, réponse personnalisée.
-              </p>
-            </div>
+          )}
+        </Reveal>
+        {photos.length > 0 && (
+          <Reveal delay={0.1} className="mt-14">
+            <PhotoCarousel photos={photos} label={event.title} />
           </Reveal>
-        </div>
+        )}
       </section>
 
       <section className="border-y border-line bg-surface">
@@ -238,6 +184,7 @@ export default async function EventDetailPage({
             )}
           </Reveal>
           <Reveal delay={0.1}>
+            <span id="infos" className="block scroll-mt-32" />
             <h2 className="font-display text-2xl tracking-tight text-foreground">Recevoir les infos</h2>
             <p className="mb-6 mt-2 text-sm leading-relaxed text-muted">
               Laissez votre email ou votre téléphone, nous vous recontactons.

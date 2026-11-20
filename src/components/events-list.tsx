@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import CalendarCard from "./calendar-card";
+import PosterCard from "./poster-card";
 import type { CalendarEvent } from "@/lib/calendar";
 
 export default function EventsList({ events }: { events: CalendarEvent[] }) {
@@ -56,7 +56,7 @@ export default function EventsList({ events }: { events: CalendarEvent[] }) {
         <p className="sr-only" aria-live="polite">
           {visible.length} événement{visible.length > 1 ? "s" : ""} affiché{visible.length > 1 ? "s" : ""}
         </p>
-        <motion.div layout className="grid gap-6">
+        <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout" initial={false}>
             {visible.map((event, i) => (
               <motion.div
@@ -65,9 +65,10 @@ export default function EventsList({ events }: { events: CalendarEvent[] }) {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.97 }}
+                className="h-full"
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               >
-                <CalendarCard event={event} index={i} />
+                <PosterCard event={event} index={i} />
               </motion.div>
             ))}
           </AnimatePresence>

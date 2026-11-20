@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react";
 import Photo from "@/components/photo";
 import Reveal from "@/components/reveal";
 import EventsList from "@/components/events-list";
+import CountUp from "@/components/count-up";
 import CtaBanner from "@/components/cta-banner";
 import { getAllEvents, getEventsPage, getHomePage } from "@/sanity/lib/queries";
 
@@ -32,12 +33,17 @@ export default async function EvenementsPage() {
     getHomePage(),
   ]);
 
+  const figures = [
+    { value: String(events.length), label: "rendez-vous" },
+    { value: String(new Set(events.map((e) => e.category)).size), label: "formats d'expérience" },
+    { value: String(new Set(events.map((e) => e.location)).size), label: "destinations" },
+  ];
   const title = eventsPage?.introTitle || "Découvrez le calendrier 2027";
   const [signName, ...signRole] = (eventsPage?.signatureLine || "Cédric Wetta, Créateur d'émotions automobile, Take Your Gloves").split(/,\s*/);
 
   return (
     <>
-      <section className="relative overflow-hidden pt-28 pb-12 lg:pt-40 lg:pb-20">
+      <section className="relative overflow-hidden rounded-b-[2.5rem] pt-28 pb-12 lg:pt-40 lg:pb-20">
         <div className="absolute inset-0">
           <Photo
             src={eventsPage?.heroImageUrl ?? "/images/nurburgring-trackday.jpg"}
@@ -91,6 +97,19 @@ export default async function EvenementsPage() {
             {signRole.length > 0 && (
               <p className="mt-1 text-sm text-muted">{signRole.join(", ")}</p>
             )}
+          </Reveal>
+
+          <Reveal delay={0.15} className="mt-12">
+            <dl className="grid grid-cols-3 gap-4 border-t border-line pt-8">
+              {figures.map((f) => (
+                <div key={f.label}>
+                  <dd className="font-display text-4xl tracking-tight text-gold-bright sm:text-5xl">
+                    <CountUp value={f.value} />
+                  </dd>
+                  <dt className="mt-1 text-xs uppercase tracking-[0.15em] text-muted">{f.label}</dt>
+                </div>
+              ))}
+            </dl>
           </Reveal>
         </div>
       </section>
