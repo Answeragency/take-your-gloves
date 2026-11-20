@@ -63,10 +63,10 @@ export default function Nav({
       <motion.header
         animate={{ y: hidden ? "-100%" : "0%" }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 z-50 w-full border-b transition-[background,border-color,box-shadow] duration-300 ${
+        className={`fixed top-0 z-50 w-full border-b transition-[background,border-color,box-shadow,backdrop-filter] duration-500 ${
           scrolled
             ? "border-line bg-background/95 backdrop-blur-md shadow-lg shadow-black/20"
-            : "border-foreground/10 bg-background/70 backdrop-blur-sm"
+            : "border-transparent bg-transparent"
         }`}
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">

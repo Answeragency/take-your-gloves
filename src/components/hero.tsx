@@ -86,25 +86,26 @@ export default function Hero({
           </video>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/55 via-background/25 to-background/55" />
+        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-background/70 to-transparent" />
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, scale: 1.1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -right-32 top-1/2 hidden h-[640px] w-[640px] -translate-y-1/2 rounded-full border border-accent/20 lg:block"
+        className="absolute left-1/2 top-1/2 hidden h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/20 lg:block"
       />
       <motion.div
         initial={{ opacity: 0, scale: 1.2 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-        className="absolute -right-10 top-1/2 hidden h-[420px] w-[420px] -translate-y-1/2 rounded-full border border-gold/15 lg:block"
+        className="absolute left-1/2 top-1/2 hidden h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/15 lg:block"
       />
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10"
+        className="relative z-10 mx-auto w-full max-w-7xl px-6 text-center lg:px-10"
       >
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -115,7 +116,7 @@ export default function Hero({
           {eyebrow}
         </motion.p>
 
-        <h1 className="text-balance mt-6 max-w-4xl font-display text-[clamp(1.9rem,8.6vw,3rem)] leading-[0.98] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+        <h1 className="text-balance mx-auto mt-6 max-w-5xl font-display text-[clamp(1.9rem,8.6vw,3rem)] leading-[0.98] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
             {words1.map((word, i) => {
               const wordIndex = i;
@@ -126,7 +127,7 @@ export default function Hero({
                   initial="hidden"
                   animate="visible"
                   variants={wordVariants}
-                  className="mr-4 inline-block"
+                  className="mx-2 inline-block"
                 >
                   {word}
                 </motion.span>
@@ -143,7 +144,7 @@ export default function Hero({
                   initial="hidden"
                   animate="visible"
                   variants={wordVariants}
-                  className="gold-text mr-4 inline-block"
+                  className="gold-text mx-2 inline-block"
                 >
                   {word}
                 </motion.span>
@@ -156,7 +157,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          className="mt-3 max-w-xl whitespace-pre-line text-balance text-sm leading-relaxed text-muted sm:mt-8 sm:text-lg"
+          className="mx-auto mt-3 max-w-2xl whitespace-pre-line text-balance text-sm leading-relaxed text-muted sm:mt-8 sm:text-lg"
         >
           {subtitle}
         </motion.p>
@@ -165,7 +166,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.25 }}
-          className="mt-4 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-5"
+          className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-5"
         >
           <Button href="/evenements">Découvrir nos événements</Button>
           <Button href="/contact" variant="outline">
@@ -185,7 +186,7 @@ export default function Hero({
               key={s.label}
               animate={{ y: [0, -7, 0] }}
               transition={{ duration: 5 + i * 0.8, repeat: Infinity, ease: "easeInOut", delay: 3 + i * 0.5 }}
-              className="flex flex-col-reverse justify-end gap-2 [text-shadow:0_2px_28px_rgba(0,0,0,0.65)]"
+              className="flex flex-col-reverse items-center justify-end gap-2 text-center [text-shadow:0_2px_28px_rgba(0,0,0,0.65)]"
             >
               <motion.dt
                 initial={{ opacity: 0 }}
@@ -206,7 +207,7 @@ export default function Hero({
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.9, delay: 1.6 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                  className="mb-3 block h-px w-10 origin-left bg-gradient-to-r from-gold to-transparent sm:mb-5 sm:w-16"
+                  className="mx-auto mb-3 block h-px w-10 origin-center bg-gradient-to-r from-transparent via-gold to-transparent sm:mb-5 sm:w-16"
                 />
                 <CountUp value={s.value} />
               </motion.dd>
