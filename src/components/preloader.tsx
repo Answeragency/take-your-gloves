@@ -38,9 +38,9 @@ export default function Preloader({ logoUrl = "/images/logo.png" }: { logoUrl?: 
             <Image
               src={logoUrl}
               alt="Take Your Gloves"
-              width={200}
-              height={75}
-              className="h-14 w-auto"
+              width={400}
+              height={150}
+              className="h-28 w-auto sm:h-36 lg:h-44"
               priority
             />
           </motion.div>
