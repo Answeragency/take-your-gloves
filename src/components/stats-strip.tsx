@@ -14,8 +14,8 @@ export default function StatsStrip({ stats }: { stats?: { value: string; label: 
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-6 py-16 sm:grid-cols-3 lg:px-10">
         {items.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.09}>
-            <div className="group text-center lg:text-left">
-              <div className="mx-auto mb-4 h-px w-10 bg-gradient-to-r from-gold to-transparent lg:mx-0" />
+            <div className="group text-center">
+              <div className="mx-auto mb-4 h-px w-10 bg-gradient-to-r from-transparent via-gold to-transparent" />
               <p className="font-display text-5xl text-foreground sm:text-6xl">
                 <CountUp value={s.value} />
               </p>
