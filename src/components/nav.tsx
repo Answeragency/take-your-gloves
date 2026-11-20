@@ -229,10 +229,10 @@ export default function Nav({
                 </Link>
               </motion.div>
               {events.length > 0 && (
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center">
                   {events.map((e, i) => (
                     <motion.div key={e.slug} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.03 * (i + 1) }}>
-                      <Link href={`/evenements/${e.slug}`} className="text-sm text-foreground/75 hover:text-foreground">
+                      <Link href={`/evenements/${e.slug}`} className="block py-2 text-sm text-foreground/80 hover:text-foreground">
                         {e.title}
                       </Link>
                     </motion.div>
