@@ -186,6 +186,7 @@ export const Card = ({ card }: { card: CardData; index?: number }) => {
       className="group relative block aspect-[707/1000] w-60 overflow-hidden rounded-3xl border border-line bg-surface-2 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:border-accent/50 hover:shadow-xl hover:shadow-black/40 focus-visible:-translate-y-1.5 md:w-72"
     >
       <Image
+        quality={90}
         src={card.src}
         alt={card.title}
         fill

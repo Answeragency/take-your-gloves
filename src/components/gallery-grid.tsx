@@ -199,6 +199,7 @@ export default function GalleryGrid({ items: all }: { items: GalleryItem[] }) {
                     src={current.src}
                     alt={current.label}
                     fill
+                    quality={90}
                     sizes="100vw"
                     className="object-contain"
                     priority

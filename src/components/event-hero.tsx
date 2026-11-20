@@ -77,8 +77,8 @@ export default function EventHero({
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18, ease: EASE }}
             className="text-balance mt-5 font-display text-4xl leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
           >

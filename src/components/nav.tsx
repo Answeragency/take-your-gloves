@@ -66,6 +66,7 @@ export default function Nav({
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
           <Link href="/" className="flex items-center">
             <Image
+              quality={90}
               src={logoUrl}
               alt="Take Your Gloves"
               width={160}

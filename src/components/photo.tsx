@@ -36,6 +36,7 @@ export default function Photo({
         alt={alt}
         fill
         sizes={sizes}
+        quality={90}
         priority={priority}
         style={position ? { objectPosition: position } : undefined}
         className={fit === "contain" ? "object-contain" : "object-cover"}

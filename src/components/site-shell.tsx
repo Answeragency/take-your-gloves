@@ -17,7 +17,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     <>
       <Preloader />
       <ScrollProgress />
-      <div className="noise-overlay" />
       <Cursor />
       <Nav />
       <main className="flex-1">{children}</main>

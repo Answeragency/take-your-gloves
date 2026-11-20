@@ -19,8 +19,8 @@ export default function WordReveal({ segments }: { segments: Segment[] }) {
               <motion.span
                 key={`${si}-${ti}`}
                 className={`inline-block ${seg.className ?? ""}`}
-                initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               >

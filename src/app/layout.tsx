@@ -127,7 +127,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans antialiased">
         <a
           href="#contenu"
           className="sr-only fixed left-4 top-4 z-[100000] rounded-full bg-accent-fill px-5 py-3 font-display text-xs uppercase tracking-[0.1em] text-foreground focus:not-sr-only"
@@ -138,7 +138,6 @@ export default async function RootLayout({
         <LenisProvider>
           <Preloader logoUrl={logoUrl} />
           <ScrollProgress />
-          <div className="noise-overlay" />
           <Cursor />
           <Nav logoUrl={logoUrl} events={events.map(e => ({ slug: e.slug, title: e.title, dateLabel: e.dateLabel, location: e.location }))} />
           <main id="contenu" className="flex-1">{children}</main>

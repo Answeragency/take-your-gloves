@@ -46,6 +46,7 @@ export default async function Footer() {
           <div>
             <Link href="/" className="inline-block">
               <Image
+                quality={90}
                 src={settings?.logoUrl ?? "/images/logo.png"}
                 alt="Take Your Gloves"
                 width={140}

@@ -36,6 +36,7 @@ export default function Preloader({ logoUrl = "/images/logo.png" }: { logoUrl?: 
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
+              quality={90}
               src={logoUrl}
               alt="Take Your Gloves"
               width={400}

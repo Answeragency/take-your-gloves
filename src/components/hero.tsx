@@ -62,9 +62,6 @@ export default function Hero({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const contentOpacity = useTransform(scrollYProgress, [0.25, 0.95], [1, 0]);
 
   const words1 = line1.split(" ");
@@ -72,7 +69,7 @@ export default function Hero({
 
   return (
     <section ref={ref} className="relative flex min-h-svh items-center overflow-hidden pb-40 pt-28 sm:pb-48">
-      <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
+      <div className="absolute inset-0">
         {/* Première image de la vidéo : affichée instantanément, puis recouverte par la vidéo */}
         <Image
           src="/images/hero-poster.jpg"
@@ -80,7 +77,7 @@ export default function Hero({
           fill
           priority
           sizes="100vw"
-          quality={85}
+          quality={90}
           className="object-cover"
         />
         {mounted && !reduced && (
@@ -106,14 +103,12 @@ export default function Hero({
             )}
           </video>
         )}
-        <div className="absolute inset-0 bg-background/15" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/65 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background/85 via-background/40 to-transparent" />
-      </motion.div>
+      </div>
 
       <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
+        style={{ opacity: contentOpacity }}
         className="relative z-10 mx-auto w-full max-w-7xl px-6 text-center lg:px-10"
       >
         <motion.p
@@ -209,8 +204,8 @@ export default function Hero({
                 {s.label}
               </motion.dt>
               <motion.dd
-                initial={{ opacity: 0, y: 28, scale: 0.9, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.1, delay: 1.4 + i * 0.18, ease: [0.22, 1, 0.36, 1] }}
                 className="font-display text-4xl leading-none tracking-tight text-foreground sm:text-7xl"
               >
