@@ -54,7 +54,9 @@ export default function Hero({
   const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const small = useMedia("(max-width: 767px)");
   const reduced = useMedia("(prefers-reduced-motion: reduce)");
-  const bgVideoUrl = videoUrl ?? (small ? "/videos/hero-mobile.mp4" : "/videos/hero-desktop.mp4");
+  // Meilleur format d'abord : HEVC (Safari / iPhone), puis VP9 (Chrome, Firefox), puis H.264 (partout).
+  const base = small ? "/videos/hero-mobile" : "/videos/hero-desktop";
+  const bgVideoUrl = videoUrl ?? base;
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -93,11 +95,21 @@ export default function Hero({
             disablePictureInPicture
             className="absolute inset-0 h-full w-full object-cover"
           >
-            <source src={bgVideoUrl} type="video/mp4" />
+            {videoUrl ? (
+              <source src={videoUrl} type="video/mp4" />
+            ) : (
+              <>
+                <source src={`${base}-hevc.mp4`} type='video/mp4; codecs="hvc1"' />
+                <source src={`${base}.webm`} type='video/webm; codecs="vp9"' />
+                <source src={`${base}.mp4`} type="video/mp4" />
+              </>
+            )}
           </video>
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/55 via-background/25 to-background/55" />
-        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-background/70 to-transparent" />
+        <div className="absolute inset-0 bg-background/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/65 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background/85 via-background/40 to-transparent" />
       </motion.div>
 
       <motion.div
