@@ -29,7 +29,7 @@ export default async function ContactPage() {
     getSiteSettings(),
   ]);
 
-  const email = settings?.email ?? "contact@takeyourgloves.fr";
+  const email = settings?.email ?? "contact@take-your-gloves.fr";
   const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
   const location = settings?.location ?? "Strasbourg, France";
 

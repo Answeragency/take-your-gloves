@@ -5,6 +5,9 @@
  * la saisie du client prend le dessus. Aucun besoin d'y toucher ensuite.
  */
 const FIXES: Record<string, string> = {
+  // Nouvelle adresse de contact
+  "contact@takeyourgloves.fr": "contact@take-your-gloves.fr",
+
   // Chiffres cohérents partout : 250
   "+230": "+250",
   "Une communauté de plus de 200 passionnés": "Une communauté de plus de 250 passionnés",

@@ -16,7 +16,7 @@ export default function EventInfoForm({
   category: string;
 }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error" | "missing">("idle");
-  const [mailto, setMailto] = useState("mailto:contact@takeyourgloves.fr");
+  const [mailto, setMailto] = useState("mailto:contact@take-your-gloves.fr");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -40,7 +40,7 @@ export default function EventInfoForm({
       const body = encodeURIComponent(
         `Nom : ${d.name ?? ""}\nEmail : ${d.email ?? ""}\nTéléphone : ${d.phone ?? ""}\n\n${message}`
       );
-      setMailto(`mailto:contact@takeyourgloves.fr?subject=${subject}&body=${body}`);
+      setMailto(`mailto:contact@take-your-gloves.fr?subject=${subject}&body=${body}`);
       setStatus("error");
     }
   }

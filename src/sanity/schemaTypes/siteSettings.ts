@@ -61,7 +61,7 @@ export const siteSettingsSchema = defineType({
       title: "Email",
       group: "contact",
       type: "string",
-      initialValue: "contact@takeyourgloves.fr",
+      initialValue: "contact@take-your-gloves.fr",
     }),
     defineField({
       name: "phone",
