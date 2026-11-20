@@ -1,4 +1,7 @@
 import { Metadata } from "next";
+import ProtectedEmail from "@/components/protected-email";
+import { reverse } from "@/lib/reverse";
+import { formatPhone } from "@/lib/phone";
 import Reveal from "@/components/reveal";
 import ContactForm from "@/components/contact-form";
 import { getContactPage, getSiteSettings } from "@/sanity/lib/queries";
@@ -48,13 +51,13 @@ export default async function ContactPage() {
             <div>
               <p className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">Email</p>
               <p className="mt-1">
-                <a href={`mailto:${email}`} className="transition-colors hover:text-foreground">{email}</a>
+                <ProtectedEmail reversed={reverse(email)} className="transition-colors hover:text-foreground" />
               </p>
             </div>
             <div>
               <p className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">Téléphone</p>
               <p className="mt-1">
-                <a href={`tel:${phone.replace(/\s/g, "")}`} className="transition-colors hover:text-foreground">{phone}</a>
+                <a href={`tel:${phone.replace(/\s/g, "")}`} className="transition-colors hover:text-foreground">{formatPhone(phone)}</a>
               </p>
             </div>
             <div>

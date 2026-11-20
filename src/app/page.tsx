@@ -26,7 +26,7 @@ export default async function Home() {
   const spiritBullets = home?.spiritBullets ?? [
     "Encadrement par une équipe expérimentée",
     "Itinéraires et programmes sélectionnés avec soin",
-    "Une communauté de plus de 200 passionnés",
+    "Une communauté de plus de 250 passionnés",
     "Une organisation complète pour vous permettre de pleinement vivre nos expériences",
   ];
 
@@ -49,7 +49,7 @@ export default async function Home() {
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
-            eyebrow="Calendrier 2026"
+            eyebrow="Calendrier 2027"
             title="Les prochains rendez-vous"
             highlight="rendez-vous"
           />
@@ -84,7 +84,7 @@ export default async function Home() {
             </h2>
             <p className="mt-6 text-base leading-relaxed text-muted">
               {home?.spiritDescription ??
-                "Depuis nos premiers événements entre amis à Strasbourg, Take Your Gloves est devenu une référence incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions."}
+                "Depuis nos premiers événements conviviaux en Alsace, Take Your Gloves est devenu une référence incontournable pour les passionnés de voitures de sport. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions."}
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {spiritBullets.map((item) => (

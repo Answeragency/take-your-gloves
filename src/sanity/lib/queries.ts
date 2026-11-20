@@ -1,4 +1,13 @@
 import { client } from "./client";
+import { fixDeep } from "@/lib/copy-fixes";
+
+async function fetchFixed<T>(
+  query: string,
+  params: Record<string, unknown> = {},
+  options?: { next?: { revalidate?: number } }
+): Promise<T> {
+  return fixDeep(await client.fetch<T>(query, params, options));
+}
 import type { StatusType } from "@/lib/calendar";
 import { POSTER_MAP, displayCategory } from "@/lib/calendar";
 
@@ -74,7 +83,7 @@ const EVENT_FIELDS = `
 `;
 
 export async function getAllEvents(): Promise<SanityEvent[]> {
-  const results = await client.fetch<SanityEvent[]>(
+  const results = await fetchFixed<SanityEvent[]>(
     `*[_type == "event"] | order(dateSort asc) { ${EVENT_FIELDS} }`,
     {},
     { next: { revalidate: 60 } }
@@ -85,7 +94,7 @@ export async function getAllEvents(): Promise<SanityEvent[]> {
 export async function getEventBySlug(
   slug: string
 ): Promise<SanityEvent | null> {
-  const result = await client.fetch<SanityEvent | null>(
+  const result = await fetchFixed<SanityEvent | null>(
     `*[_type == "event" && slug.current == $slug][0] {
       ${EVENT_FIELDS},
       body,
@@ -104,7 +113,7 @@ export async function getEventBySlug(
 }
 
 export async function getGalleryByLabel(match: string): Promise<string[]> {
-  const rows = await client.fetch<{ src: string }[]>(
+  const rows = await fetchFixed<{ src: string }[]>(
     `*[_type == "galleryPhoto" && label match $match]{ "src": image.asset->url }`,
     { match },
     { next: { revalidate: 60 } }
@@ -113,7 +122,7 @@ export async function getGalleryByLabel(match: string): Promise<string[]> {
 }
 
 export async function getAllEventSlugs(): Promise<string[]> {
-  const results = await client.fetch<{ slug: string }[]>(
+  const results = await fetchFixed<{ slug: string }[]>(
     `*[_type == "event"]{ "slug": slug.current }`,
     {},
     { next: { revalidate: 60 } }
@@ -122,7 +131,7 @@ export async function getAllEventSlugs(): Promise<string[]> {
 }
 
 export async function getUpcomingEvents(limit = 3): Promise<SanityEvent[]> {
-  const results = await client.fetch<SanityEvent[]>(
+  const results = await fetchFixed<SanityEvent[]>(
     `*[_type == "event"] | order(dateSort asc)[0...$limit] { ${EVENT_FIELDS} }`,
     { limit },
     { next: { revalidate: 60 } }
@@ -131,7 +140,7 @@ export async function getUpcomingEvents(limit = 3): Promise<SanityEvent[]> {
 }
 
 export async function getAllTestimonials(): Promise<SanityTestimonial[]> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "testimonial"] | order(featured desc, order asc) {
       _id, name, role, quote
     }`,
@@ -143,7 +152,7 @@ export async function getAllTestimonials(): Promise<SanityTestimonial[]> {
 export async function getFeaturedTestimonials(
   limit = 4
 ): Promise<SanityTestimonial[]> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "testimonial"] | order(featured desc, order asc)[0...$limit] {
       _id, name, role, quote
     }`,
@@ -153,7 +162,7 @@ export async function getFeaturedTestimonials(
 }
 
 export async function getAllGalleryPhotos(): Promise<SanityGalleryPhoto[]> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "galleryPhoto"] | order(order asc) {
       _id, label, variant, image
     }`,
@@ -175,7 +184,7 @@ export async function getSiteSettings(): Promise<{
   logoUrl?: string;
   ctaBannerImageUrl?: string;
 } | null> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "siteSettings"][0]{
       stats, marqueeItems, email, phone, location,
       facebookUrl, instagramUrl,
@@ -203,7 +212,7 @@ export async function getHomePage(): Promise<{
   ctaHeading?: string;
   ctaDescription?: string;
 } | null> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "homePage"][0]{
       heroEyebrow, heroLine1, heroLine2, heroSubtitle,
       "heroImageUrl": heroImage.asset->url,
@@ -228,7 +237,7 @@ export async function getAboutPage(): Promise<{
   missionParagraphs?: string[];
   values?: { title: string; text: string }[];
 } | null> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "aboutPage"][0]{
       "heroImageUrl": heroImage.asset->url,
       heroHeading, heroDescription,
@@ -249,7 +258,7 @@ export async function getEventsPage(): Promise<{
   introBody?: unknown[];
   signatureLine?: string;
 } | null> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "eventsPage"][0]{
       "heroImageUrl": heroImage.asset->url,
       introTitle, introBody, signatureLine
@@ -263,7 +272,7 @@ export async function getContactPage(): Promise<{
   heading?: string;
   description?: string;
 } | null> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "contactPage"][0]{ heading, description }`,
     {},
     { next: { revalidate: 60 } }
@@ -292,7 +301,7 @@ export async function getEntreprisesPage(): Promise<{
   ctaBoxHeading?: string;
   ctaBoxDescription?: string;
 } | null> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "entreprisesPage"][0]{
       "heroImageUrl": heroImage.asset->url,
       heroEyebrow, heroHeading, heroHeadingAccent, heroDescription,
@@ -313,7 +322,7 @@ export async function getTemoignagesPage(): Promise<{
   heading?: string;
   description?: string;
 } | null> {
-  return client.fetch(
+  return fetchFixed(
     `*[_type == "temoignagesPage"][0]{ eyebrow, heading, description }`,
     {},
     { next: { revalidate: 60 } }

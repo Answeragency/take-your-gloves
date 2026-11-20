@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Take Your Gloves",
   },
   description:
-    "Organisateur de rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et Grand Est. Rejoignez une communauté de plus de 200 passionnés automobiles. Strasbourg.",
+    "Organisateur de rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et Grand Est. Rejoignez une communauté de plus de 250 passionnés automobiles. Strasbourg.",
   keywords: [
     "rallye touristique Alsace",
     "trackday Alsace",
@@ -86,7 +86,6 @@ export default async function RootLayout({
 }>) {
   const [settings, events] = await Promise.all([getSiteSettings(), getAllEvents()]);
   const logoUrl = settings?.logoUrl ?? "/images/logo.png";
-  const email = settings?.email ?? "contact@takeyourgloves.fr";
   const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
 
   const localBusinessJsonLd = {
@@ -99,7 +98,6 @@ export default async function RootLayout({
     logo: logoUrl.startsWith("http") ? logoUrl : `${BASE_URL}${logoUrl}`,
     image: `${BASE_URL}/images/ardennes-chateau-parade.jpg`,
     telephone: phone.replace(/[()\s]/g, ""),
-    email,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Strasbourg",

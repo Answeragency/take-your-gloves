@@ -2,9 +2,9 @@ import Reveal from "./reveal";
 import CountUp from "./count-up";
 
 const DEFAULT_STATS = [
-  { value: "+45", label: "Événements organisés" },
-  { value: "+180", label: "Pilotes rencontrés" },
-  { value: "+5 ans", label: "D'existence" },
+  { value: "+50", label: "Événements organisés" },
+  { value: "+250", label: "Pilotes rencontrés" },
+  { value: "+5", label: "Ans d'expérience" },
 ];
 
 export default function StatsStrip({ stats }: { stats?: { value: string; label: string }[] }) {

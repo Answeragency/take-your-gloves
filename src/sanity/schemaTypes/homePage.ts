@@ -91,7 +91,7 @@ export const homePageSchema = defineType({
       initialValue: [
         "Encadrement par une équipe expérimentée",
         "Itinéraires et programmes sélectionnés avec soin",
-        "Une communauté de plus de 200 passionnés",
+        "Une communauté de plus de 250 passionnés",
         "Une organisation complète pour vous permettre de pleinement vivre nos expériences",
       ],
     }),

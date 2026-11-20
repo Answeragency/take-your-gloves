@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import ProtectedEmail from "@/components/protected-email";
+import { reverse } from "@/lib/reverse";
 import Photo from "@/components/photo";
 import SectionHeading from "@/components/section-heading";
 import Reveal from "@/components/reveal";
@@ -245,9 +247,10 @@ export default async function EntreprisesPage() {
               <Button href="/contact" className="whitespace-nowrap">
                 Demander un devis
               </Button>
-              <Button href="mailto:contact@takeyourgloves.fr" variant="outline" className="whitespace-nowrap">
-                contact@takeyourgloves.fr
-              </Button>
+              <ProtectedEmail
+                reversed={reverse("contact@takeyourgloves.fr")}
+                className="inline-flex items-center justify-center rounded-full border border-foreground/25 px-8 py-4 font-display text-sm tracking-[0.05em] text-foreground transition-colors hover:border-accent/70 hover:text-accent"
+              />
             </div>
           </div>
         </Reveal>

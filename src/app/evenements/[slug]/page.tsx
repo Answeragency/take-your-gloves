@@ -130,7 +130,7 @@ export default async function EventDetailPage({
               href="/evenements"
               className="font-display text-xs uppercase tracking-[0.2em] text-muted hover:text-foreground"
             >
-              ← Tout le calendrier 2026
+              ← Tout le calendrier 2027
             </Link>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <span className="font-display text-xs uppercase tracking-[0.3em] text-accent">
@@ -232,8 +232,8 @@ export default async function EventDetailPage({
               </ol>
             ) : (
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-                Le programme détaillé de {event.title} est en cours de finalisation. Laissez-nous vos
-                coordonnées : vous le recevrez en avant-première.
+                Informations et programme complet à venir. Laissez-nous vos coordonnées : vous
+                les recevrez en avant-première.
               </p>
             )}
           </Reveal>

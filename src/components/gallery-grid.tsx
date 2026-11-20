@@ -11,6 +11,8 @@ export type GalleryItem = {
   src: string;
   label: string;
   variant: "dark" | "red" | "gold";
+  /** Sous-titre de section : les photos d'un même groupe sont regroupées sous ce titre. */
+  group?: string;
 };
 
 export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
@@ -45,10 +47,28 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
 
   const current = open === null ? null : items[open];
 
+  // Sections dans l'ordre d'apparition ; on garde l'index global pour la visionneuse.
+  const groups: { name: string; indexes: number[] }[] = [];
+  items.forEach((it, i) => {
+    const name = it.group ?? "";
+    const g = groups.find((x) => x.name === name);
+    if (g) g.indexes.push(i);
+    else groups.push({ name, indexes: [i] });
+  });
+
   return (
     <>
-      <div className="columns-2 gap-4 sm:columns-3">
-        {items.map((p, i) => {
+      <div className="space-y-16">
+        {groups.map((g) => (
+          <section key={g.name} aria-label={g.name || undefined}>
+            {g.name && (
+              <h2 className="mb-6 font-display text-2xl tracking-tight text-foreground sm:text-3xl">
+                {g.name}
+              </h2>
+            )}
+            <div className="columns-2 gap-4 sm:columns-3">
+        {g.indexes.map((i) => {
+          const p = items[i];
           const ratio =
             i % 5 === 0 ? "aspect-[16/9]" : i % 3 === 1 ? "aspect-[3/4]" : "aspect-[4/3]";
           return (
@@ -80,6 +100,9 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
             </Reveal>
           );
         })}
+            </div>
+          </section>
+        ))}
       </div>
 
       <AnimatePresence>

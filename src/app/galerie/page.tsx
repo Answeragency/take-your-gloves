@@ -54,6 +54,17 @@ const STATIC_PHOTOS: GalleryItem[] = [
   { id: "banquet-marlenheim-452", src: "/images/banquet-marlenheim-452.jpg", label: "Banquet Marlenheim, juin 2025", variant: "gold" },
 ];
 
+// Sous-titres de la galerie (dans cet ordre) : on regroupe les photos par type d'événement.
+const GROUPS: [string, RegExp][] = [
+  ["Rallyes touristiques", /ardennes|alpes|écosse|ecosse|dolomites|vosges|forêt noire|pyrénées|rallye touristique|road ?trip/i],
+  ["Roulage sur glace", /glace|autriche/i],
+  ["Circuit", /nürburgring|nurburgring|circuit|trackday|roulage/i],
+  ["Journées conviviales", /banquet|gourmand|marlenheim|convivial/i],
+];
+const OTHER_GROUP = "Sur la route";
+const groupOf = (label: string) => GROUPS.find(([, re]) => re.test(label))?.[0] ?? OTHER_GROUP;
+const GROUP_ORDER = [...GROUPS.map(([name]) => name), OTHER_GROUP];
+
 export default async function GaleriePage() {
   const [sanityPhotos, settings] = await Promise.all([
     getAllGalleryPhotos(),
@@ -68,7 +79,9 @@ export default async function GaleriePage() {
   }));
 
   // Sanity photos first, then static ones (always show all)
-  const items: GalleryItem[] = [...sanityItems, ...STATIC_PHOTOS];
+  const items: GalleryItem[] = [...sanityItems, ...STATIC_PHOTOS]
+    .map((p) => ({ ...p, group: groupOf(p.label) }))
+    .sort((a, b) => GROUP_ORDER.indexOf(a.group ?? OTHER_GROUP) - GROUP_ORDER.indexOf(b.group ?? OTHER_GROUP));
 
   return (
     <>

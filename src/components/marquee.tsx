@@ -3,13 +3,13 @@
 import { motion } from "motion/react";
 
 const DEFAULT_ITEMS = [
-  "Rallye Touristique",
-  "Trackday",
-  "Sortie Conviviale",
-  "Expérience Atypique",
-  "Roulage sur Glace",
-  "Road Trip",
-  "Expérience Immersive",
+  "Rallyes Touristiques",
+  "Trackdays",
+  "Sorties Conviviales",
+  "Expériences Atypiques",
+  "Roulages sur Glace",
+  "Road Trips",
+  "Expériences Immersives",
   "Musées Automobiles",
 ];
 

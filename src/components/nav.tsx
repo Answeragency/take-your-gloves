@@ -118,7 +118,7 @@ export default function Nav({
                         href="/evenements"
                         className="flex items-center gap-2 border-b border-line px-4 py-3 font-display text-[10px] uppercase tracking-[0.2em] text-accent hover:bg-surface"
                       >
-                        Calendrier 2026 →
+                        Calendrier 2027 →
                       </Link>
                       <div className="max-h-72 overflow-y-auto py-1" data-lenis-prevent>
                         {events.map((e) => (

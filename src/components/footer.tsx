@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getSiteSettings } from "@/sanity/lib/queries";
+import ProtectedEmail from "./protected-email";
+import { reverse } from "@/lib/reverse";
+import { formatPhone } from "@/lib/phone";
 
 const columns = [
   {
-    title: "Calendrier 2026",
+    title: "Calendrier 2027",
     links: [
       { href: "/evenements", label: "Tout le calendrier" },
       { href: "/evenements/les-ardennes", label: "Rallye, Les Ardennes" },
@@ -106,13 +109,11 @@ export default async function Footer() {
             <ul className="mt-5 flex flex-col gap-3 text-sm text-muted">
               <li>{location}</li>
               <li>
-                <a href={`mailto:${email}`} className="transition-colors hover:text-foreground">
-                  {email}
-                </a>
+                <ProtectedEmail reversed={reverse(email)} className="transition-colors hover:text-foreground" />
               </li>
               <li>
                 <a href={`tel:${phone.replace(/\s/g, "")}`} className="transition-colors hover:text-foreground">
-                  {phone}
+                  {formatPhone(phone)}
                 </a>
               </li>
             </ul>
