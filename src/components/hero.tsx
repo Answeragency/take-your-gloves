@@ -91,19 +91,6 @@ export default function Hero({
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-1/2 top-1/2 hidden h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/20 lg:block"
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 1.2 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-        className="absolute left-1/2 top-1/2 hidden h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/15 lg:block"
-      />
-
-      <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto w-full max-w-7xl px-6 text-center lg:px-10"
       >
