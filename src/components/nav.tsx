@@ -209,7 +209,7 @@ export default function Nav({
           <button
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
-            className="flex flex-col gap-1.5 lg:hidden"
+            className="-mr-3 flex flex-col gap-1.5 p-3 lg:hidden"
           >
             <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }} className="h-px w-7 bg-foreground" />
             <motion.span animate={{ opacity: open ? 0 : 1 }} className="h-px w-7 bg-foreground" />

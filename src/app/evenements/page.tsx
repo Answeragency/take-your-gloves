@@ -60,7 +60,7 @@ export default async function EvenementsPage() {
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">
               Saison 2027
             </p>
-            <h1 className="text-balance mt-5 font-display text-5xl leading-[1.0] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance mt-5 font-display text-4xl leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               {title}
             </h1>
           </Reveal>

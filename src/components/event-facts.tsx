@@ -51,7 +51,7 @@ export default function EventFacts({ facts }: { facts: EventFact[] }) {
               </span>
               <div className="min-w-0">
                 <dt className="text-xs uppercase tracking-[0.15em] text-muted">{f.label}</dt>
-                <dd className="mt-1 font-display text-base leading-snug tracking-tight text-foreground">{f.value}</dd>
+                <dd className="text-balance mt-1 font-display text-base leading-snug tracking-tight text-foreground">{f.value}</dd>
               </div>
             </div>
           ))}

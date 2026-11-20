@@ -30,7 +30,7 @@ export default function EventsList({ events }: { events: CalendarEvent[] }) {
                   type="button"
                   aria-pressed={on}
                   onClick={() => setActive(c)}
-                  className={`relative rounded-full border px-4 py-2 font-display text-[11px] uppercase tracking-[0.15em] transition-colors duration-200 ${
+                  className={`relative rounded-full border px-4 py-2.5 font-display text-xs uppercase tracking-[0.15em] transition-colors duration-200 ${
                     on
                       ? "border-transparent text-foreground"
                       : "border-line text-muted hover:border-accent/50 hover:text-foreground"

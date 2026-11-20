@@ -53,9 +53,9 @@ export default function EventHero({
             transition={{ duration: 0.5, ease: EASE }}
             className="flex flex-wrap items-center gap-2 font-display text-xs uppercase tracking-[0.15em] text-muted"
           >
-            <Link href="/" className="hover:text-foreground">Accueil</Link>
+            <Link href="/" className="inline-block py-2.5 hover:text-foreground">Accueil</Link>
             <span aria-hidden>›</span>
-            <Link href="/evenements" className="hover:text-foreground">Calendrier 2027</Link>
+            <Link href="/evenements" className="inline-block py-2.5 hover:text-foreground">Calendrier 2027</Link>
             <span aria-hidden>›</span>
             <span className="text-foreground/80" aria-current="page">{title}</span>
           </motion.nav>

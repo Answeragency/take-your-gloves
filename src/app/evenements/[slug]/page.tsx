@@ -132,7 +132,7 @@ export default async function EventDetailPage({
       <section className="mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-10 lg:pb-24 lg:pt-24">
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">L&apos;événement</p>
-          <p className="text-balance mt-5 font-display text-2xl leading-snug tracking-tight text-foreground sm:text-3xl">
+          <p className="text-balance mt-5 font-display text-xl leading-snug tracking-tight text-foreground sm:text-2xl lg:text-3xl">
             {event.description}
           </p>
           {event.body && Array.isArray(event.body) && event.body.length > 0 && (

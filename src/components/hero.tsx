@@ -37,7 +37,7 @@ export default function Hero({
 }: HeroProps) {
   const figures = stats && stats.length > 0 ? stats : DEFAULT_STATS;
   const bgImageUrl = imageUrl ?? "/images/ardennes-chateau-parade.jpg";
-  const bgVideoUrl = videoUrl ?? "/videos/hero.mp4";
+  const bgVideoUrl = videoUrl ?? "/videos/hero-teaser.mp4";
   const ref = useRef<HTMLDivElement>(null);
   const [canPlayVideo, setCanPlayVideo] = useState(false);
 
@@ -140,14 +140,19 @@ export default function Hero({
           </span>
         </h1>
 
-        <motion.p
+        {/* Une phrase par ligne de texte, chacune équilibrée : pas de dernière ligne orpheline */}
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          className="mx-auto mt-3 max-w-2xl whitespace-pre-line text-balance text-sm leading-relaxed text-muted sm:mt-8 sm:text-lg"
+          className="mx-auto mt-3 max-w-2xl space-y-1 text-sm leading-relaxed text-muted sm:mt-8 sm:space-y-2 sm:text-lg"
         >
-          {subtitle}
-        </motion.p>
+          {subtitle.split(/\r?\n/).map((line) => (
+            <p key={line} className="text-balance">
+              {line}
+            </p>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

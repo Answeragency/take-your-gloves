@@ -81,6 +81,11 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
+/* Textes courants : pas de ligne finale réduite à un mot ou deux */
+p, li, dd, blockquote, figcaption {
+  text-wrap: pretty;
+}
+
 .text-balance {
   text-wrap: balance;
 }

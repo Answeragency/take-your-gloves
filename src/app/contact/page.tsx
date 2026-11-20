@@ -51,13 +51,13 @@ export default async function ContactPage() {
             <div>
               <p className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">Email</p>
               <p className="mt-1">
-                <ProtectedEmail reversed={reverse(email)} className="transition-colors hover:text-foreground" />
+                <ProtectedEmail reversed={reverse(email)} className="inline-block py-2 transition-colors hover:text-foreground" />
               </p>
             </div>
             <div>
               <p className="font-display text-xs uppercase tracking-[0.15em] text-foreground/70">Téléphone</p>
               <p className="mt-1">
-                <a href={`tel:${phone.replace(/\s/g, "")}`} className="transition-colors hover:text-foreground">{formatPhone(phone)}</a>
+                <a href={`tel:${phone.replace(/\s/g, "")}`} className="inline-block py-2 transition-colors hover:text-foreground">{formatPhone(phone)}</a>
               </p>
             </div>
             <div>
