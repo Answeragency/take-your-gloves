@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://take-your-gloves.vercel.app/entreprises",
     images: [
       {
-        url: "/images/2026-05-19_roadtrip-ecosse-206.jpg",
+        url: "/images/soiree-pegasus-017.jpg",
         width: 1200,
         height: 630,
         alt: "Événements automobiles entreprises Take Your Gloves",
@@ -66,8 +66,8 @@ export default async function EntreprisesPage() {
       <section className="relative overflow-hidden pt-28 pb-16 lg:pt-40 lg:pb-24">
         <div className="absolute inset-0">
           <Photo
-            src={page?.heroImageUrl ?? "/images/2026-05-19_roadtrip-ecosse-206.jpg"}
-            alt="Convoi automobile lors d'un événement corporate Take Your Gloves"
+            src={page?.heroImageUrl ?? "/images/soiree-pegasus-017.jpg"}
+            alt="Soirée clients à l'atelier Pegasus Racing, voitures de course au milieu des invités"
             label="Take Your Gloves, événements entreprises"
             variant="dark"
             className="h-full w-full"
@@ -119,9 +119,9 @@ export default async function EntreprisesPage() {
             <Reveal delay={0.12} className="grid grid-cols-2 gap-3 sm:h-[460px] sm:grid-cols-12 sm:grid-rows-2">
               <div className="col-span-2 h-48 overflow-hidden rounded-2xl sm:col-span-8 sm:row-span-2 sm:h-full">
                 <Photo
-                  src="/images/soiree-pegasus-017.jpg"
-                  alt="Soirée clients à l'atelier Pegasus Racing, voitures de course au milieu des invités"
-                  label="Soirée clients à l'atelier"
+                  src="/images/pegasus-500n-gridgirls-015.jpg"
+                  alt="Grille de départ des 500 Nocturnes, invités et équipage autour d'une Porsche de course"
+                  label="Grille de départ"
                   variant="dark"
                   className="h-full w-full"
                 />
