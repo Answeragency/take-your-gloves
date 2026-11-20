@@ -43,7 +43,7 @@ export default function Hero({
   eyebrow = "Strasbourg · Alsace · Émotions automobiles",
   line1 = "Prenez le volant,",
   line2 = "Vivez la route.",
-  subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage.",
+  subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage…",
   videoUrl,
   stats,
 }: HeroProps) {

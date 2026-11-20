@@ -55,7 +55,7 @@ export const homePageSchema = defineType({
       group: "hero",
       type: "text",
       rows: 3,
-      initialValue: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage.",
+      initialValue: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage…",
     }),
 
     // ── Spirit ─────────────────────────────────────────────────────────────
