@@ -83,7 +83,7 @@ export default async function EntreprisesPage() {
             </p>
             <h1 className="mt-5 font-display text-[clamp(1.9rem,8vw,3rem)] leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               <span className="text-balance block">{page?.heroHeading ?? "Des expériences automobiles"}</span>
-              <span className="text-balance text-gold block">{page?.heroHeadingAccent ?? "à votre nom, à votre image"}</span>
+              <span className="gold-text text-balance block">{page?.heroHeadingAccent ?? "à votre nom, à votre image"}</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/80">
               {page?.heroDescription ?? "Concessions, garages, carrossiers, selliers : vos clients partagent la même passion que les nôtres. Take Your Gloves conçoit et organise pour vous des rallyes, journées circuit et stages glace, en marque blanche ou en partenariat visible."}

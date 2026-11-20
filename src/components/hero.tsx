@@ -120,7 +120,7 @@ export default function Hero({
           {eyebrow}
         </motion.p>
 
-        <h1 className="text-balance mx-auto mt-6 max-w-5xl font-display text-[clamp(1.9rem,8.6vw,3rem)] leading-[0.98] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+        <h1 className="text-balance mx-auto mt-6 max-w-5xl font-display [text-shadow:0_2px_26px_rgba(0,0,0,0.55)] text-[clamp(1.9rem,8.6vw,3rem)] leading-[0.98] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
             {words1.map((word, i) => {
               const wordIndex = i;
@@ -148,7 +148,7 @@ export default function Hero({
                   initial="hidden"
                   animate="visible"
                   variants={wordVariants}
-                  className="gold-text mx-2 inline-block"
+                  className="gold-text mx-2 inline-block [filter:drop-shadow(0_2px_14px_rgba(0,0,0,0.6))]"
                 >
                   {word}
                 </motion.span>

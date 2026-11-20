@@ -92,7 +92,7 @@ export default async function EvenementsPage() {
             <p className="mt-8 font-display text-sm uppercase tracking-[0.15em] text-foreground">
               Passionnément,
               <br />
-              <span className="text-gold">{signName}</span>
+              <span className="gold-text">{signName}</span>
             </p>
             {signRole.length > 0 && (
               <p className="mt-1 text-sm text-muted">{signRole.join(", ")}</p>
@@ -103,7 +103,7 @@ export default async function EvenementsPage() {
             <dl className="grid grid-cols-3 gap-4 border-t border-line pt-8">
               {figures.map((f) => (
                 <div key={f.label}>
-                  <dd className="font-display text-4xl tracking-tight text-gold-bright sm:text-5xl">
+                  <dd className="font-display text-4xl tracking-tight gold-text sm:text-5xl">
                     <CountUp value={f.value} />
                   </dd>
                   <dt className="mt-1 text-xs uppercase tracking-[0.15em] text-muted">{f.label}</dt>

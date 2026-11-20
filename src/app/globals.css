@@ -22,8 +22,8 @@
   --accent-bright: #98b6ea;
 
   /* Or — palette test client : logo #ffc926 / texte #ffde59 */
-  --gold: #ffc926;
-  --gold-bright: #ffde59;
+  --gold: #d6b04c;       /* or métallique (aplat : filets, petits textes) */
+  --gold-bright: #f0d27c; /* champagne : reflet clair */
 
   /* Bordures — assez visibles pour délimiter réellement */
   --line: rgba(255, 255, 255, 0.12);
@@ -93,8 +93,14 @@ p, li, dd, blockquote, figcaption {
 
 /* Emphase chaude dans les grands titres. Couleur pleine : l'ancien dégradé
    rendait la fin du texte quasi illisible. */
+/* Or métallique : dégradé clair-sombre-clair, tous les tons restent lumineux (≥ 8:1 sur le fond noir). */
 .gold-text {
-  color: var(--gold-bright);
+  color: var(--gold-bright); /* repli si le détourage du texte n'est pas pris en charge */
+  background-image: linear-gradient(105deg, #c99a3c 0%, #f7e3a4 26%, #d9b04a 50%, #fbeab0 74%, #c99a3c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.08em; /* évite de rogner les jambages (p, g, y) */
 }
 
 .gold-border-top {

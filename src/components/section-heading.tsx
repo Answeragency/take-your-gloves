@@ -34,7 +34,7 @@ export default function SectionHeading({
               parts
                 ? [
                     { text: parts[0] },
-                    { text: highlight as string, className: "text-gold-bright" },
+                    { text: highlight as string, className: "gold-text" },
                     { text: parts[1] },
                   ]
                 : [{ text: title }]
@@ -43,7 +43,7 @@ export default function SectionHeading({
         ) : parts ? (
           <>
             {parts[0]}
-            <span className="text-gold-bright">{highlight}</span>
+            <span className="gold-text">{highlight}</span>
             {parts[1]}
           </>
         ) : (
