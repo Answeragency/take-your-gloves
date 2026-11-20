@@ -30,9 +30,9 @@ export default function CtaBanner({
           position={imagePosition}
           className="h-full w-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/50" />
       </div>
-      <div className="relative mx-auto max-w-4xl px-6 pb-48 pt-16 text-center lg:px-10 lg:pb-64 lg:pt-28">
+      <div className="relative mx-auto max-w-4xl px-6 py-16 text-center lg:px-10 lg:py-24">
         <Reveal>
           <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">
             {eyebrow}
