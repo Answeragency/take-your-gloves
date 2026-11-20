@@ -54,7 +54,7 @@ export default async function Home() {
             highlight="rendez-vous"
           />
           <Reveal delay={0.1}>
-            <Button href="/evenements" variant="ghost">
+            <Button href="/evenements">
               Voir tout le calendrier
             </Button>
           </Reveal>

@@ -68,17 +68,17 @@ export default function CalendarCard({
               label={event.title}
               variant={categoryVariant[event.category] ?? "dark"}
               fit="cover"
-              className="h-full w-full transition-transform duration-700 group-hover:scale-110"
+              className="h-full w-full"
             />
           </div>
           <div className="relative z-10 flex flex-1 flex-col p-6">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-display text-[10px] uppercase tracking-[0.2em] text-accent">
+              <span className="font-display text-[11px] uppercase tracking-[0.2em] text-accent">
                 {event.category}
               </span>
               {event.status && (
                 <span
-                  className={`rounded-full border px-2.5 py-0.5 text-[10px] uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
+                  className={`rounded-full border px-2.5 py-0.5 text-[11px] uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
                 >
                   {event.status.replace(/\.$/, "")}
                 </span>
@@ -93,8 +93,8 @@ export default function CalendarCard({
             <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
               {event.description}
             </p>
-            <span className="mt-4 inline-flex items-center gap-2 font-display text-xs uppercase tracking-[0.18em] text-foreground transition-colors group-hover:text-accent">
-              Consulter le programme
+            <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-accent-fill px-5 py-2.5 font-display text-xs uppercase tracking-[0.12em] text-foreground transition-colors duration-300 group-hover:bg-accent-fill-hover">
+              Voir le programme complet
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
