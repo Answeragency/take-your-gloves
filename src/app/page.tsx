@@ -2,7 +2,7 @@ import Hero from "@/components/hero";
 import StatsStrip from "@/components/stats-strip";
 import Marquee from "@/components/marquee";
 import SectionHeading from "@/components/section-heading";
-import CalendarCard from "@/components/calendar-card";
+import { Carousel } from "@/components/ui/specials-linear-carousel";
 import TestimonialCard from "@/components/testimonial-card";
 import CtaBanner from "@/components/cta-banner";
 import Button from "@/components/button";
@@ -17,7 +17,7 @@ import {
 
 export default async function Home() {
   const [upcoming, testimonials, settings, home] = await Promise.all([
-    getUpcomingEvents(3),
+    getUpcomingEvents(8),
     getFeaturedTestimonials(4),
     getSiteSettings(),
     getHomePage(),
@@ -46,7 +46,7 @@ export default async function Home() {
       <StatsStrip stats={settings?.stats} />
 
       {/* Upcoming events */}
-      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-28">
+      <section className="mx-auto max-w-7xl px-6 pb-4 pt-16 lg:px-10 lg:pt-28">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             eyebrow="Calendrier 2027"
@@ -60,12 +60,22 @@ export default async function Home() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-6">
-          {upcoming.map((event, i) => (
-            <CalendarCard key={event.slug} event={event} index={i} showImage={false} />
-          ))}
-        </div>
       </section>
+
+      <div className="pb-16 lg:pb-28">
+        <Carousel
+          autoplay
+          cards={upcoming
+            .filter((event) => event.image)
+            .map((event) => ({
+              src: event.image as string,
+              title: event.title,
+              category: event.category,
+              meta: `${event.dateLabel} · ${event.location}`,
+              href: `/evenements/${event.slug}`,
+            }))}
+        />
+      </div>
 
       {/* Spirit section */}
       <section className="border-y border-line bg-surface">
