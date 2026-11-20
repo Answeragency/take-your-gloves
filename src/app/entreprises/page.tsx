@@ -6,8 +6,7 @@ import SectionHeading from "@/components/section-heading";
 import Reveal from "@/components/reveal";
 import Button from "@/components/button";
 import CtaBanner from "@/components/cta-banner";
-import StatsStrip from "@/components/stats-strip";
-import { getSiteSettings, getHomePage, getEntreprisesPage } from "@/sanity/lib/queries";
+import { getHomePage, getEntreprisesPage } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Événements Entreprises, concessions & marques automobiles",
@@ -54,8 +53,7 @@ const offers = [
 ];
 
 export default async function EntreprisesPage() {
-  const [settings, home, page] = await Promise.all([
-    getSiteSettings(),
+  const [home, page] = await Promise.all([
     getHomePage(),
     getEntreprisesPage(),
   ]);
@@ -98,7 +96,6 @@ export default async function EntreprisesPage() {
       </section>
 
       {/* ── Stats ────────────────────────────────────────────────────────── */}
-      <StatsStrip stats={settings?.stats} />
 
       {/* ── Partenariat (angle principal) ───────────────────────────────── */}
       <section className="border-y border-line bg-surface">
@@ -122,27 +119,27 @@ export default async function EntreprisesPage() {
             <Reveal delay={0.12} className="grid grid-cols-2 gap-3 sm:h-[460px] sm:grid-cols-12 sm:grid-rows-2">
               <div className="col-span-2 h-48 overflow-hidden rounded-2xl sm:col-span-8 sm:row-span-2 sm:h-full">
                 <Photo
-                  src="/images/2025-09-21_Roadtrip_Alpes_640_@Veezione.jpg"
-                  alt="Convoi VIP lors d'un événement corporate"
-                  label="Expérience client de marque"
+                  src="/images/soiree-pegasus-017.jpg"
+                  alt="Soirée clients à l'atelier Pegasus Racing, voitures de course au milieu des invités"
+                  label="Soirée clients à l'atelier"
                   variant="dark"
                   className="h-full w-full"
                 />
               </div>
               <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
                 <Photo
-                  src="/images/banquet-marlenheim-452.jpg"
-                  alt="Porsche lors d'un événement client"
-                  label="Sur route"
+                  src="/images/pegasus-500n-race-141.jpg"
+                  alt="Arrêt au stand de nuit lors des 500 Nocturnes"
+                  label="Coulisses des courses"
                   variant="gold"
                   className="h-full w-full"
                 />
               </div>
               <div className="h-32 overflow-hidden rounded-2xl sm:col-span-4 sm:row-span-1 sm:h-full">
                 <Photo
-                  src="/images/2026-05-22_roadtrip-ecosse-567.jpg"
-                  alt="Intérieur Mercedes-AMG, expérience client VIP"
-                  label="VIP"
+                  src="/images/pegasus-500n-gridwalk-068.jpg"
+                  alt="Pilote en casque dans les stands, accès paddock"
+                  label="Accès paddock"
                   variant="red"
                   className="h-full w-full"
                 />
@@ -237,7 +234,7 @@ export default async function EntreprisesPage() {
         eyebrow={home?.ctaEyebrow}
         heading={home?.ctaHeading}
         description={home?.ctaDescription}
-        imageUrl="/images/2026-05-20_roadtrip-ecosse-350.jpg"
+        imageUrl="/images/pegasus-500n-gridgirls-008.jpg"
       />
     </>
   );

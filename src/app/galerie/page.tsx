@@ -53,6 +53,13 @@ const STATIC_PHOTOS: GalleryItem[] = [
   { id: "banquet-marlenheim-210", src: "/images/banquet-marlenheim-210.jpg", label: "Banquet Marlenheim, juin 2025", variant: "red" },
   { id: "banquet-marlenheim-227", src: "/images/banquet-marlenheim-227.jpg", label: "Banquet Marlenheim, juin 2025", variant: "dark" },
   { id: "banquet-marlenheim-452", src: "/images/banquet-marlenheim-452.jpg", label: "Banquet Marlenheim, juin 2025", variant: "gold" },
+  { id: "soiree-pegasus-017", src: "/images/soiree-pegasus-017.jpg", label: "Soirée à l'atelier Pegasus, novembre 2025", variant: "dark" },
+  { id: "500n-gridgirls-008", src: "/images/pegasus-500n-gridgirls-008.jpg", label: "500 Nocturnes, grille de départ", variant: "gold" },
+  { id: "500n-gridgirls-015", src: "/images/pegasus-500n-gridgirls-015.jpg", label: "500 Nocturnes, grille de départ", variant: "red" },
+  { id: "500n-gridwalk-068", src: "/images/pegasus-500n-gridwalk-068.jpg", label: "500 Nocturnes, dans les stands", variant: "dark" },
+  { id: "500n-podium-036", src: "/images/pegasus-500n-podium-036.jpg", label: "500 Nocturnes, podium et feu d'artifice", variant: "gold" },
+  { id: "500n-race-141", src: "/images/pegasus-500n-race-141.jpg", label: "500 Nocturnes, arrêt au stand", variant: "dark" },
+  { id: "500n-race-180", src: "/images/pegasus-500n-race-180.jpg", label: "500 Nocturnes, course de nuit", variant: "red" },
 ];
 
 // Sous-titres de la galerie (dans cet ordre) : on regroupe les photos par type d'événement.
@@ -60,7 +67,8 @@ const GROUPS: [string, RegExp][] = [
   ["Rallyes touristiques", /ardennes|alpes|écosse|ecosse|dolomites|vosges|forêt noire|pyrénées|rallye touristique|road ?trip/i],
   ["Roulage sur glace", /glace|autriche/i],
   ["Circuit", /nürburgring|nurburgring|circuit|trackday|roulage/i],
-  ["Journées conviviales", /banquet|gourmand|marlenheim|convivial/i],
+  ["500 Nocturnes", /500 nocturnes/i],
+  ["Journées conviviales", /banquet|gourmand|marlenheim|convivial|soirée|atelier/i],
 ];
 const OTHER_GROUP = "Sur la route";
 const groupOf = (label: string) => GROUPS.find(([, re]) => re.test(label))?.[0] ?? OTHER_GROUP;
