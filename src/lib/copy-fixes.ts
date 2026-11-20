@@ -13,6 +13,10 @@ const FIXES: Record<string, string> = {
   "Depuis nos premiers événements entre amis à Strasbourg, Take Your Gloves est devenu une référence incontournable pour les passionnés de voitures de sport en Alsace. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions.":
     "Depuis nos premiers événements conviviaux en Alsace, Take Your Gloves est devenu une référence incontournable pour les passionnés de voitures de sport. Sécurité, convivialité et exigence : chaque événement est pensé pour vous faire vivre le plaisir de conduire dans les meilleures conditions.",
 
+  // Sous-titre du hero : tout au pluriel, comme dans le bandeau
+  "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sortie circuit, journée thématiques.":
+    "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage.",
+
   // Bandeau final
   "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé sous 48h.":
     "Racontez-nous votre projet ou vos envies : rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé sous 48h.",

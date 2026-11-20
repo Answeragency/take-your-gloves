@@ -27,7 +27,7 @@ export default function Hero({
   eyebrow = "Strasbourg · Alsace · Émotions automobiles",
   line1 = "Enfilez vos gants.",
   line2 = "Vivez la route.",
-  subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sortie circuit, journée thématiques.",
+  subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage.",
   imageUrl,
   videoUrl,
 }: HeroProps) {
@@ -175,7 +175,7 @@ export default function Hero({
         transition={{ delay: 1.6, duration: 1 }}
         className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
       >
-        <span className="font-display text-[10px] uppercase tracking-[0.3em] text-muted">
+        <span className="font-display text-xs uppercase tracking-[0.3em] text-muted">
           Défiler
         </span>
         <motion.span
