@@ -183,7 +183,7 @@ export const Card = ({ card }: { card: CardData; index?: number }) => {
     <Link
       href={card.href}
       draggable={false}
-      className="group relative block aspect-[707/1000] w-60 overflow-hidden rounded-3xl border border-line bg-surface-2 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:border-accent/50 hover:shadow-xl hover:shadow-black/40 focus-visible:-translate-y-1.5 md:w-72"
+      className="group relative block aspect-[707/1000] w-60 overflow-hidden rounded-3xl border border-line bg-surface-2 transition-colors duration-300 hover:border-accent/60 md:w-72"
     >
       <Image
         quality={90}
@@ -194,16 +194,9 @@ export const Card = ({ card }: { card: CardData; index?: number }) => {
         sizes="(max-width: 768px) 240px, 288px"
         className="select-none object-cover"
       />
-      {/* Infos au survol : l'affiche contient déjà date et titre, on ne la recouvre pas en permanence. */}
-      <div className="absolute inset-x-0 bottom-0 z-10 translate-y-2 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-5 pt-16 opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
-        {card.category && (
-          <p className="font-display text-xs uppercase tracking-[0.2em] text-accent-bright">{card.category}</p>
-        )}
-        <p className="mt-1 font-display text-lg leading-snug tracking-tight text-foreground [text-wrap:balance]">
-          {card.title}
-        </p>
-        {card.meta && <p className="mt-1 text-xs uppercase tracking-[0.1em] text-foreground/70">{card.meta}</p>}
-        <span className="mt-3 inline-flex items-center gap-2 font-display text-xs uppercase tracking-[0.15em] text-foreground">
+      {/* Survol : simple voile + bouton centré. L'affiche porte déjà titre et date. */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+        <span className="inline-flex items-center gap-2 rounded-full bg-accent-fill px-7 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.08em] text-white shadow-lg shadow-black/40">
           Voir le programme <span aria-hidden>→</span>
         </span>
       </div>
