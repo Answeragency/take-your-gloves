@@ -98,7 +98,7 @@ export default function CalendarCard({
             <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
               {event.description}
             </p>
-            <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-accent-fill px-5 py-2.5 font-display text-xs uppercase tracking-[0.12em] text-foreground transition-colors duration-300 group-hover:bg-accent-fill-hover">
+            <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-accent-fill px-5 py-2.5 font-display text-xs uppercase tracking-[0.12em] text-white transition-colors duration-300 group-hover:bg-accent-fill-hover">
               Voir le programme complet
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 →

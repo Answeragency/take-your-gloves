@@ -26,7 +26,7 @@ export default function Marquee({ items }: { items?: string[] }) {
       >
         {repeated.map((item, i) => (
           <span key={i} className="flex items-center">
-            <span className="px-6 font-display text-xs uppercase tracking-[0.32em] text-foreground/70">
+            <span className="px-6 font-display text-xs uppercase tracking-[0.32em] text-white">
               {item}
             </span>
             <span aria-hidden="true" className="text-accent text-sm">◆</span>

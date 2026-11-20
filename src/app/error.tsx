@@ -16,13 +16,13 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
         <div className="mt-9 flex flex-wrap justify-center gap-4">
           <button
             onClick={reset}
-            className="rounded-full bg-accent-fill px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-foreground transition-colors hover:bg-accent-fill-hover"
+            className="rounded-full bg-accent-fill px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-white transition-colors hover:bg-accent-fill-hover"
           >
             Réessayer
           </button>
           <Link
             href="/"
-            className="rounded-full border border-foreground/25 px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-foreground transition-colors hover:border-accent hover:text-accent"
+            className="rounded-full border border-foreground/25 px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-white transition-colors hover:border-accent hover:text-accent"
           >
             Accueil
           </Link>

@@ -37,7 +37,7 @@ export default function PosterCard({ event, index = 0 }: { event: CalendarEvent;
               {event.status.replace(/\.$/, "")}
             </span>
           )}
-          <span className="mt-auto inline-flex items-center gap-2 pt-5 font-display text-xs uppercase tracking-[0.15em] text-foreground transition-colors group-hover:text-accent">
+          <span className="mt-auto inline-flex items-center gap-2 pt-5 font-display text-xs uppercase tracking-[0.15em] text-white transition-colors group-hover:text-accent">
             Voir le programme
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </span>

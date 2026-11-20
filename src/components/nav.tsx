@@ -195,7 +195,7 @@ export default function Nav({
 
           <Link
             href="/contact"
-            className="hidden rounded-full border border-foreground/25 px-5 py-2.5 font-display text-xs uppercase tracking-[0.02em] text-foreground transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_rgba(49,82,140,0.34)] lg:inline-block"
+            className="hidden rounded-full border border-foreground/25 px-5 py-2.5 font-display text-xs uppercase tracking-[0.02em] text-white transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_rgba(49,82,140,0.34)] lg:inline-block"
           >
             Nous contacter
           </Link>
@@ -257,7 +257,7 @@ export default function Nav({
               >
                 <Link
                   href="/contact"
-                  className="mt-4 rounded-full bg-accent-fill px-8 py-3.5 font-display text-sm uppercase tracking-[0.02em] text-foreground"
+                  className="mt-4 rounded-full bg-accent-fill px-8 py-3.5 font-display text-sm uppercase tracking-[0.02em] text-white"
                 >
                   Nous contacter
                 </Link>

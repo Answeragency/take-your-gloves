@@ -103,13 +103,13 @@ export default function EventHero({
             <button
               type="button"
               onClick={goToForm}
-              className="inline-flex items-center gap-2 rounded-full bg-accent-fill px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-foreground transition-colors duration-300 hover:bg-accent-fill-hover"
+              className="inline-flex items-center gap-2 rounded-full bg-accent-fill px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-white transition-colors duration-300 hover:bg-accent-fill-hover"
             >
               Recevoir les infos <span aria-hidden>↓</span>
             </button>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/25 px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-foreground transition-colors duration-300 hover:border-accent/70 hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-full border border-foreground/25 px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-white transition-colors duration-300 hover:border-accent/70 hover:text-accent"
             >
               Nous contacter <span aria-hidden>→</span>
             </Link>

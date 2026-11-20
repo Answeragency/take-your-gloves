@@ -38,7 +38,7 @@ export default function EventActionBar({ title, dateLabel }: { title: string; da
           <div className="flex shrink-0 items-center gap-2">
             <Link
               href="/contact"
-              className="hidden rounded-full border border-foreground/25 px-4 py-2.5 font-display text-xs uppercase tracking-[0.05em] text-foreground transition-colors hover:border-accent/70 hover:text-accent sm:inline-block"
+              className="hidden rounded-full border border-foreground/25 px-4 py-2.5 font-display text-xs uppercase tracking-[0.05em] text-white transition-colors hover:border-accent/70 hover:text-accent sm:inline-block"
             >
               Nous contacter
             </Link>
@@ -47,7 +47,7 @@ export default function EventActionBar({ title, dateLabel }: { title: string; da
               onClick={() =>
                 document.getElementById("infos")?.scrollIntoView({ behavior: "smooth", block: "start" })
               }
-              className="rounded-full bg-accent-fill px-5 py-2.5 font-display text-xs uppercase tracking-[0.05em] text-foreground transition-colors hover:bg-accent-fill-hover"
+              className="rounded-full bg-accent-fill px-5 py-2.5 font-display text-xs uppercase tracking-[0.05em] text-white transition-colors hover:bg-accent-fill-hover"
             >
               Recevoir les infos
             </button>

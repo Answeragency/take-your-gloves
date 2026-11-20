@@ -94,7 +94,7 @@ export default function EventInfoForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent-fill px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-foreground transition-colors hover:bg-accent-fill-hover disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent-fill px-8 py-4 font-display text-sm uppercase tracking-[0.05em] text-white transition-colors hover:bg-accent-fill-hover disabled:opacity-60"
       >
         {status === "submitting" ? "Envoi…" : "Recevoir les infos"}
       </button>

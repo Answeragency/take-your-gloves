@@ -223,7 +223,7 @@ export default async function EntreprisesPage() {
               </Button>
               <ProtectedEmail
                 reversed={reverse("contact@take-your-gloves.fr")}
-                className="inline-flex items-center justify-center rounded-full border border-foreground/25 px-8 py-4 font-display text-sm tracking-[0.05em] text-foreground transition-colors hover:border-accent/70 hover:text-accent"
+                className="inline-flex items-center justify-center rounded-full border border-foreground/25 px-8 py-4 font-display text-sm tracking-[0.05em] text-white transition-colors hover:border-accent/70 hover:text-accent"
               />
             </div>
           </div>
