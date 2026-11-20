@@ -7,6 +7,8 @@ type CtaBannerProps = {
   heading?: string;
   description?: string;
   imageUrl?: string;
+  /** Point focal du recadrage : par défaut on garde le bas de la photo, là où sont les voitures. */
+  imagePosition?: string;
 };
 
 export default function CtaBanner({
@@ -14,6 +16,7 @@ export default function CtaBanner({
   heading = "Parlons de votre prochaine expérience automobile",
   description = "Racontez-nous votre projet ou vos envies, rallyes, sortie conviviale, expérience sport automobile, et recevez un retour personnalisé.",
   imageUrl,
+  imagePosition = "center 80%",
 }: CtaBannerProps) {
   const bgImageUrl = imageUrl ?? "/images/amg-gtr-foret.jpg";
   return (
@@ -24,11 +27,12 @@ export default function CtaBanner({
           alt=""
           label="Take Your Gloves"
           variant="gold"
+          position={imagePosition}
           className="h-full w-full"
         />
-        <div className="absolute inset-0 bg-background/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/20" />
       </div>
-      <div className="relative mx-auto max-w-4xl px-6 py-16 text-center lg:px-10 lg:py-28">
+      <div className="relative mx-auto max-w-4xl px-6 pb-48 pt-16 text-center lg:px-10 lg:pb-64 lg:pt-28">
         <Reveal>
           <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">
             {eyebrow}

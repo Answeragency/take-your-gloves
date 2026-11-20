@@ -174,27 +174,43 @@ export default function Hero({
         </motion.div>
       </motion.div>
 
-      {/* Chiffres clés : ancrés au bas du héros, sur la photo */}
+      {/* Chiffres clés : directement sur la photo, sans fond. Ils respirent lentement après leur entrée. */}
       <motion.dl
-        initial={{ opacity: 0, y: 32 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-x-0 bottom-0 z-10 border-t border-foreground/10 bg-background/60 backdrop-blur-md"
+        style={{ opacity: contentOpacity }}
+        className="absolute inset-x-0 bottom-0 z-10 pb-8 sm:pb-12"
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-3 px-6 lg:px-10">
+        <div className="mx-auto grid max-w-7xl grid-cols-3 gap-4 px-6 sm:gap-10 lg:px-10">
           {figures.map((s, i) => (
-            <div
+            <motion.div
               key={s.label}
-              className={`flex flex-col-reverse justify-end gap-1.5 py-5 sm:py-8 ${
-                i > 0 ? "border-l border-foreground/10 pl-4 sm:pl-10" : ""
-              }`}
+              animate={{ y: [0, -7, 0] }}
+              transition={{ duration: 5 + i * 0.8, repeat: Infinity, ease: "easeInOut", delay: 3 + i * 0.5 }}
+              className="flex flex-col-reverse justify-end gap-2 [text-shadow:0_2px_28px_rgba(0,0,0,0.65)]"
             >
-              <dt className="text-xs uppercase tracking-[0.12em] text-muted sm:tracking-[0.18em]">{s.label}</dt>
-              <dd className="font-display text-3xl leading-none tracking-tight text-foreground sm:text-6xl">
-                <span aria-hidden className="mb-3 block h-px w-8 bg-gradient-to-r from-gold to-transparent sm:mb-4 sm:w-10" />
+              <motion.dt
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1.9 + i * 0.15 }}
+                className="text-xs uppercase tracking-[0.12em] text-foreground/75 sm:tracking-[0.2em]"
+              >
+                {s.label}
+              </motion.dt>
+              <motion.dd
+                initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 1, delay: 1.4 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="font-display text-4xl leading-none tracking-tight text-foreground sm:text-7xl"
+              >
+                <motion.span
+                  aria-hidden
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.9, delay: 1.6 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  className="mb-3 block h-px w-10 origin-left bg-gradient-to-r from-gold to-transparent sm:mb-5 sm:w-16"
+                />
                 <CountUp value={s.value} />
-              </dd>
-            </div>
+              </motion.dd>
+            </motion.div>
           ))}
         </div>
       </motion.dl>

@@ -140,7 +140,7 @@ export default async function RootLayout({
           <ScrollProgress />
           <div className="noise-overlay" />
           <Cursor />
-          <Nav logoUrl={logoUrl} events={events.map(e => ({ slug: e.slug, title: e.title }))} />
+          <Nav logoUrl={logoUrl} events={events.map(e => ({ slug: e.slug, title: e.title, dateLabel: e.dateLabel, location: e.location }))} />
           <main id="contenu" className="flex-1">{children}</main>
           <Footer />
         </LenisProvider>

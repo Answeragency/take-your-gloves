@@ -165,6 +165,7 @@ export default async function Home() {
         heading={home?.ctaHeading}
         description={home?.ctaDescription}
         imageUrl="/images/2025-09-20_Roadtrip_Alpes_525_@Veezione.jpg"
+        imagePosition="center 92%"
       />
     </>
   );
