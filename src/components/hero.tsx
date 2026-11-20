@@ -3,9 +3,12 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import Button from "./button";
+import CountUp from "./count-up";
 import Photo from "./photo";
+import { DEFAULT_STATS, type Stat } from "@/lib/stats";
 
 type HeroProps = {
+  stats?: Stat[];
   eyebrow?: string;
   line1?: string;
   line2?: string;
@@ -30,7 +33,9 @@ export default function Hero({
   subtitle = "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage.",
   imageUrl,
   videoUrl,
+  stats,
 }: HeroProps) {
+  const figures = stats && stats.length > 0 ? stats : DEFAULT_STATS;
   const bgImageUrl = imageUrl ?? "/images/ardennes-chateau-parade.jpg";
   const bgVideoUrl = videoUrl ?? "/videos/hero.mp4";
   const ref = useRef<HTMLDivElement>(null);
@@ -57,7 +62,7 @@ export default function Hero({
   const words2 = line2.split(" ");
 
   return (
-    <section ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28">
+    <section ref={ref} className="relative flex min-h-screen items-center overflow-hidden pb-40 pt-28 sm:pb-48">
       <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
         <Photo
           src={bgImageUrl}
@@ -169,21 +174,30 @@ export default function Hero({
         </motion.div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
+      {/* Chiffres clés : ancrés au bas du héros, sur la photo */}
+      <motion.dl
+        initial={{ opacity: 0, y: 32 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-x-0 bottom-0 z-10 border-t border-foreground/10 bg-background/60 backdrop-blur-md"
       >
-        <span className="font-display text-xs uppercase tracking-[0.3em] text-muted">
-          Défiler
-        </span>
-        <motion.span
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="h-8 w-px bg-foreground/30"
-        />
-      </motion.div>
+        <div className="mx-auto grid max-w-7xl grid-cols-3 px-6 lg:px-10">
+          {figures.map((s, i) => (
+            <div
+              key={s.label}
+              className={`flex flex-col-reverse justify-end gap-1.5 py-5 sm:py-8 ${
+                i > 0 ? "border-l border-foreground/10 pl-4 sm:pl-10" : ""
+              }`}
+            >
+              <dt className="text-xs uppercase tracking-[0.12em] text-muted sm:tracking-[0.18em]">{s.label}</dt>
+              <dd className="font-display text-3xl leading-none tracking-tight text-foreground sm:text-6xl">
+                <span aria-hidden className="mb-3 block h-px w-8 bg-gradient-to-r from-gold to-transparent sm:mb-4 sm:w-10" />
+                <CountUp value={s.value} />
+              </dd>
+            </div>
+          ))}
+        </div>
+      </motion.dl>
     </section>
   );
 }

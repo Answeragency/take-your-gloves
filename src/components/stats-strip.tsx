@@ -1,11 +1,7 @@
 import Reveal from "./reveal";
 import CountUp from "./count-up";
 
-const DEFAULT_STATS = [
-  { value: "+50", label: "Événements organisés" },
-  { value: "+250", label: "Pilotes rencontrés" },
-  { value: "+5", label: "Ans d'expérience" },
-];
+import { DEFAULT_STATS } from "@/lib/stats";
 
 export default function StatsStrip({ stats }: { stats?: { value: string; label: string }[] }) {
   const items = stats && stats.length > 0 ? stats : DEFAULT_STATS;

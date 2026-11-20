@@ -155,13 +155,6 @@ export const eventSchema = defineType({
       ],
     }),
     defineField({
-      name: "perks",
-      title: "Les + de ce séjour",
-      type: "array",
-      of: [{ type: "string" }],
-      description: "Laisser vide pour afficher les + habituels de nos séjours",
-    }),
-    defineField({
       name: "maxParticipants",
       title: "Nombre max de participants",
       type: "number",

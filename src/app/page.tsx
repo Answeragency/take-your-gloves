@@ -1,5 +1,4 @@
 import Hero from "@/components/hero";
-import StatsStrip from "@/components/stats-strip";
 import Marquee from "@/components/marquee";
 import SectionHeading from "@/components/section-heading";
 import { Carousel } from "@/components/ui/specials-linear-carousel";
@@ -41,9 +40,9 @@ export default async function Home() {
         subtitle={home?.heroSubtitle}
         imageUrl={home?.heroImageUrl ?? "/images/2026-05-19_roadtrip-ecosse-107.jpg"}
         videoUrl={home?.heroVideoUrl}
+        stats={settings?.stats}
       />
       <Marquee items={settings?.marqueeItems} />
-      <StatsStrip stats={settings?.stats} />
 
       {/* Upcoming events */}
       <section className="mx-auto max-w-7xl px-6 pb-4 pt-16 lg:px-10 lg:pt-28">

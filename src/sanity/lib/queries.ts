@@ -42,7 +42,6 @@ export type SanityEvent = {
   maxParticipants?: number;
   duration?: string;
   inclusions?: string;
-  perks?: string[];
   program?: { _key: string; day?: string; title?: string; text?: string }[];
   gallery?: string[]; // URLs projetées depuis Sanity
 };
@@ -101,7 +100,6 @@ export async function getEventBySlug(
       maxParticipants,
       duration,
       inclusions,
-      perks,
       program[]{ _key, day, title, text },
       "gallery": gallery[].asset->url,
       "imageRaw": image

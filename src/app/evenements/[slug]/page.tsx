@@ -18,13 +18,6 @@ import {
   getFeaturedTestimonials,
 } from "@/sanity/lib/queries";
 
-const DEFAULT_PERKS = [
-  { title: "Roadbook soigné", text: "Itinéraires repérés en amont : rien n'est laissé au hasard." },
-  { title: "Encadrement sécurité", text: "Briefings systématiques et pilotes expérimentés." },
-  { title: "Groupe à taille humaine", text: "Une communauté de passionnés, sans compétition." },
-  { title: "Étapes sélectionnées", text: "Lieux et partenaires choisis pour en profiter pleinement." },
-];
-
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -85,7 +78,7 @@ export default async function EventDetailPage({
   const duration = event.duration ?? extras.duration;
   const inclusions = event.inclusions ?? extras.inclusions;
   const photos = event.gallery?.length ? event.gallery : matched.length > 0 ? matched : (extras.gallery ?? []);
-  const perks = event.perks?.length ? event.perks.map((title) => ({ title, text: "" })) : DEFAULT_PERKS;
+  const hasProgram = Boolean(event.program && event.program.length > 0);
   const facts: EventFact[] = [
     { key: "date", label: "Dates", value: event.dateLabel },
     { key: "place", label: "Lieu", value: event.location },
@@ -156,15 +149,15 @@ export default async function EventDetailPage({
       </section>
 
       <section className="border-y border-line bg-surface">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:px-10 lg:py-24">
-          <Reveal>
-            <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Au programme</p>
-            <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
-              Le programme
-            </h2>
-            {event.program && event.program.length > 0 ? (
+        {hasProgram ? (
+          <div className="mx-auto grid max-w-7xl items-start gap-12 px-6 py-16 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:px-10 lg:py-24">
+            <Reveal>
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Au programme</p>
+              <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
+                Le programme
+              </h2>
               <ol className="mt-8 space-y-4">
-                {event.program.map((d) => (
+                {event.program?.map((d) => (
                   <li key={d._key} className="rounded-2xl border border-line bg-background p-6">
                     {d.day && (
                       <p className="font-display text-xs uppercase tracking-[0.2em] text-gold">{d.day}</p>
@@ -176,44 +169,36 @@ export default async function EventDetailPage({
                   </li>
                 ))}
               </ol>
-            ) : (
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-                Informations et programme complet à venir. Laissez-nous vos coordonnées : vous
-                les recevrez en avant-première.
+            </Reveal>
+            <Reveal delay={0.1} className="lg:sticky lg:top-28">
+              <span id="infos" className="block scroll-mt-32" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Être recontacté</p>
+              <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
+                Recevoir les infos
+              </h2>
+              <p className="mb-8 mt-3 text-sm leading-relaxed text-muted">
+                Laissez votre email ou votre téléphone, nous vous recontactons.
               </p>
-            )}
-          </Reveal>
-          <Reveal delay={0.1}>
-            <span id="infos" className="block scroll-mt-32" />
-            <h2 className="font-display text-2xl tracking-tight text-foreground">Recevoir les infos</h2>
-            <p className="mb-6 mt-2 text-sm leading-relaxed text-muted">
-              Laissez votre email ou votre téléphone, nous vous recontactons.
-            </p>
-            <EventInfoForm eventTitle={event.title} dateLabel={event.dateLabel} category={event.category} />
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-        <Reveal>
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Pourquoi nous suivre</p>
-          <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
-            Les + de nos séjours
-          </h2>
-        </Reveal>
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {perks.map((p, i) => (
-            <li key={p.title} className="h-full">
-              <Reveal delay={i * 0.06} className="h-full">
-                <div className="h-full rounded-2xl border border-line bg-surface p-6">
-                  <span aria-hidden className="mb-4 block h-px w-8 bg-gold" />
-                  <p className="font-display text-base tracking-tight text-foreground">{p.title}</p>
-                  {p.text && <p className="mt-2 text-sm leading-relaxed text-muted">{p.text}</p>}
-                </div>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+              <EventInfoForm eventTitle={event.title} dateLabel={event.dateLabel} category={event.category} />
+            </Reveal>
+          </div>
+        ) : (
+          <div className="mx-auto max-w-2xl px-6 py-16 text-center lg:py-24">
+            <Reveal>
+              <span id="infos" className="block scroll-mt-32" />
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Au programme</p>
+              <h2 className="text-balance mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
+                Informations et programme complet à venir
+              </h2>
+              <p className="text-balance mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
+                Laissez-nous votre email ou votre téléphone : vous recevrez le programme en avant-première.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1} className="mt-10 text-left">
+              <EventInfoForm eventTitle={event.title} dateLabel={event.dateLabel} category={event.category} />
+            </Reveal>
+          </div>
+        )}
       </section>
 
       {testimonials.length > 0 && (
