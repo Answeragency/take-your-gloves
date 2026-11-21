@@ -30,7 +30,7 @@ export default async function TemoignagesPage() {
 
   return (
     <>
-      <section className="pt-40 pb-16">
+      <section className="pt-28 pb-16 lg:pt-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading
             as="h1"
@@ -42,7 +42,7 @@ export default async function TemoignagesPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-28 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-28">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t, i) => (
             <TestimonialCard key={t._id} {...t} index={i} />

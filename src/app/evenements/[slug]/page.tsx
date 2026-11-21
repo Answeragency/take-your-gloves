@@ -202,7 +202,7 @@ export default async function EventDetailPage({
       </section>
 
       {testimonials.length > 0 && (
-        <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10 lg:pb-24">
+        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Avis</p>
             <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground sm:text-4xl">
