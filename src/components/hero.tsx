@@ -186,7 +186,7 @@ export default function Hero({
       {/* Chiffres clés : directement sur la photo, sans fond. Ils respirent lentement après leur entrée. */}
       <motion.dl
         style={{ opacity: contentOpacity }}
-        className="absolute inset-x-0 bottom-0 z-10 pb-8 sm:pb-12"
+        className="absolute inset-x-0 bottom-0 z-10 pb-10 sm:pb-20"
       >
         <div className="mx-auto grid max-w-7xl grid-cols-3 gap-4 px-6 sm:gap-10 lg:px-10">
           {figures.map((s, i) => (
