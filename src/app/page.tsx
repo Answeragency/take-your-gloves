@@ -62,7 +62,7 @@ export default async function Home() {
           </Reveal>
         </div>
         {moreText.length > 0 && (
-          <p className="text-balance mt-6 max-w-2xl text-base leading-relaxed text-muted">
+          <p className="mt-6 text-base leading-relaxed text-muted md:whitespace-nowrap">
             {moreText.join(" ")}
           </p>
         )}
