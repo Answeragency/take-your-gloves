@@ -132,18 +132,18 @@ export default async function Home() {
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-2xl">
               <Photo
-                src={spiritImages[1] ?? "/images/2025-09-20_Roadtrip_Alpes_509_@Veezione.jpg"}
-                alt="Porsche sur une route forestière"
-                label="Sur la route"
+                src="/images/glace-groupe.jpg"
+                alt="Groupe Take Your Gloves lors d'une journée sur glace"
+                label="Sur la glace"
                 variant="dark"
                 className="h-full w-full"
               />
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-2xl">
               <Photo
-                src={spiritImages[2] ?? "/images/interior-amg.jpg"}
-                alt="Intérieur d'une Mercedes-AMG GT"
-                label="À bord"
+                src="/images/groupe-drapeaux.jpg"
+                alt="Groupe de pilotes Take Your Gloves avec les drapeaux"
+                label="Pilotes"
                 variant="gold"
                 className="h-full w-full"
               />
