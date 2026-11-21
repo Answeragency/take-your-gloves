@@ -28,6 +28,12 @@ export default async function Home() {
     "Une organisation complète pour vous permettre de pleinement vivre nos expériences",
   ];
 
+  // Seule la 1re phrase reste dans le hero ; la liste des formats passe sous le titre du calendrier.
+  const [heroText, ...moreText] = (
+    home?.heroSubtitle ??
+    "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage…"
+  ).split(/\r?\n/);
+
   const spiritImages = home?.spiritImageUrls ?? [];
 
   return (
@@ -36,7 +42,7 @@ export default async function Home() {
         eyebrow={home?.heroEyebrow}
         line1={home?.heroLine1}
         line2={home?.heroLine2}
-        subtitle={home?.heroSubtitle}
+        subtitle={heroText}
         videoUrl={home?.heroVideoUrl}
         stats={settings?.stats}
       />
@@ -55,7 +61,11 @@ export default async function Home() {
             </Button>
           </Reveal>
         </div>
-
+        {moreText.length > 0 && (
+          <p className="text-balance mt-6 max-w-2xl text-base leading-relaxed text-muted">
+            {moreText.join(" ")}
+          </p>
+        )}
       </section>
 
       <div className="pb-16 lg:pb-28">

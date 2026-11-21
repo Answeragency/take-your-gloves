@@ -39,6 +39,16 @@ export const Carousel = ({
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [paused, setPaused] = useState(false);
+  const [hold, setHold] = useState(false);
+  const holdTimer = useRef<number | undefined>(undefined);
+
+  /** Suspend le défilement automatique un moment (clic sur une flèche, fin d'un toucher) : sinon il écraserait le défilement animé. */
+  const holdFor = (ms: number) => {
+    setHold(true);
+    window.clearTimeout(holdTimer.current);
+    holdTimer.current = window.setTimeout(() => setHold(false), ms);
+  };
+  useEffect(() => () => window.clearTimeout(holdTimer.current), []);
 
   // Les éléments sont dupliqués : quand on atteint la moitié, on revient au début sans à-coup.
   const loopedCards = [...cards, ...cards];
@@ -61,7 +71,7 @@ export const Carousel = ({
 
   useEffect(() => {
     const el = trackRef.current;
-    if (!el || !autoplay || paused) return;
+    if (!el || !autoplay || paused || hold) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     posRef.current = el.scrollLeft;
     let raf = 0;
@@ -74,9 +84,10 @@ export const Carousel = ({
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [autoplay, autoplaySpeed, paused]);
+  }, [autoplay, autoplaySpeed, paused, hold]);
 
   const step = (dir: 1 | -1) => {
+    holdFor(4000);
     const el = trackRef.current;
     if (el) el.scrollBy({ left: dir * el.clientWidth * 0.7, behavior: "smooth" });
   };
@@ -108,7 +119,10 @@ export const Carousel = ({
         setPaused(false);
       }}
       onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => setPaused(false)}
+      onTouchEnd={() => {
+        setPaused(false);
+        holdFor(3000);
+      }}
     >
       <div
         aria-hidden
@@ -167,7 +181,7 @@ export const Carousel = ({
               onClick={() => step(dir)}
               disabled={dir === -1 ? !canScrollLeft : !canScrollRight}
               aria-label={dir === -1 ? "Événements précédents" : "Événements suivants"}
-              className="relative z-30 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-foreground transition-colors hover:border-accent hover:text-accent disabled:opacity-40"
+              className="relative z-30 flex h-11 w-11 touch-manipulation items-center justify-center rounded-full border border-line bg-surface text-foreground transition-colors hover:border-accent hover:text-accent disabled:opacity-40"
             >
               <Icon className="h-5 w-5" aria-hidden />
             </button>

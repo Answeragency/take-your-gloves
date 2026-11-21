@@ -103,7 +103,6 @@ export default function Hero({
             )}
           </video>
         )}
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/65 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background/85 via-background/40 to-transparent" />
       </div>
 
@@ -115,12 +114,12 @@ export default function Hero({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-xs uppercase tracking-[0.35em] text-foreground/90 [text-shadow:0_1px_16px_rgba(0,0,0,0.7)]"
+          className="font-display text-xs uppercase tracking-[0.35em] text-foreground/90"
         >
           {eyebrow}
         </motion.p>
 
-        <h1 className="text-balance mx-auto mt-6 max-w-5xl font-display [text-shadow:0_2px_26px_rgba(0,0,0,0.55)] text-[clamp(1.9rem,8.6vw,3rem)] leading-[0.98] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+        <h1 className="text-balance mx-auto mt-6 max-w-5xl font-display text-[clamp(1.9rem,8.6vw,3rem)] leading-[0.98] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
             {words1.map((word, i) => {
               const wordIndex = i;
@@ -148,7 +147,7 @@ export default function Hero({
                   initial="hidden"
                   animate="visible"
                   variants={wordVariants}
-                  className="gold-text mx-2 inline-block [filter:drop-shadow(0_2px_14px_rgba(0,0,0,0.6))]"
+                  className="gold-text mx-2 inline-block"
                 >
                   {word}
                 </motion.span>
@@ -162,7 +161,7 @@ export default function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          className="mx-auto mt-3 max-w-2xl space-y-1 text-sm leading-relaxed text-foreground/90 [text-shadow:0_1px_18px_rgba(0,0,0,0.75)] sm:mt-8 sm:space-y-2 sm:text-lg"
+          className="mx-auto mt-3 max-w-2xl space-y-1 text-sm leading-relaxed text-foreground/90 sm:mt-8 sm:space-y-2 sm:text-lg"
         >
           {subtitle.split(/\r?\n/).map((line) => (
             <p key={line} className="text-balance">

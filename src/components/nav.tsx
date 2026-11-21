@@ -220,45 +220,57 @@ export default function Nav({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            data-lenis-prevent
             className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-background lg:hidden"
           >
-            <div className="flex flex-1 flex-col items-center justify-center gap-6 py-24">
-              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0 }}>
-                <Link href="/evenements" className="font-display text-2xl uppercase tracking-tight text-foreground">
+            {/* my-auto : centré quand ça tient, défilable (sans rogner le haut) sur les petits écrans */}
+            <div className="my-auto flex flex-col items-center gap-9 px-6 pb-14 pt-28 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-col items-center"
+              >
+                <Link href="/evenements" className="py-2 font-display text-2xl uppercase tracking-tight text-white">
                   Événements
                 </Link>
+                {events.length > 0 && (
+                  <ul className="mt-3 flex flex-col items-center gap-0.5 border-t border-line pt-3">
+                    {events.map((e) => (
+                      <li key={e.slug}>
+                        <Link
+                          href={`/evenements/${e.slug}`}
+                          className="block px-2 py-2 text-sm text-foreground/80 hover:text-white"
+                        >
+                          {e.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
-              {events.length > 0 && (
-                <div className="flex flex-col items-center">
-                  {events.map((e, i) => (
-                    <motion.div key={e.slug} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.03 * (i + 1) }}>
-                      <Link href={`/evenements/${e.slug}`} className="block py-2 text-sm text-foreground/80 hover:text-foreground">
-                        {e.title}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
+
               {staticLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, y: 16 }}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * (i + events.length + 1) }}
+                  transition={{ delay: 0.05 * (i + 1) }}
                 >
-                  <Link href={link.href} className="font-display text-2xl uppercase tracking-tight text-foreground">
+                  <Link href={link.href} className="block py-2 font-display text-2xl uppercase tracking-tight text-white">
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
+
               <motion.div
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 * (staticLinks.length + events.length + 2) }}
+                transition={{ delay: 0.05 * (staticLinks.length + 1) }}
+                className="pt-2"
               >
                 <Link
                   href="/contact"
-                  className="mt-4 rounded-full bg-accent-fill px-8 py-3.5 font-display text-sm uppercase tracking-[0.02em] text-white"
+                  className="inline-block rounded-full bg-accent-fill px-10 py-4 font-display text-sm uppercase tracking-[0.05em] text-white"
                 >
                   Nous contacter
                 </Link>
