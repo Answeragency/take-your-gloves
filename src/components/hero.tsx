@@ -50,7 +50,7 @@ export default function Hero({
   const figures = stats && stats.length > 0 ? stats : DEFAULT_STATS;
   const ref = useRef<HTMLDivElement>(null);
   // La vidéo ne s'insère qu'après l'affichage (la page ne charge pas 28 Mo avant d'être visible),
-  // en 720p sur mobile et en 1080p ailleurs. Sans mouvement souhaité : image fixe, extraite de la vidéo.
+  // en 1080×1920 (recadrage vertical du master) sur mobile et en 1080p ailleurs. Sans mouvement souhaité : image fixe, extraite de la vidéo.
   const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const small = useMedia("(max-width: 767px)");
   const reduced = useMedia("(prefers-reduced-motion: reduce)");
