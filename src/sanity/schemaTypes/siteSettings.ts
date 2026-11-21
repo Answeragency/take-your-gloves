@@ -97,7 +97,7 @@ export const siteSettingsSchema = defineType({
       group: "footer",
       type: "text",
       rows: 3,
-      initialValue: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Basé à Strasbourg.",
+      initialValue: "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel du plaisir au volant de votre voiture de sport. Basé à Strasbourg.",
     }),
   ],
   preview: {

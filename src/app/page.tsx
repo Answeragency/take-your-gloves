@@ -31,7 +31,7 @@ export default async function Home() {
   // Seule la 1re phrase reste dans le hero ; la liste des formats passe sous le titre du calendrier.
   const [heroText, ...moreText] = (
     home?.heroSubtitle ??
-    "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage…"
+    "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel du plaisir au volant de votre voiture de sport.\nRallyes touristiques, expériences atypiques, sorties circuit, journées thématiques et bien davantage…"
   ).split(/\r?\n/);
 
   const spiritImages = home?.spiritImageUrls ?? [];

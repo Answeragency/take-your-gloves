@@ -49,7 +49,10 @@ const DASH = /\s[—–]\s/g;
 /** Plus de promesse de délai « sous 48h » dans les textes. */
 const DELAY = / sous 48 ?h(?:eures)?/gi;
 
-export const fixCopy = (s: string): string => (FIXES[s] ?? s).replace(DASH, ", ").replace(DELAY, "");
+/** Faute de français : « le potentiel du plaisir ». */
+const POTENTIEL = /potentiel de plaisir/g;
+
+export const fixCopy = (s: string): string => (FIXES[s] ?? s).replace(DASH, ", ").replace(DELAY, "").replace(POTENTIEL, "potentiel du plaisir");
 
 export function fixDeep<T>(value: T): T {
   if (typeof value === "string") return fixCopy(value) as T;

@@ -36,7 +36,7 @@ export default async function Footer() {
   const facebookUrl = settings?.facebookUrl ?? "https://www.facebook.com/TakeYourGlovesEvent/";
   const instagramUrl = settings?.instagramUrl ?? "#";
   const tagline = settings?.footerTagline ?? "Conduisez avec passion, roulez en sécurité.";
-  const description = settings?.footerDescription ?? "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel de plaisir au volant de votre voiture de sport. Basé à Strasbourg.";
+  const description = settings?.footerDescription ?? "Votre meilleur partenaire pour vivre des émotions automobiles uniques et (re)découvrir tout le potentiel du plaisir au volant de votre voiture de sport. Basé à Strasbourg.";
 
   return (
     <footer className="relative border-t border-line bg-surface">
