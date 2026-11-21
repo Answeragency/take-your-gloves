@@ -6,7 +6,6 @@ import Footer from "@/components/footer";
 import Cursor from "@/components/cursor";
 import LenisProvider from "@/components/lenis-provider";
 import MotionProvider from "@/components/motion-provider";
-import Preloader from "@/components/preloader";
 import ScrollProgress from "@/components/scroll-progress";
 import { getSiteSettings, getAllEvents } from "@/sanity/lib/queries";
 
@@ -136,7 +135,6 @@ export default async function RootLayout({
         </a>
         <MotionProvider>
         <LenisProvider>
-          <Preloader logoUrl={logoUrl} />
           <ScrollProgress />
           <Cursor />
           <Nav logoUrl={logoUrl} events={events.map(e => ({ slug: e.slug, title: e.title, dateLabel: e.dateLabel, location: e.location }))} />

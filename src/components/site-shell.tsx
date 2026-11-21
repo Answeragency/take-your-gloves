@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import Nav from "./nav";
 import Footer from "./footer";
 import Cursor from "./cursor";
-import Preloader from "./preloader";
 import ScrollProgress from "./scroll-progress";
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
@@ -15,7 +14,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Preloader />
       <ScrollProgress />
       <Cursor />
       <Nav />
