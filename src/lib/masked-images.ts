@@ -11,6 +11,8 @@ const MASKED = new Set([
   "glace-groupe",
   "glace-portrait",
   "glace-supra-jaune",
+  "glace-toyota-noire",
+  "lm701515",
   "nurburgring-trackday",
   "groupe-drapeaux",
 ]);
