@@ -9,6 +9,8 @@ const MASKED = new Set([
   "ardennes-chateau-parade",
   "glace-convoi",
   "glace-groupe",
+  "glace-portrait",
+  "glace-supra-jaune",
   "nurburgring-trackday",
   "groupe-drapeaux",
 ]);
