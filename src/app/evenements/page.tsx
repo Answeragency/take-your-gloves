@@ -82,10 +82,6 @@ export default async function EvenementsPage() {
             ) : (
               <div className="space-y-5">
                 <p>Après cette formidable saison 2026, marquée par nos échappées sur les routes écossaises aux allures de bout du monde ou encore notre périple à travers les somptueux cols pyrénéens, chaque kilomètre partagé a confirmé notre exigence commune pour le beau pilotage et la convivialité.</p>
-                <h2 className="pt-3 font-display text-2xl leading-tight tracking-tight text-foreground">
-                  La saison 2027 : nouvelles expériences, nouveaux standards
-                </h2>
-                <p>2027 sera plus que jamais placée sous le signe de l&apos;évasion et des belles mécaniques. Pour cette nouvelle année, nous avons conçu un programme encore plus affûté, alliant tracés d&apos;exception et prestations au cordeau.</p>
                 <p>Je vous souhaite une belle découverte de l&apos;ensemble des rendez-vous de la saison. J&apos;espère que ce calendrier saura éveiller vos sens de passionnés d&apos;automobile.</p>
               </div>
             )}
