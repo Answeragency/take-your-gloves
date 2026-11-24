@@ -5,7 +5,9 @@ export type CalendarEvent = {
   category: string;
   title: string;
   dateLabel: string;
+  dateSort?: string;
   location: string;
+  duration?: string;
   description: string;
   status?: string;
   statusType: StatusType;
@@ -28,14 +30,7 @@ export function splitStatus(status?: string): { capacity?: string; badge?: strin
 
 export type EventExtras = { duration?: string; inclusions?: string; gallery?: string[]; galleryMatch?: string };
 /** Valeurs par défaut (modifiables dans Sanity : les champs Sanity prennent le dessus). */
-export const EVENT_EXTRAS: Record<string, EventExtras> = {
-  "les-ardennes": {
-    duration: "3 jours et 2 nuits",
-    inclusions: "Hôtels 4 étoiles, pension complète",
-    galleryMatch: "*Ardennes*",
-    gallery: ["/images/ardennes-chateau-parade.jpg", "/images/ardennes-groupe.jpg"],
-  },
-};
+export const EVENT_EXTRAS: Record<string, EventExtras> = {};
 
 export const categories = [
   "Rallye touristique",
@@ -47,135 +42,127 @@ export const categories = [
 
 export const calendar: CalendarEvent[] = [
   {
-    slug: "soiree-simulateurs",
-    category: "Sport automobile",
-    title: "Soirée Simulateurs",
-    dateLabel: "Vendredi 16 Janvier, en soirée",
-    location: "Legend Track, Colmar",
-    description:
-      "En pleine période hivernale, une soirée sport automobile au volant de simulateurs de pointe dans une ambiance détendue. Privatisation de la salle du Legend Track à Colmar.",
-    status: "Dernières places restantes !",
-    statusType: "limited",
-    image: "/images/poster-soiree-simulateurs.jpg",
-  },
-  {
-    slug: "roulage-glace-pegasus",
+    slug: "pilotage-sur-glace",
     category: "Expérience atypique",
-    title: "Roulage Glace avec Pegasus Racing",
-    dateLabel: "Dimanche 1er Février",
+    title: "Pilotage sur Glace avec Pegasus Racing",
+    dateLabel: "Samedi 30 & Dimanche 31 Janvier",
+    dateSort: "2027-01-30",
     location: "Autriche",
+    duration: "2 jours",
     description:
-      "Jusqu'à 120 km de glisse sur un circuit long de 3 km, encadré par des moniteurs pour vous faire progresser, au volant d'une flotte de voitures modernes (Yaris GR en transmission intégrale et Supra GR en propulsion). Accessible à tous les niveaux.",
-    status: "Complet !",
-    statusType: "soldout",
-    image: "/images/poster-roulage-glace.jpg",
+      "Deux jours de glisse sur un circuit de glace en Autriche, avec Pegasus Racing. Encadré par des moniteurs, progressez au volant d'une flotte de voitures modernes, dont la Yaris GR. Accessible à tous les niveaux.",
+    status: "Programme à découvrir très bientôt.",
+    statusType: "soon",
+    image: "/images/poster-pilotage-sur-glace-2027.jpg",
   },
   {
-    slug: "musees-stuttgart-motorworld",
-    category: "Expérience atypique",
-    title: "Musées de Stuttgart & Motorworld",
-    dateLabel: "Samedi et Dimanche 7 & 8 Mars",
-    location: "Stuttgart, Allemagne",
-    description:
-      "Découvrez les impressionnants musées Porsche et Mercedes, le site unique du Motorworld avec ses modèles d'exception, et dormez dans l'une des chambres thématiques et atypiques du V8 Hôtel. Le choix des chambres se fera suivant les dates d'inscription.",
-    statusType: "available",
-    image: "/images/poster-stuttgart-motorworld.jpg",
-  },
-  {
-    slug: "les-ardennes",
+    slug: "bourgogne",
     category: "Rallye touristique",
-    title: "Les Ardennes",
-    dateLabel: "Du Vendredi 17 au Dimanche 19 Avril",
-    location: "Luxembourg & Ardennes belges",
+    title: "La Bourgogne",
+    dateLabel: "Du Vendredi 16 au Dimanche 18 Avril",
+    dateSort: "2027-04-16",
+    location: "Bourgogne, France",
+    duration: "3 jours",
     description:
-      "Pour notre premier rallye touristique de l'année, découvrez les routes sinueuses et méconnues du Luxembourg et plongez au cœur du massif des Ardennes. Laissez-vous surprendre par la richesse de la région et les sensations procurées par ces routes.",
-    status: "Limité à 20 équipages.",
-    statusType: "limited",
-    image: "/images/poster-ardennes.jpg",
+      "Trois jours sur les routes de Bourgogne, entre vignobles, villages de caractère et belles courbes, au volant de votre voiture de sport. Un rallye touristique pensé pour le plaisir de conduire et la découverte.",
+    status: "Programme à découvrir très bientôt.",
+    statusType: "soon",
+    image: "/images/poster-bourgogne-2027.jpg",
   },
   {
     slug: "rallye-gourmand",
-    category: "Sport automobile",
-    title: "Rallye Gourmand, 6ème édition",
-    dateLabel: "Vendredi 1er Mai (férié)",
+    category: "Journée conviviale",
+    title: "Rallye Gourmand",
+    dateLabel: "Samedi 24 Avril",
+    dateSort: "2027-04-24",
     location: "Alsace",
     description:
-      "L'inratable journée phare : profitez de routes sélectionnées avec soin, découvrez des artisans locaux, dégustez leurs produits et laissez-vous surprendre par des sites alsaciens atypiques !",
-    status: "Attention, événement très prisé !",
-    statusType: "limited",
-    image: "/images/poster-rallye-gourmand.jpg",
+      "L'inratable journée phare, avec l'Automobile Club du Rhin : du roulage sur des routes sélectionnées avec soin, des artisans locaux à découvrir et des dégustations à chaque étape !",
+    status: "Programme à découvrir très bientôt.",
+    statusType: "soon",
+    image: "/images/poster-rallye-gourmand-2027.jpg",
   },
   {
-    slug: "ecosse",
+    slug: "corse",
     category: "Rallye touristique",
-    title: "L'Écosse",
-    dateLabel: "Du Lundi 18 au Dimanche 24 Mai",
-    location: "Highlands, Écosse",
+    title: "La Corse",
+    dateLabel: "Du Dimanche 16 au Samedi 22 Mai",
+    dateSort: "2027-05-16",
+    location: "Corse, France",
+    duration: "7 jours",
     description:
-      "Une véritable aventure automobile. Découvrez la région des Highlands et ses routes mondialement plébiscitées : le passage du Bealach na Bà ou l'incontournable route NC 500. Ferry depuis Amsterdam, seulement 6h de route depuis Strasbourg.",
-    status: "Limité à 20 équipages. Dernières places restantes.",
-    statusType: "limited",
-    image: "/images/poster-ecosse.jpg",
+      "Une semaine entre mer et montagne sur les routes de l'Île de Beauté : corniches sur la Méditerranée, cols sinueux et tables en bord de mer, pour une véritable aventure automobile.",
+    status: "Programme à découvrir très bientôt.",
+    statusType: "soon",
+    image: "/images/poster-corse-2027.jpg",
+  },
+  {
+    slug: "alsace-vosges",
+    category: "Sport automobile",
+    title: "L'Alsace Vosges",
+    dateLabel: "Du Vendredi 18 au Dimanche 20 Juin",
+    dateSort: "2027-06-18",
+    location: "Alsace & Vosges, France",
+    duration: "3 jours",
+    description:
+      "Trois jours de roulage sur routes fermées à travers l'Alsace et le massif des Vosges, pour profiter pleinement de votre voiture de sport dans un cadre sécurisé.",
+    status: "Programme à découvrir très bientôt.",
+    statusType: "soon",
+    image: "/images/poster-alsace-vosges-2027.jpg",
   },
   {
     slug: "road-trip-banquet",
     category: "Journée conviviale",
-    title: "Road Trip & Banquet, 5ème édition",
-    dateLabel: "Samedi 27 Juin",
-    location: "Site privatisé, Alsace",
+    title: "Road Trip & Banquet",
+    dateLabel: "Samedi 10 Juillet",
+    dateSort: "2027-07-10",
+    location: "Massif des Vosges",
     description:
-      "Du roulage pour le plaisir de conduite et un véritable banquet à partager sur un site entièrement privatisé (viande à la broche) pour un pur moment de convivialité ! Tout simplement.",
-    status: "Attention, événement très prisé !",
-    statusType: "limited",
-    image: "/images/poster-road-trip-banquet.jpg",
-  },
-  {
-    slug: "le-mans-classic-pegasus",
-    category: "Expérience atypique",
-    title: "Le Mans Classic avec Pegasus Racing",
-    dateLabel: "Du Vendredi 3 au Dimanche 5 Juillet",
-    location: "Le Mans, France",
-    description:
-      "Venez vivre un événement hors du temps et unique dans le paysage français : la version « classic » des 24h du Mans, des plateaux d'avant-guerre jusqu'aux années 2000, avec un nombre impressionnant d'icônes et de modèles extrêmement rares.",
+      "Avec l'Automobile Club du Rhin, du roulage pour le plaisir de conduite dans le massif des Vosges et un véritable banquet à partager (viande à la broche) pour un pur moment de convivialité !",
     status: "Programme à découvrir très bientôt.",
     statusType: "soon",
-    image: "/images/poster-le-mans-classic.jpg",
+    image: "/images/poster-road-trip-banquet-2027.jpg",
   },
   {
-    slug: "foret-noire",
-    category: "Rallye touristique",
-    title: "La Forêt Noire",
-    dateLabel: "Samedi & Dimanche 5 et 6 Septembre",
-    location: "Schwarzwald, Allemagne",
+    slug: "legende-rallye-festival",
+    category: "Expérience atypique",
+    title: "Légende Rallye Festival",
+    dateLabel: "Du Jeudi 2 au Samedi 4 Septembre",
+    dateSort: "2027-09-02",
+    location: "Lieu à confirmer",
+    duration: "3 jours",
     description:
-      "Une escapade au cœur de la Schwarzwald. Découvrez ce massif boisé et ses superbes routes, accompagnés d'arrêts à la découverte des trésors cachés de la région.",
-    status: "Limité à 20 équipages. Programme à découvrir très bientôt.",
+      "40 ans de rallye sous vos yeux, 3 jours de fête automobile ! Plongez dans l'histoire du rallye au cœur d'un festival dédié aux voitures de légende.",
+    status: "Programme à découvrir très bientôt.",
     statusType: "soon",
-    image: "/images/poster-foret-noire.jpg",
+    image: "/images/poster-legende-rallye-festival-2027.jpg",
+  },
+  {
+    slug: "italie-slovenie",
+    category: "Rallye touristique",
+    title: "L'Italie & la Slovénie",
+    dateLabel: "Du Lundi 6 au Samedi 11 Septembre",
+    dateSort: "2027-09-06",
+    location: "Italie & Slovénie",
+    duration: "6 jours",
+    description:
+      "Six jours de route entre l'Italie et la Slovénie, des routes de montagne aux rives des lacs, pour un rallye touristique d'exception au volant de votre voiture de sport.",
+    status: "Programme à découvrir très bientôt.",
+    statusType: "soon",
+    image: "/images/poster-italie-slovenie-2027.jpg",
   },
   {
     slug: "500-nocturnes",
     category: "Expérience immersive",
-    title: "500 Nocturnes",
-    dateLabel: "Samedi 27 Septembre",
+    title: "Course des 500 Nocturnes",
+    dateLabel: "Samedi 25 Septembre",
+    dateSort: "2027-09-25",
     location: "Anneau du Rhin, Colmar",
     description:
-      "En partenariat avec le Team Pegasus Racing, vivez en immersion depuis les stands de l'écurie la course des 500 Nocturnes : l'événement sport automobile de l'année en Alsace. Vainqueur de l'épreuve en 2024 en Lamborghini Huracán, le team est la grande force du plateau. Également disponible en offre professionnelle pour vos clients et relations d'affaires.",
+      "En partenariat avec Pegasus Racing, vivez en immersion au cœur des paddocks la course des 500 Nocturnes : la nuit la plus sport, chic et glamour de l'année. Également disponible en offre professionnelle pour vos clients et relations d'affaires.",
     status: "Programme à découvrir très bientôt.",
     statusType: "soon",
-    image: "/images/poster-500-nocturnes.jpg",
-  },
-  {
-    slug: "pyrenees",
-    category: "Rallye touristique",
-    title: "Les Pyrénées",
-    dateLabel: "Du Dimanche 4 au Samedi 10 Octobre",
-    location: "Pyrénées, France",
-    description:
-      "Vivez une aventure automobile intense à travers les cols mythiques des Pyrénées, entre panoramas vertigineux et villages de montagne authentiques. Un concentré d'émotions de conduite et de découvertes locales, dans une ambiance conviviale et passionnée pour clôturer l'année !",
-    status: "Limité à 20 équipages. Programme à découvrir très bientôt.",
-    statusType: "soon",
-    image: "/images/poster-pyrenees.jpg",
+    image: "/images/poster-500-nocturnes-2027.jpg",
   },
 ];
 

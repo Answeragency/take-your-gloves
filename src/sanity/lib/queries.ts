@@ -10,11 +10,10 @@ async function fetchFixed<T>(
   return fixDeep(await client.fetch<T>(query, params, options));
 }
 import type { StatusType } from "@/lib/calendar";
-import { POSTER_MAP, displayCategory } from "@/lib/calendar";
+import { calendar, displayCategory } from "@/lib/calendar";
 
-function withPoster<T extends { slug: string; category: string; image?: string }>(event: T): T {
-  const category = displayCategory(event.category);
-  return { ...event, category, image: event.image ?? POSTER_MAP[event.slug] };
+function withPoster<T extends { category: string }>(event: T): T {
+  return { ...event, category: displayCategory(event.category) };
 }
 
 // ─── Types retournés par Sanity ───────────────────────────────────────────────
@@ -69,47 +68,18 @@ export type SanityStat = {
 
 // ─── Queries GROQ ─────────────────────────────────────────────────────────────
 
-const EVENT_FIELDS = `
-  _id,
-  "slug": slug.current,
-  category,
-  title,
-  dateLabel,
-  dateSort,
-  location,
-  description,
-  status,
-  statusType,
-  "image": image.asset->url
-`;
+// Calendrier 2027 : les événements viennent de src/lib/calendar.ts (triés par date),
+// pas de Sanity. Les photos de galerie, témoignages et pages restent dans Sanity.
+const EVENTS: SanityEvent[] = [...calendar]
+  .sort((x, y) => (x.dateSort ?? "").localeCompare(y.dateSort ?? ""))
+  .map((e) => withPoster({ ...e, _id: `event-${e.slug}` }));
 
 export async function getAllEvents(): Promise<SanityEvent[]> {
-  const results = await fetchFixed<SanityEvent[]>(
-    `*[_type == "event"] | order(dateSort asc) { ${EVENT_FIELDS} }`,
-    {},
-    { next: { revalidate: 60 } }
-  );
-  return results.map(withPoster);
+  return EVENTS;
 }
 
-export async function getEventBySlug(
-  slug: string
-): Promise<SanityEvent | null> {
-  const result = await fetchFixed<SanityEvent | null>(
-    `*[_type == "event" && slug.current == $slug][0] {
-      ${EVENT_FIELDS},
-      body,
-      maxParticipants,
-      duration,
-      inclusions,
-      program[]{ _key, day, title, text },
-      "gallery": gallery[].asset->url,
-      "imageRaw": image
-    }`,
-    { slug },
-    { next: { revalidate: 60 } }
-  );
-  return result ? withPoster(result) : null;
+export async function getEventBySlug(slug: string): Promise<SanityEvent | null> {
+  return EVENTS.find((e) => e.slug === slug) ?? null;
 }
 
 export async function getGalleryByLabel(match: string): Promise<string[]> {
@@ -122,21 +92,11 @@ export async function getGalleryByLabel(match: string): Promise<string[]> {
 }
 
 export async function getAllEventSlugs(): Promise<string[]> {
-  const results = await fetchFixed<{ slug: string }[]>(
-    `*[_type == "event"]{ "slug": slug.current }`,
-    {},
-    { next: { revalidate: 60 } }
-  );
-  return results.map((r) => r.slug);
+  return EVENTS.map((e) => e.slug);
 }
 
 export async function getUpcomingEvents(limit = 3): Promise<SanityEvent[]> {
-  const results = await fetchFixed<SanityEvent[]>(
-    `*[_type == "event"] | order(dateSort asc)[0...$limit] { ${EVENT_FIELDS} }`,
-    { limit },
-    { next: { revalidate: 60 } }
-  );
-  return results.map(withPoster);
+  return EVENTS.slice(0, limit);
 }
 
 export async function getAllTestimonials(): Promise<SanityTestimonial[]> {

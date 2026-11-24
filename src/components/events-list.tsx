@@ -52,7 +52,7 @@ export default function EventsList({ events }: { events: CalendarEvent[] }) {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
-        <h2 className="sr-only">Tous les événements 2026</h2>
+        <h2 className="sr-only">Tous les événements 2027</h2>
         <p className="sr-only" aria-live="polite">
           {visible.length} événement{visible.length > 1 ? "s" : ""} affiché{visible.length > 1 ? "s" : ""}
         </p>

@@ -15,7 +15,7 @@ import {
 
 export default async function Home() {
   const [upcoming, testimonials, settings, home] = await Promise.all([
-    getUpcomingEvents(8),
+    getUpcomingEvents(9),
     getFeaturedTestimonials(4),
     getSiteSettings(),
     getHomePage(),
