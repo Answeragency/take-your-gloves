@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   title: "Calendrier 2027, rallyes & trackdays en Alsace",
   description:
     "Calendrier complet 2027 : rallyes touristiques, trackdays, roulages sur glace et road trips en voiture de sport. Alsace, Grand Est et toute l'Europe. Inscriptions ouvertes.",
-  alternates: { canonical: "https://take-your-gloves.vercel.app/evenements" },
+  alternates: { canonical: "https://take-your-gloves.com/evenements" },
   openGraph: {
     title: "Calendrier 2027, rallyes & trackdays | Take Your Gloves",
     description: "Tous les événements automobiles Take Your Gloves pour 2027 : rallyes, trackdays, roulage sur glace, road trips. Rejoignez la communauté.",
-    url: "https://take-your-gloves.vercel.app/evenements",
+    url: "https://take-your-gloves.com/evenements",
     images: [{ url: "/images/nurburgring-trackday.jpg", width: 1200, height: 630, alt: "Calendrier événements automobiles Take Your Gloves 2027" }],
   },
   twitter: {

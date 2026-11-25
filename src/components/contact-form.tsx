@@ -6,7 +6,7 @@ import { categories } from "@/lib/calendar";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [mailtoHref, setMailtoHref] = useState("mailto:contact@take-your-gloves.fr");
+  const [mailtoHref, setMailtoHref] = useState("mailto:contact@take-your-gloves.com");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function ContactForm() {
       const body = encodeURIComponent(
         `Nom : ${data.name ?? ""}\nEmail : ${data.email ?? ""}\nTéléphone : ${data.phone ?? ""}\nType : ${data.eventType ?? ""}\n\n${data.message ?? ""}`
       );
-      setMailtoHref(`mailto:contact@take-your-gloves.fr?subject=${subject}&body=${body}`);
+      setMailtoHref(`mailto:contact@take-your-gloves.com?subject=${subject}&body=${body}`);
       setStatus("error");
     }
   }
@@ -105,7 +105,7 @@ export default function ContactForm() {
           <a href={mailtoHref} className="text-gold-bright underline underline-offset-4">
             envoyer ma demande par e-mail
           </a>
-          , ou écrivez-nous à contact@take-your-gloves.fr.
+          , ou écrivez-nous à contact@take-your-gloves.com.
         </p>
       )}
 

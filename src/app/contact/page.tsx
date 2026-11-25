@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: "Contact, devis & réservation",
   description:
     "Réservez votre place pour un rallye touristique, trackday ou sortie automobile en Alsace. Réponse personnalisée. Contactez Take Your Gloves à Strasbourg.",
-  alternates: { canonical: "https://take-your-gloves.vercel.app/contact" },
+  alternates: { canonical: "https://take-your-gloves.com/contact" },
   openGraph: {
     title: "Contact & Réservation | Take Your Gloves",
     description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg.",
-    url: "https://take-your-gloves.vercel.app/contact",
+    url: "https://take-your-gloves.com/contact",
   },
   twitter: {
     card: "summary",
@@ -29,7 +29,7 @@ export default async function ContactPage() {
     getSiteSettings(),
   ]);
 
-  const email = settings?.email ?? "contact@take-your-gloves.fr";
+  const email = settings?.email ?? "contact@take-your-gloves.com";
   const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
   const location = settings?.location ?? "Strasbourg, France";
 

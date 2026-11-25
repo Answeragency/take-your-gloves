@@ -20,7 +20,7 @@ export const LEGAL = {
   naf: "93.29Z, Autres activités récréatives et de loisirs",
   address: { street: "7 rue de Berstett", postalCode: "67170", city: "Olwisheim", country: "France" },
   /** Email affiché (anti-spam : écrit à l'envers côté page). */
-  email: "contact@take-your-gloves.fr",
+  email: "contact@take-your-gloves.com",
   phone: undefined as string | undefined,
   insurer: "Allianz",
   publicationDirector: { name: "Cédric Wetta", role: "Président" },
@@ -29,7 +29,7 @@ export const LEGAL = {
     address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
     website: "https://vercel.com",
   },
-  siteUrl: "https://take-your-gloves.vercel.app",
+  siteUrl: "https://take-your-gloves.com",
   updatedOn: "25 novembre 2026",
 } as const;
 
