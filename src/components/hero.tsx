@@ -103,6 +103,8 @@ export default function Hero({
             )}
           </video>
         )}
+        {/* Voile léger sur toute la vidéo : texte plus lisible, surtout sur mobile */}
+        <div className="absolute inset-0 bg-black/30 md:bg-black/10" />
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-background/85 via-background/40 to-transparent" />
       </div>
 
