@@ -124,6 +124,14 @@ export default async function Footer() {
         <div className="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Take Your Gloves. Tous droits réservés.</p>
           <p className="text-muted">{tagline}</p>
+          <nav aria-label="Informations légales" className="flex flex-wrap gap-x-5 gap-y-1">
+            <Link href="/mentions-legales" className="inline-block py-2 transition-colors hover:text-foreground">
+              Mentions légales
+            </Link>
+            <Link href="/confidentialite" className="inline-block py-2 transition-colors hover:text-foreground">
+              Confidentialité
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
