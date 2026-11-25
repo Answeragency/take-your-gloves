@@ -6,7 +6,7 @@
  */
 const FIXES: Record<string, string> = {
   // Nouvelle adresse de contact
-  "contact@takeyourgloves.fr": "contact@take-your-gloves.com",
+  "contact@takeyourgloves.fr": "contact@takeyourgloves.com",
 
   // Chiffres cohérents partout : 250
   "+230": "+250",

@@ -30,7 +30,7 @@ const columns = [
 export default async function Footer() {
   const settings = await getSiteSettings();
 
-  const email = settings?.email ?? "contact@take-your-gloves.com";
+  const email = settings?.email ?? "contact@takeyourgloves.com";
   const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
   const location = settings?.location ?? "Strasbourg, France";
   const facebookUrl = settings?.facebookUrl ?? "https://www.facebook.com/TakeYourGlovesEvent/";

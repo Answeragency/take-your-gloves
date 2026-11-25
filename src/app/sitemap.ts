@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllEventSlugs } from "@/sanity/lib/queries";
 
-const BASE_URL = "https://take-your-gloves.com";
+const BASE_URL = "https://takeyourgloves.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getAllEventSlugs();
