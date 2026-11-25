@@ -51,21 +51,21 @@ export default async function ConfidentialitePage() {
         <ul className={ul}>
           <li>
             <strong className="text-foreground">Formulaire de contact</strong> : prénom et nom, email, téléphone
-            (facultatif), type d&apos;événement et message.
+            (facultatif), type d’événement et message.
           </li>
           <li>
-            <strong className="text-foreground">Formulaire « Recevoir les infos »</strong> d&apos;un événement : nom,
+            <strong className="text-foreground">Formulaire « Recevoir les infos »</strong> d’un événement : nom,
             email ou téléphone.
           </li>
         </ul>
         <p className={p}>
-          Aucune donnée sensible n&apos;est demandée. Nous vous invitons à ne pas en mentionner dans le champ message.
+          Aucune donnée sensible n’est demandée. Nous vous invitons à ne pas en mentionner dans le champ message.
         </p>
 
         <h2 className={h2}>Pourquoi, et sur quelle base légale ?</h2>
         <ul className={ul}>
           <li>
-            Répondre à votre demande et vous recontacter, ou vous envoyer le programme d&apos;un événement : sur votre
+            Répondre à votre demande et vous recontacter, ou vous envoyer le programme d’un événement : sur votre
             demande, avec votre consentement.
           </li>
           <li>Organiser votre participation à un événement si vous vous inscrivez : exécution de mesures précontractuelles ou du contrat.</li>
@@ -74,7 +74,7 @@ export default async function ConfidentialitePage() {
         <p className={p}>Vos données ne sont ni vendues, ni louées, ni utilisées pour de la publicité ciblée.</p>
 
         <h2 className={h2}>Qui y a accès ?</h2>
-        <p className={p}>L&apos;équipe de {LEGAL.name}, ainsi que les prestataires techniques strictement nécessaires :</p>
+        <p className={p}>L’équipe de {LEGAL.name}, ainsi que les prestataires techniques strictement nécessaires :</p>
         <ul className={ul}>
           <li>
             <strong className="text-foreground">Vercel</strong> (hébergement du site) ;
@@ -84,11 +84,11 @@ export default async function ConfidentialitePage() {
           </li>
           <li>
             <strong className="text-foreground">Sanity</strong> (gestion des contenus du site : événements, photos,
-            textes). Vos messages n&apos;y sont pas stockés.
+            textes). Vos messages n’y sont pas stockés.
           </li>
         </ul>
         <p className={p}>
-          Certains de ces prestataires peuvent traiter des données en dehors de l&apos;Union européenne, notamment aux
+          Certains de ces prestataires peuvent traiter des données en dehors de l’Union européenne, notamment aux
           États-Unis, dans le cadre de garanties reconnues (clauses contractuelles types de la Commission européenne ou
           cadre de protection des données UE-États-Unis).
         </p>
@@ -101,18 +101,18 @@ export default async function ConfidentialitePage() {
 
         <h2 className={h2}>Cookies et suivi</h2>
         <p className={p}>
-          Ce site ne dépose aucun cookie de mesure d&apos;audience, de publicité ou de suivi, et n&apos;utilise aucun
-          outil d&apos;analyse tiers : il n&apos;y a donc pas de bandeau de consentement. Les polices de caractères sont
+          Ce site ne dépose aucun cookie de mesure d’audience, de publicité ou de suivi, et n’utilise aucun
+          outil d’analyse tiers : il n’y a donc pas de bandeau de consentement. Les polices de caractères sont
           servies depuis notre propre site. Les liens vers Facebook et Instagram vous mènent vers des services tiers qui
           ont leur propre politique de confidentialité.
         </p>
 
         <h2 className={h2}>Vos droits</h2>
         <p className={p}>
-          Vous pouvez à tout moment demander l&apos;accès à vos données, leur rectification, leur effacement, la
+          Vous pouvez à tout moment demander l’accès à vos données, leur rectification, leur effacement, la
           limitation de leur traitement, vous y opposer, ou récupérer vos données dans un format réutilisable. Il suffit
           de nous écrire à <ProtectedEmail reversed={reverse(email)} className={link} />, nous répondons dans un délai
-          d&apos;un mois. Une pièce d&apos;identité pourra être demandée en cas de doute.
+          d’un mois. Une pièce d’identité pourra être demandée en cas de doute.
         </p>
         <p className={p}>
           Si vous estimez que vos droits ne sont pas respectés, vous pouvez déposer une réclamation auprès de la CNIL :{" "}

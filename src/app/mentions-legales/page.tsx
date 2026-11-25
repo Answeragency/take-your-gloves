@@ -71,7 +71,7 @@ export default async function MentionsLegalesPage() {
           <Row label="Directeur de la publication">
             {LEGAL.publicationDirector.name}, {LEGAL.publicationDirector.role}
           </Row>
-          <Row label="Assurance">Responsabilité civile professionnelle souscrite auprès d&apos;{LEGAL.insurer}</Row>
+          <Row label="Assurance">Responsabilité civile professionnelle souscrite auprès d’{LEGAL.insurer}</Row>
         </dl>
 
         <h2 className={h2}>Hébergement</h2>
@@ -84,7 +84,7 @@ export default async function MentionsLegalesPage() {
 
         <h2 className={h2}>Propriété intellectuelle</h2>
         <p className={p}>
-          L&apos;ensemble des contenus du site (textes, photographies, vidéos, logos, affiches, graphismes, marques)
+          L’ensemble des contenus du site (textes, photographies, vidéos, logos, affiches, graphismes, marques)
           est la propriété de {LEGAL.name} ou de ses partenaires et photographes, et est protégé par le Code de la
           propriété intellectuelle. Toute reproduction, représentation, modification ou diffusion, totale ou partielle,
           sans autorisation écrite préalable est interdite.
@@ -98,10 +98,10 @@ export default async function MentionsLegalesPage() {
         <p className={p}>
           Nous nous efforçons de fournir des informations exactes et à jour. Les dates, lieux, programmes et tarifs des
           événements peuvent évoluer ; seule la confirmation écrite de {LEGAL.name} fait foi. Nous ne pouvons être tenus
-          responsables d&apos;une erreur, d&apos;une omission ou d&apos;une indisponibilité temporaire du site.
+          responsables d’une erreur, d’une omission ou d’une indisponibilité temporaire du site.
         </p>
         <p className={p}>
-          Le site peut contenir des liens vers des sites tiers (réseaux sociaux, partenaires). {LEGAL.name} n&apos;exerce
+          Le site peut contenir des liens vers des sites tiers (réseaux sociaux, partenaires). {LEGAL.name} n’exerce
           aucun contrôle sur leur contenu et décline toute responsabilité à ce titre.
         </p>
 
