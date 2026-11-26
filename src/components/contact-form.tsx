@@ -80,7 +80,7 @@ export default function ContactForm() {
                 {c}
               </option>
             ))}
-            <option value="Autre">Autre / sur-mesure</option>
+            <option value="Autre">Autre / sur mesure</option>
           </select>
         </div>
       </div>

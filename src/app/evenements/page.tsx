@@ -10,7 +10,7 @@ import { getAllEvents, getEventsPage, getHomePage } from "@/sanity/lib/queries";
 export const metadata: Metadata = {
   title: "Calendrier 2027, rallyes & trackdays en Alsace",
   description:
-    "Calendrier complet 2027 : rallyes touristiques, trackdays, roulages sur glace et road trips en voiture de sport. Alsace, Grand Est et toute l'Europe. Inscriptions ouvertes.",
+    "Calendrier complet 2027 : rallyes touristiques, trackdays, roulages sur glace et road trips en voiture de sport. Alsace, Grand Est et toute l'Europe.",
   alternates: { canonical: "https://take-your-gloves.com/evenements" },
   openGraph: {
     title: "Calendrier 2027, rallyes & trackdays | Take Your Gloves",
@@ -39,7 +39,7 @@ export default async function EvenementsPage() {
     { value: String(new Set(events.map((e) => e.location)).size), label: "destinations" },
   ];
   const title = eventsPage?.introTitle || "Découvrez le calendrier 2027";
-  const [signName, ...signRole] = (eventsPage?.signatureLine || "Cédric Wetta, Créateur d'émotions automobile, Take Your Gloves").split(/,\s*/);
+  const [signName, ...signRole] = (eventsPage?.signatureLine || "Cédric Wetta, Créateur d'émotions automobiles, Take Your Gloves").split(/,\s*/);
 
   return (
     <>

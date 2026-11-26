@@ -37,7 +37,7 @@ export const eventsPageSchema = defineType({
       name: "signatureLine",
       title: "Signature",
       type: "string",
-      description: 'Ex : "Cédric Wetta, Créateur d\'émotions automobile". Laisser vide pour la signature par défaut.',
+      description: 'Ex : "Cédric Wetta, Créateur d\'émotions automobiles". Laisser vide pour la signature par défaut.',
     }),
   ],
   preview: {

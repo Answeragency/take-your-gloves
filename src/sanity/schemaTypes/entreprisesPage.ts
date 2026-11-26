@@ -111,7 +111,7 @@ export const entreprisesPageSchema = defineType({
         },
         {
           title: "Road trip & balade routière",
-          text: "Itinéraires sur-mesure à travers les plus belles routes d'Alsace et d'Europe, en convoi ou en autonomie encadrée.",
+          text: "Itinéraires sur mesure à travers les plus belles routes d'Alsace et d'Europe, en convoi ou en autonomie encadrée.",
         },
         {
           title: "Journée à l'atelier Pegasus",
@@ -202,7 +202,7 @@ export const entreprisesPageSchema = defineType({
       group: "clients",
       type: "text",
       rows: 2,
-      initialValue: "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur-mesure.",
+      initialValue: "Chaque partenariat est unique. Partagez-nous vos objectifs, votre clientèle et vos dates, nous vous proposons une formule sur mesure.",
     }),
   ],
   preview: {

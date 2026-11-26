@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://take-your-gloves.com/contact" },
   openGraph: {
     title: "Contact & Réservation | Take Your Gloves",
-    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg.",
+    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur mesure. Basé à Strasbourg.",
     url: "https://take-your-gloves.com/contact",
   },
   twitter: {
     card: "summary",
     title: "Contact & Réservation | Take Your Gloves",
-    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur-mesure. Basé à Strasbourg.",
+    description: "Demandez votre place pour un rallye, trackday ou expérience automobile sur mesure. Basé à Strasbourg.",
   },
 };
 
@@ -44,7 +44,7 @@ export default async function ContactPage() {
             {page?.heading ?? "Construisons votre prochaine sortie"}
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
-            {page?.description ?? "Que ce soit pour un rallye touristique, une journée trackday, une sortie entre amis ou une expérience sur-mesure, parlez-nous de votre projet. Nous vous répondons avec une proposition personnalisée."}
+            {page?.description ?? "Que ce soit pour un rallye touristique, une journée trackday, une sortie entre amis ou une expérience sur mesure, parlez-nous de votre projet. Nous vous répondons avec une proposition personnalisée."}
           </p>
 
           <div className="mt-10 space-y-5 border-t border-line pt-8 text-sm text-muted">

@@ -10,7 +10,7 @@ const columns = [
     title: "Calendrier 2027",
     links: [
       { href: "/evenements", label: "Tout le calendrier" },
-      { href: "/evenements/bourgogne", label: "Rallye, La Bourgogne" },
+      { href: "/evenements/bourgogne", label: "La Bourgogne" },
       { href: "/evenements/rallye-gourmand", label: "Rallye Gourmand" },
       { href: "/evenements/500-nocturnes", label: "500 Nocturnes" },
     ],

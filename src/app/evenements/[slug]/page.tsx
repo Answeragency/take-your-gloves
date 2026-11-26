@@ -36,7 +36,7 @@ export async function generateMetadata({
   const url = `https://take-your-gloves.com/evenements/${slug}`;
   const shareImage = event.image ?? "/images/ardennes-chateau-parade.jpg";
   return {
-    title: `${event.title}, ${event.category} en ${event.location}`,
+    title: `${event.title} : ${event.category.toLowerCase()}${event.location.startsWith("Lieu") ? "" : ` (${event.location})`}`,
     description: event.description,
     alternates: { canonical: url },
     openGraph: {

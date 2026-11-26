@@ -52,7 +52,33 @@ const DELAY = / sous 48 ?h(?:eures)?/gi;
 /** Faute de français : « le potentiel du plaisir ». */
 const POTENTIEL = /potentiel de plaisir/g;
 
-export const fixCopy = (s: string): string => (FIXES[s] ?? s).replace(DASH, ", ").replace(DELAY, "").replace(POTENTIEL, "potentiel du plaisir");
+/** Corrections de français appliquées à tous les textes (relecture du 26/11/2026). */
+const LANGUAGE_FIXES: [RegExp, string][] = [
+  [/sur-mesure/g, "sur mesure"],
+  [/émotions automobile\b/g, "émotions automobiles"],
+  [/Nous essayons de vous répondre\./g, "Nous vous répondons dans les meilleurs délais."],
+  [/Partagez-nous vos objectifs, votre clientèle et vos dates, nous (?:tentons de vous proposer|vous proposons)/g,
+    "Indiquez-nous vos objectifs, votre clientèle et vos dates : nous vous proposons"],
+  [/Plus de 230 passionnés/g, "Plus de 250 passionnés"],
+  [/vos envies, rallyes/g, "vos envies : rallyes"],
+  [/de pleinement vivre nos expériences/g, "de vivre pleinement nos expériences"],
+  [/offre d'événements, rallyes touristiques, trackdays, sorties conviviales et expériences atypiques, pour répondre/g,
+    "offre d'événements (rallyes touristiques, trackdays, sorties conviviales et expériences atypiques) pour répondre"],
+  [/partenariats circuits sélectionnés/g, "partenariats avec des circuits sélectionnés"],
+  // Témoignages : fautes d'orthographe uniquement, le fond des messages reste intact
+  [/sans oublié la météo/g, "sans oublier la météo"],
+  [/Vous êtes devenu ma famille/g, "Vous êtes devenus ma famille"],
+  [/aux petits oignons\.\.merci/g, "aux petits oignons… merci"],
+  [/\bCedric\b/g, "Cédric"],
+  [/toujours aussi accueillant\b/g, "toujours aussi accueillants"],
+  [/dans la bonne humeur!/g, "dans la bonne humeur !"],
+];
+
+export const fixCopy = (s: string): string =>
+  LANGUAGE_FIXES.reduce(
+    (text, [pattern, fix]) => text.replace(pattern, fix),
+    (FIXES[s] ?? s).replace(DASH, ", ").replace(DELAY, "").replace(POTENTIEL, "potentiel du plaisir"),
+  );
 
 export function fixDeep<T>(value: T): T {
   if (typeof value === "string") return fixCopy(value) as T;
