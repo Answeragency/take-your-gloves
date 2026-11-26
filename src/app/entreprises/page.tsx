@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   title: "Événements Entreprises, concessions & marques automobiles",
   description:
     "Take Your Gloves organise, à votre nom ou en partenariat, des expériences automobiles pour vos clients : rallyes, journées circuit, stages glace et accès VIP en courses. Pour concessions, garages, carrossiers et selliers.",
-  alternates: { canonical: "https://takeyourgloves.com/entreprises" },
+  alternates: { canonical: "https://take-your-gloves.com/entreprises" },
   openGraph: {
     title: "Événements Entreprises | Take Your Gloves",
     description:
       "Des expériences automobiles à votre nom pour vos clients : concessions, garages, carrossiers, selliers. Rallyes, circuits, stages glace, coulisses de courses.",
-    url: "https://takeyourgloves.com/entreprises",
+    url: "https://take-your-gloves.com/entreprises",
     images: [
       {
         url: "/images/soiree-pegasus-017.jpg",
@@ -222,7 +222,7 @@ export default async function EntreprisesPage() {
                 Demander un devis
               </Button>
               <ProtectedEmail
-                reversed={reverse("contact@takeyourgloves.com")}
+                reversed={reverse("contact@take-your-gloves.com")}
                 className="inline-flex items-center justify-center rounded-full border border-foreground/25 px-8 py-4 font-display text-sm tracking-[0.05em] text-white transition-colors hover:border-accent/70 hover:text-accent"
               />
             </div>

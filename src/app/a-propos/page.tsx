@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: "À propos, notre histoire & nos valeurs",
   description:
     "Née à Strasbourg d'une passion partagée, Take Your Gloves organise des rallyes touristiques et trackdays en Alsace depuis plusieurs années. Découvrez notre histoire, notre équipe et nos valeurs.",
-  alternates: { canonical: "https://takeyourgloves.com/a-propos" },
+  alternates: { canonical: "https://take-your-gloves.com/a-propos" },
   openGraph: {
     title: "À propos de Take Your Gloves, histoire & valeurs",
     description: "Découvrez l'histoire de Take Your Gloves, né à Strasbourg d'une passion pour la conduite sportive. Plus de 250 passionnés nous font confiance.",
-    url: "https://takeyourgloves.com/a-propos",
+    url: "https://take-your-gloves.com/a-propos",
     images: [{ url: "/images/2026-05-24_roadtrip-ecosse-781.jpg", width: 1200, height: 630, alt: "L'équipe Take Your Gloves" }],
   },
   twitter: {

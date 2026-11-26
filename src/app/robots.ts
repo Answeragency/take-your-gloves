@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/studio", "/api/"],
       },
     ],
-    sitemap: "https://takeyourgloves.com/sitemap.xml",
+    sitemap: "https://take-your-gloves.com/sitemap.xml",
   };
 }

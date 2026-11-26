@@ -33,7 +33,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const event = await getEventBySlug(slug);
   if (!event) return {};
-  const url = `https://takeyourgloves.com/evenements/${slug}`;
+  const url = `https://take-your-gloves.com/evenements/${slug}`;
   const shareImage = event.image ?? "/images/ardennes-chateau-parade.jpg";
   return {
     title: `${event.title}, ${event.category} en ${event.location}`,
@@ -93,8 +93,8 @@ export default async function EventDetailPage({
     "@type": "Event",
     name: event.title,
     description: event.description,
-    url: `https://takeyourgloves.com/evenements/${slug}`,
-    image: event.image ?? "https://takeyourgloves.com/images/ardennes-chateau-parade.jpg",
+    url: `https://take-your-gloves.com/evenements/${slug}`,
+    image: event.image ?? "https://take-your-gloves.com/images/ardennes-chateau-parade.jpg",
     startDate: event.dateSort ?? undefined,
     location: {
       "@type": "Place",
@@ -104,7 +104,7 @@ export default async function EventDetailPage({
     organizer: {
       "@type": "Organization",
       name: "Take Your Gloves",
-      url: "https://takeyourgloves.com",
+      url: "https://take-your-gloves.com",
     },
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",

@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Témoignages, avis de nos pilotes",
   description:
     "Plus de 250 passionnés automobiles témoignent de leurs expériences lors des rallyes touristiques, trackdays et sorties Take Your Gloves en Alsace. Lisez leurs avis.",
-  alternates: { canonical: "https://takeyourgloves.com/temoignages" },
+  alternates: { canonical: "https://take-your-gloves.com/temoignages" },
   openGraph: {
     title: "Avis & Témoignages | Take Your Gloves",
     description: "Ce que nos pilotes disent de leurs rallyes, trackdays et sorties en voiture de sport avec Take Your Gloves en Alsace.",
-    url: "https://takeyourgloves.com/temoignages",
+    url: "https://take-your-gloves.com/temoignages",
   },
   twitter: {
     card: "summary",

@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: "Galerie Photos, rallyes & sorties automobiles",
   description:
     "Photos de nos rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et en Europe. Galerie Take Your Gloves.",
-  alternates: { canonical: "https://takeyourgloves.com/galerie" },
+  alternates: { canonical: "https://take-your-gloves.com/galerie" },
   openGraph: {
     title: "Galerie Photos | Take Your Gloves",
     description: "Revivez nos meilleurs moments : rallyes, trackdays, road trips en voiture de sport en Alsace et toute l'Europe.",
-    url: "https://takeyourgloves.com/galerie",
+    url: "https://take-your-gloves.com/galerie",
     images: [{ url: "/images/ardennes-chateau-parade.jpg", width: 1200, height: 630, alt: "Galerie photos Take Your Gloves" }],
   },
   twitter: {
