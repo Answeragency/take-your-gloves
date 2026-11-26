@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Hero from "@/components/hero";
 import SectionHeading from "@/components/section-heading";
 import { Carousel } from "@/components/ui/specials-linear-carousel";
@@ -6,19 +7,23 @@ import CtaBanner from "@/components/cta-banner";
 import Button from "@/components/button";
 import Reveal from "@/components/reveal";
 import Photo from "@/components/photo";
+import FaqSection from "@/components/faq-section";
+import { buildFaq } from "@/lib/faq";
 import {
   getUpcomingEvents,
   getFeaturedTestimonials,
   getSiteSettings,
   getHomePage,
+  getAllEvents,
 } from "@/sanity/lib/queries";
 
 export default async function Home() {
-  const [upcoming, testimonials, settings, home] = await Promise.all([
+  const [upcoming, testimonials, settings, home, allEvents] = await Promise.all([
     getUpcomingEvents(9),
     getFeaturedTestimonials(4),
     getSiteSettings(),
     getHomePage(),
+    getAllEvents(),
   ]);
 
   const spiritBullets = home?.spiritBullets ?? [
@@ -166,6 +171,13 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      <FaqSection items={buildFaq(allEvents)} />
+      <div className="mx-auto -mt-10 max-w-4xl px-6 pb-16 lg:px-10 lg:pb-24">
+        <Link href="/rallye-touristique-alsace" className="font-display text-sm uppercase tracking-[0.15em] text-accent underline-offset-4 hover:underline">
+          Lire le guide du rallye touristique en Alsace →
+        </Link>
+      </div>
 
       <CtaBanner
         eyebrow={home?.ctaEyebrow}

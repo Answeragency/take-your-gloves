@@ -19,6 +19,7 @@ const columns = [
     title: "Take Your Gloves",
     links: [
       { href: "/a-propos", label: "À propos" },
+      { href: "/rallye-touristique-alsace", label: "Rallye touristique en Alsace" },
       { href: "/entreprises", label: "Entreprises" },
       { href: "/galerie", label: "Galerie" },
       { href: "/temoignages", label: "Témoignages" },
