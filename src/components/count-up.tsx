@@ -21,22 +21,37 @@ export default function CountUp({
   const target = match ? parseFloat(match[2]) : 0;
   const decimals = match && match[2].includes(".") ? match[2].split(".")[1].length : 0;
   const suffix = match ? match[3] : "";
+  const final = target.toFixed(decimals);
 
   const ref = useRef<HTMLSpanElement>(null);
   const seen = useInView(ref, { once: true, margin: "-80px" });
   const inView = immediate || seen;
-  const [display, setDisplay] = useState(decimals ? "0.0" : "0");
+  // Le chiffre final est affiché par défaut (rendu serveur, sans JS, capture d'écran…).
+  // Le comptage n'est qu'un bonus : on ne repart de 0 que si le chiffre est hors écran
+  // (ou demandé « immediate ») et que le visiteur n'a pas demandé moins d'animations.
+  const [display, setDisplay] = useState(final);
+  const [armed, setArmed] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const top = ref.current?.getBoundingClientRect().top ?? 0;
+    if (!reduced && (immediate || top > window.innerHeight)) {
+      setDisplay((0).toFixed(decimals));
+      setArmed(true);
+    }
+  }, [immediate, decimals]);
+
+  useEffect(() => {
+    if (!armed || !inView) return;
     const controls = animate(0, target, {
       delay,
       duration,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (v) => setDisplay(v.toFixed(decimals)),
+      onComplete: () => setDisplay(final),
     });
     return () => controls.stop();
-  }, [inView, target, decimals, delay, duration]);
+  }, [armed, inView, target, decimals, delay, duration, final]);
 
   return (
     <span ref={ref}>

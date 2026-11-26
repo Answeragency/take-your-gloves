@@ -32,7 +32,7 @@ export default function PosterCard({ event, index = 0 }: { event: CalendarEvent;
           </p>
           {event.status && (
             <span
-              className={`mt-3 w-fit rounded-full border px-2.5 py-0.5 text-xs uppercase tracking-[0.08em] ${statusStyles[event.statusType]}`}
+              className={`mt-3 w-fit rounded-full border px-2 py-0.5 text-[0.625rem] uppercase tracking-[0.06em] ${statusStyles[event.statusType]}`}
             >
               {event.status.replace(/\.$/, "")}
             </span>

@@ -70,7 +70,7 @@ export default function EventHero({
               {category}
             </span>
             {badge && (
-              <span className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.1em] ${badgeClass}`}>
+              <span className={`rounded-full border px-2.5 py-0.5 text-[0.6875rem] uppercase tracking-[0.06em] ${badgeClass}`}>
                 {badge}
               </span>
             )}

@@ -83,7 +83,7 @@ export default function CalendarCard({
               </span>
               {event.status && (
                 <span
-                  className={`rounded-full border px-2.5 py-0.5 text-xs uppercase tracking-[0.1em] ${statusStyles[event.statusType]}`}
+                  className={`rounded-full border px-2 py-0.5 text-[0.625rem] uppercase tracking-[0.06em] ${statusStyles[event.statusType]}`}
                 >
                   {event.status.replace(/\.$/, "")}
                 </span>

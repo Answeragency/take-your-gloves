@@ -83,6 +83,10 @@ export default async function ConfidentialitePage() {
             <strong className="text-foreground">Resend</strong> (envoi par email des demandes que vous nous adressez) ;
           </li>
           <li>
+            <strong className="text-foreground">o2switch</strong> (nom de domaine et messagerie : réception des emails que
+            vous nous envoyez) ;
+          </li>
+          <li>
             <strong className="text-foreground">Sanity</strong> (gestion des contenus du site : événements, photos,
             textes). Vos messages n’y sont pas stockés.
           </li>
