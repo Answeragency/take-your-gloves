@@ -7,15 +7,15 @@
  */
 export const LEGAL = {
   name: "Take Your Gloves",
-  legalForm: "Société par actions simplifiée (SAS)",
-  /** Capital social, ex : "1 000 €". À compléter (mention obligatoire pour une SAS). */
-  capital: undefined as string | undefined,
+  legalForm: "Société par actions simplifiée unipersonnelle (SASU)",
+  /** Capital social (Pappers, 26/11/2026). */
+  capital: "1 000 €" as string | undefined,
   siren: "948 879 226",
   siret: "948 879 226 00017",
   /** Greffe d'immatriculation (Bas-Rhin : Strasbourg). */
   rcsCity: "Strasbourg",
-  /** N° de TVA intracommunautaire, ex : "FR30948879226". À confirmer avant publication. */
-  vat: undefined as string | undefined,
+  /** N° de TVA intracommunautaire (Pappers : valide, 26/11/2026). */
+  vat: "FR30948879226" as string | undefined,
   createdOn: "2 février 2023",
   naf: "93.29Z, Autres activités récréatives et de loisirs",
   address: { street: "7 rue de Berstett", postalCode: "67170", city: "Olwisheim", country: "France" },
@@ -30,7 +30,7 @@ export const LEGAL = {
     website: "https://vercel.com",
   },
   siteUrl: "https://take-your-gloves.com",
-  updatedOn: "25 novembre 2026",
+  updatedOn: "26 novembre 2026",
 } as const;
 
 export const fullAddress = () =>
