@@ -1,5 +1,3 @@
-import JsonLd from "@/components/json-ld";
-import { eventJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { PortableText } from "@portabletext/react";
@@ -90,17 +88,33 @@ export default async function EventDetailPage({
     ...(inclusions ? [{ key: "inclus" as const, label: "Inclus", value: inclusions }] : []),
   ];
 
+  const eventJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    description: event.description,
+    url: `https://take-your-gloves.com/evenements/${slug}`,
+    image: event.image ?? "https://take-your-gloves.com/images/ardennes-chateau-parade.jpg",
+    startDate: event.dateSort ?? undefined,
+    location: {
+      "@type": "Place",
+      name: event.location,
+      address: { "@type": "PostalAddress", addressCountry: "FR" },
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "Take Your Gloves",
+      url: "https://take-your-gloves.com",
+    },
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+  };
+
   return (
     <>
-      <JsonLd
-        data={[
-          eventJsonLd(event, duration),
-          breadcrumbJsonLd([
-            { name: "Accueil", path: "/" },
-            { name: "Calendrier 2027", path: "/evenements" },
-            { name: event.title, path: `/evenements/${slug}` },
-          ]),
-        ]}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
       <EventHero
         title={event.title}

@@ -8,8 +8,6 @@ import LenisProvider from "@/components/lenis-provider";
 import MotionProvider from "@/components/motion-provider";
 import ScrollProgress from "@/components/scroll-progress";
 import { getSiteSettings, getAllEvents } from "@/sanity/lib/queries";
-import JsonLd from "@/components/json-ld";
-import { organizationJsonLd, webSiteJsonLd } from "@/lib/seo";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -87,18 +85,46 @@ export default async function RootLayout({
 }>) {
   const [settings, events] = await Promise.all([getSiteSettings(), getAllEvents()]);
   const logoUrl = settings?.logoUrl ?? "/images/logo.png";
+  const phone = settings?.phone ?? "+33 (0)6 00 00 00 00";
 
-  const orgJsonLd = organizationJsonLd({
-    logoUrl,
-    phone: settings?.phone,
-    facebookUrl: settings?.facebookUrl ?? "https://www.facebook.com/TakeYourGlovesEvent/",
-    instagramUrl: settings?.instagramUrl,
-  });
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    name: "Take Your Gloves",
+    description:
+      "Organisateur de rallyes touristiques, trackdays et sorties en voiture de sport en Alsace et Grand Est.",
+    url: BASE_URL,
+    logo: logoUrl.startsWith("http") ? logoUrl : `${BASE_URL}${logoUrl}`,
+    image: `${BASE_URL}/images/ardennes-chateau-parade.jpg`,
+    telephone: phone.replace(/[()\s]/g, ""),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Strasbourg",
+      addressRegion: "Alsace",
+      addressCountry: "FR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 48.5734,
+      longitude: 7.7521,
+    },
+    areaServed: {
+      "@type": "GeoRegion",
+      name: "Alsace, Grand Est, France",
+    },
+    sameAs: [
+      settings?.facebookUrl ?? "https://www.facebook.com/TakeYourGlovesEvent/",
+      ...(settings?.instagramUrl ? [settings.instagramUrl] : []),
+    ],
+  };
 
   return (
     <html lang="fr" className={`${geist.variable} h-full antialiased`}>
       <head>
-        <JsonLd data={[orgJsonLd, webSiteJsonLd()]} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans antialiased">
         <a

@@ -28,12 +28,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...events,
     {
-      url: `${BASE_URL}/rallye-touristique-alsace`,
-      lastModified: new Date("2026-11-26"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
       url: `${BASE_URL}/entreprises`,
       lastModified: new Date(),
       changeFrequency: "monthly",
